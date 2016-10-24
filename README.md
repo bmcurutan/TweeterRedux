@@ -2,7 +2,7 @@
 
 Tweeter is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: 1 hours spent in total
 
 ## User Stories
 
@@ -38,7 +38,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Tweeter Video Walkthrough' width='' alt='Tweeter Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -49,7 +49,7 @@ Describe any challenges encountered while building the app.
 ## Icons
 
 - material-core star icon from [IconFinder](https://www.iconfinder.com)
-- entypo reply and retweet icons from [IconFinder]9https://www.iconfinder.com) 
+- entypo reply and retweet icons from [IconFinder](https://www.iconfinder.com) 
 
 ## License
 
