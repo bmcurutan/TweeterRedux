@@ -60,6 +60,7 @@
 		674E8CBC1DBEBE8600D465E0 /* Tweeter */ = {
 			isa = PBXGroup;
 			children = (
+				676A6BC21DBECDF4008BD753 /* API */,
 				676A6BBD1DBEC9DD008BD753 /* Models */,
 				676A6BBC1DBEC9D4008BD753 /* Views */,
 				676A6BB91DBEC8C1008BD753 /* View Controllers */,
@@ -95,6 +96,13 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		676A6BC21DBECDF4008BD753 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
