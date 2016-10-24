@@ -46,6 +46,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+## Icons
+
+- material-core star icon from [IconFinder](https://www.iconfinder.com)
+- entypo reply and retweet icons from [IconFinder]9https://www.iconfinder.com) 
+
 ## License
 
     Copyright 2016 Bianca Curutan
