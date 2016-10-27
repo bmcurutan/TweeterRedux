@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,14 +19,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="m77-gM-ws3">
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="m77-gM-ws3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-gl-KoB">
+                                <attributedString key="attributedText">
+                                    <fragment content="A simple Twitter client">
+                                        <attributes>
+                                            <color key="NSColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="24" name="AmericanTypewriter"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-DB-RU1">
                                 <attributedString key="attributedText">
                                     <fragment content="Tweeter">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="72" name="AmericanTypewriter"/>
                                         </attributes>
                                     </fragment>
@@ -35,11 +46,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WB9-DB-RU1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="78z-jY-VvX"/>
-                            <constraint firstItem="m77-gM-ws3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="9yC-SR-I68"/>
+                            <constraint firstItem="y6D-gl-KoB" firstAttribute="top" secondItem="WB9-DB-RU1" secondAttribute="bottom" constant="-8" id="7s7-TP-5Ke"/>
+                            <constraint firstItem="m77-gM-ws3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="9yC-SR-I68"/>
                             <constraint firstItem="m77-gM-ws3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Olc-Ba-H6t"/>
+                            <constraint firstItem="WB9-DB-RU1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="8" id="ShO-VF-ZlB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y6D-gl-KoB" secondAttribute="trailing" constant="-8" id="VyQ-P6-59m"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="m77-gM-ws3" secondAttribute="bottom" id="hCf-f3-lf0"/>
-                            <constraint firstItem="WB9-DB-RU1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ko9-Cg-zj7"/>
+                            <constraint firstItem="WB9-DB-RU1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="70" id="iDS-tq-Pdv"/>
                             <constraint firstAttribute="trailing" secondItem="m77-gM-ws3" secondAttribute="trailing" id="zKM-S7-15f"/>
                         </constraints>
                     </view>
