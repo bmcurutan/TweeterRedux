@@ -51,12 +51,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         TwitterClient.sharedInstance.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential?) -> Void in
                 TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
+            
             TwitterClient.sharedInstance.get("1.1/account/verify_credentials.json", parameters: nil, progress: { (Progress) -> Void in
                 }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                     print("user: \(response)") // TODO remove
                     
                 }, failure: { (task: URLSessionTask?, error: Error) -> Void in
                     print("Error getting current user")
+                }
+            )
+            
+            TwitterClient.sharedInstance.get("1.1/statuses/home_timeline.json", parameters: nil, progress: { (Progress) -> Void in
+                }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                    print("home timeline: \(response)") // TODO remove
+                    
+                }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                    print("Error getting home timeline")
                 }
             )
             
