@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
             
                 if let token = requestToken?.token {
                     let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")
-                    print(authURL)
                     let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
                     UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
                 }
