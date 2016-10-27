@@ -6,6 +6,7 @@
 //  Copyright © 2016 Bianca Curutan. All rights reserved.
 //
 
+import BDBOAuth1Manager
 import UIKit
 
 @UIApplicationMain
@@ -47,6 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        TwitterClient.sharedInstance.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential?) -> Void in
+                print("success")
+            }, failure: { (error: Error?) -> Void in
+                print("failure")
+            }
+        )
+        return true
+    }
 }
 
