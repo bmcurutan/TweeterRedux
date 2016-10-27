@@ -8,10 +8,6 @@
 
 import UIKit
 
-let twitterConsumerKey = "STX1NC1rVeFsRJoyqgDl85mV8"
-let twitterConsumerSecret = "2WyDKL8wqzGdBMIhfHzjThx6tz9likph82KXbK59mqQD3GPdIp"
-let twitterBaseURL = NSURL(string: "https://api.twitter.com")
-
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -21,8 +17,6 @@ class HomeViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        TwitterClient(baseURL: twitterBaseURL as URL!, consumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
     }
 
     override func didReceiveMemoryWarning() {
