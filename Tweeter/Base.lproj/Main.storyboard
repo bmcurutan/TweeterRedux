@@ -9,7 +9,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TweetsViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G5F-fl-Qr4"/>
                         <viewControllerLayoutGuide type="bottom" id="6f3-n4-Wbj"/>
@@ -31,7 +31,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8ac-yD-Gcy" kind="push" id="kgn-D3-Pg0"/>
+                                            <segue destination="trd-dM-0n3" kind="push" id="hhd-XE-sEt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -198,16 +198,20 @@
                             <constraint firstItem="PLn-Hb-JEL" firstAttribute="centerX" secondItem="6kj-qQ-Ekl" secondAttribute="centerX" id="qgr-hD-btS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="qoT-bh-Ujn" kind="modal" identifier="loginSegue" id="afK-zh-FAR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVm-Tt-3bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="643" y="-1182"/>
+            <point key="canvasLocation" x="-456" y="-645"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oFk-mj-VOf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="trd-dM-0n3" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Cew-ij-aFi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="phw-8i-sMB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -219,7 +223,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPH-0C-TWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.5" y="151.5"/>
+            <point key="canvasLocation" x="1215" y="572"/>
         </scene>
         <!--New Tweet View Controller-->
         <scene sceneID="ZqA-e1-Hch">
@@ -298,7 +302,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="kgn-D3-Pg0"/>
-    </inferredMetricsTieBreakers>
 </document>
