@@ -9,7 +9,6 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
-//user profile picture, username, tweet text, and timestamp
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!

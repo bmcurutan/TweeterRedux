@@ -17,6 +17,8 @@ class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var tweet: Tweet!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,8 +46,8 @@ extension TweetDetailsViewController: UITableViewDataSource {
             cell.textLabel?.text = "SOME DETAILS!"
             return cell
         case CellType.totals:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CountsCell", for: indexPath)
-            cell.textLabel?.text = "COUNT YO!"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TotalsCell", for: indexPath) as! TotalsCell
+            cell.tweet = tweet
             return cell
         case CellType.actions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath)

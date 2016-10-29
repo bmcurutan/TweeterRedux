@@ -54,6 +54,20 @@ class TweetsViewController: UIViewController {
             }
         )
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //let navigationController = segue.destination as! UINavigationController TODO
+        
+        if "detailsSegue" == segue.identifier {
+            let cell = sender as! TweetCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = tweets[indexPath!.row]
+            let detailsViewController = segue.destination as! TweetDetailsViewController //navigationController.topViewController as! TweetDetailsViewController
+            detailsViewController.tweet = tweet
+        }
+    } 
 }
 
 // MARK: - UITableViewDataSource
@@ -78,5 +92,4 @@ extension TweetsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
 
