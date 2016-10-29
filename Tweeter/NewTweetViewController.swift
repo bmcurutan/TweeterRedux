@@ -10,22 +10,45 @@ import UIKit
 
 class NewTweetViewController: UIViewController {
 
-    @IBOutlet var newTweetView: NewTweet!
+    @IBOutlet weak var countdownTextField: UITextField!
+    @IBOutlet var newTweetView: NewTweetView!
     
+    let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
+    
+    var countdown: Int = 140
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        countdownTextField.text = "\(countdown)"
         newTweetView.user = user
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - IBAction
+    
+    @IBAction func onTweetButton(_ sender: AnyObject) {
+        if countdown < 0 {
+            onError("Tweet is more than 140 characters. Please try again")
+        }
     }
     
-
+    @IBAction func onTweetTextField(_ sender: AnyObject) {
+        countdown = 140 - (newTweetView.tweetTextField.text?.characters.count)!
+        countdownTextField.text = "\(countdown)"
+    }
+    
+    // MARK: - UIAlert
+    
+    func onError(_ message: String) {
+        alertController.message = message as String
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

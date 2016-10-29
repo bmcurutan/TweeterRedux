@@ -1,5 +1,5 @@
 //
-//  NewTweet.swift
+//  NewTweetView.swift
 //  Tweeter
 //
 //  Created by Bianca Curutan on 10/29/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTweet: UIView {
+class NewTweetView: UIView {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!

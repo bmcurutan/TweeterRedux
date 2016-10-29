@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -326,7 +327,7 @@
                         <viewControllerLayoutGuide type="top" id="4bp-WN-SXx"/>
                         <viewControllerLayoutGuide type="bottom" id="9aQ-HL-g3C"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PTQ-un-xcn" customClass="NewTweet" customModule="Tweeter" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="PTQ-un-xcn" customClass="NewTweetView" customModule="Tweeter" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -350,6 +351,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onTweetTextField:" destination="amC-ZC-IBP" eventType="editingChanged" id="5i6-YY-Adl"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -379,9 +383,25 @@
                                 <action selector="onCancelButton:" destination="amC-ZC-IBP" id="bV0-cE-lum"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="YWx-c8-fiq"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Tweet" id="YWx-c8-fiq">
+                                <connections>
+                                    <action selector="onTweetButton:" destination="amC-ZC-IBP" id="wz6-Sw-Wes"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="47x-CE-fLZ">
+                                <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="140" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="VX7-Yf-Tgu">
+                                    <rect key="frame" x="221" y="7" width="83" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="countdownTextField" destination="VX7-Yf-Tgu" id="oZG-5Y-G1V"/>
                         <outlet property="newTweetView" destination="PTQ-un-xcn" id="JLj-vL-hf3"/>
                     </connections>
                 </viewController>
