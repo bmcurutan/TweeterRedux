@@ -18,13 +18,16 @@ class TweetCell: UITableViewCell {
     
     var tweet: Tweet! {
         didSet {
-            if let name = tweet.name,
-                let screenname = tweet.screenname {
-                nameLabel.text = "\(name) @\(screenname)" // TODO UI
-            }
-            //profilePictureImageView.setImageWith(tweet.profilePictureUrl) // TODO
             timestampLabel.text = tweet.timestamp
             tweetTextLabel.text = tweet.text
+            
+            if let user = tweet.user {
+                if let name = user.name,
+                    let screenname = user.screenname {
+                    nameLabel.text = "\(name) @\(screenname)" // TODO UI
+                }
+                profilePictureImageView.setImageWith(user.profilePictureUrl!)
+            }
         }
     }
     

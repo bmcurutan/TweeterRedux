@@ -9,15 +9,11 @@
 import UIKit
 
 class Tweet: NSObject {
-    // Tweet variables
     var favoritesCount: Int = 0
     var retweetCount: Int = 0
     var text: String?
     var timestamp: String?
-    
-    // User variables
-    var name: String?
-    var screenname: String?
+    var user: User?
     
     init(dictionary: NSDictionary) {
         favoritesCount = (dictionary["favourites_count"] as? Int) ?? 0
@@ -35,14 +31,14 @@ class Tweet: NSObject {
             }
         }
         
-        if let user = dictionary["user"] as? [String: AnyObject] {
-            name = user["name"] as? String
-            screenname = user["screen_name"] as? String
+        if let userDictionary = dictionary["user"] {
+            user = User(dictionary: userDictionary as! NSDictionary)
         }
     }
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
         var tweets: [Tweet] = []
+        
         
         for dictionary in dictionaries {
             let tweet = Tweet(dictionary: dictionary)
