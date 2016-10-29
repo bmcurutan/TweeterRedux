@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum CellType: Int {
+    case details = 0, totals, actions
+    static var count: Int { return CellType.actions.hashValue + 1}
+}
+
 class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -33,13 +38,24 @@ class TweetDetailsViewController: UIViewController {
 
 extension TweetDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TempCell", for: indexPath)
-        cell.textLabel?.text = "Some text here"
-        return cell
+        switch CellType(rawValue: indexPath.row)! {
+        case CellType.details:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath)
+            cell.textLabel?.text = "SOME DETAILS!"
+            return cell
+        case CellType.totals:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CountsCell", for: indexPath)
+            cell.textLabel?.text = "COUNT YO!"
+            return cell
+        case CellType.actions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath)
+            cell.textLabel?.text = "ACTION!"
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return CellType.count
     }
 }
 
