@@ -9,10 +9,29 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
-
+//user profile picture, username, tweet text, and timestamp
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var screennameLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var tweetTextLabel: UILabel!
+    
+    var tweet: Tweet! {
+        didSet {
+            nameLabel.text = tweet.name
+            //profilePictureImageView.setImageWith(tweet.profilePictureUrl) // TODO
+            screennameLabel.text = tweet.screenname
+            timestampLabel.text = tweet.timestamp
+            tweetTextLabel.text = tweet.text
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        profilePictureImageView.layer.cornerRadius = 5
+        profilePictureImageView.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
