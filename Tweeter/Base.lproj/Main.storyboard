@@ -246,11 +246,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="T7K-5j-701">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Home" id="hdt-gN-QNe">
-                            <connections>
-                                <action selector="onHomeButton:" destination="8ac-yD-Gcy" id="KEU-Ag-tGL"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy"/>
                     </navigationItem>
                     <connections>

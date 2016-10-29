@@ -24,6 +24,8 @@ class TweetDetailsViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
