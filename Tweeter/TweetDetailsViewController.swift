@@ -27,16 +27,16 @@ class TweetDetailsViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - IBAction
     
-    @IBAction func onHomeButton(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "replySegue0" || segue.identifier == "replySegue1" {
+            let navigationController = segue.destination as! UINavigationController
+            let viewController = navigationController.topViewController as! NewTweetViewController
+            viewController.user = User.currentUser
+            viewController.tweet = tweet
+        }
     }
 }
 

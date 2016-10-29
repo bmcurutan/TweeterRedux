@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tweeter/NewTweetViewController.swift"
-            timestampString = "499473281.39687"
+            timestampString = "499477772.600453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "onTweetButton(_:)"
             landmarkType = "7">
          </BreakpointContent>

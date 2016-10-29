@@ -23,11 +23,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pMW-eU-ajC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="xKo-GX-qjX" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="xKo-GX-qjX" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xKo-GX-qjX" id="DkT-1s-XME">
-                                            <frame key="frameInset" width="342" height="129"/>
+                                            <frame key="frameInset" width="375" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yay-Mn-GIf">
@@ -229,20 +229,33 @@
                                             <frame key="frameInset" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tyo-r8-Wzg"/>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4dZ-WL-FSf"/>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hXD-3w-Kcs"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzK-be-v2K">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="CUT-bw-oMs"/>
+                                                        <constraint firstAttribute="width" constant="32" id="cU1-Ut-dd4"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="reply"/>
+                                                    <connections>
+                                                        <segue destination="MOu-49-kFK" kind="modal" identifier="replySegue0" id="mby-rZ-Zy7"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuS-6s-0xD">
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-lr-PDP">
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4dZ-WL-FSf" firstAttribute="leading" secondItem="Tyo-r8-Wzg" secondAttribute="trailing" constant="56" id="146-3C-ZzF"/>
-                                                <constraint firstItem="hXD-3w-Kcs" firstAttribute="leading" secondItem="3j5-4s-V9b" secondAttribute="leading" constant="8" id="2aD-VQ-Wrg"/>
-                                                <constraint firstItem="hXD-3w-Kcs" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="69Q-10-nUe"/>
-                                                <constraint firstItem="Tyo-r8-Wzg" firstAttribute="leading" secondItem="hXD-3w-Kcs" secondAttribute="trailing" constant="56" id="7zv-8z-Nmu"/>
-                                                <constraint firstItem="Tyo-r8-Wzg" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="GVq-Ib-hbs"/>
-                                                <constraint firstAttribute="bottom" secondItem="4dZ-WL-FSf" secondAttribute="bottom" constant="8" id="SUe-vh-SrU"/>
-                                                <constraint firstAttribute="bottom" secondItem="Tyo-r8-Wzg" secondAttribute="bottom" constant="8" id="YaX-GD-poJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="hXD-3w-Kcs" secondAttribute="bottom" constant="8" id="wcY-cB-LDr"/>
-                                                <constraint firstItem="4dZ-WL-FSf" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="zag-wg-Nh8"/>
+                                                <constraint firstAttribute="bottom" secondItem="8NH-lr-PDP" secondAttribute="bottom" constant="8" id="3eV-aY-xdg"/>
+                                                <constraint firstAttribute="bottom" secondItem="JuS-6s-0xD" secondAttribute="bottom" constant="8" id="44z-st-wPo"/>
+                                                <constraint firstItem="JuS-6s-0xD" firstAttribute="centerX" secondItem="3j5-4s-V9b" secondAttribute="centerX" id="BeA-8k-3Mj"/>
+                                                <constraint firstAttribute="bottom" secondItem="wzK-be-v2K" secondAttribute="bottom" constant="8" id="HaI-mp-J8c"/>
+                                                <constraint firstItem="8NH-lr-PDP" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="L09-IJ-QML"/>
+                                                <constraint firstItem="JuS-6s-0xD" firstAttribute="leading" secondItem="wzK-be-v2K" secondAttribute="trailing" constant="64" id="T2H-j6-S24"/>
+                                                <constraint firstItem="wzK-be-v2K" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="ecl-ZI-3TY"/>
+                                                <constraint firstItem="JuS-6s-0xD" firstAttribute="top" secondItem="3j5-4s-V9b" secondAttribute="top" constant="8" id="fzr-PP-Z4Y"/>
+                                                <constraint firstItem="8NH-lr-PDP" firstAttribute="leading" secondItem="JuS-6s-0xD" secondAttribute="trailing" constant="64" id="lP6-rt-S5l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -258,7 +271,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="T7K-5j-701">
-                        <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy">
+                            <connections>
+                                <segue destination="MOu-49-kFK" kind="modal" identifier="replySegue1" id="roJ-1i-SZL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2H8-Yq-c5r" id="qye-Zm-SmD"/>
@@ -266,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd2-fV-lkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5" y="135.5"/>
+            <point key="canvasLocation" x="1138" y="341"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zkz-js-syC">
@@ -407,12 +424,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRQ-1j-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1737.5" y="-678.5"/>
+            <point key="canvasLocation" x="2309" y="-592"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqw-kN-yy5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="stz-c4-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MOu-49-kFK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1fr-9L-6ex">
@@ -424,13 +440,20 @@
                         <segue destination="amC-ZC-IBP" kind="relationship" relationship="rootViewController" id="rzG-wb-BZQ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="stz-c4-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150.5" y="-631.5"/>
+            <point key="canvasLocation" x="1423" y="-768"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reply" width="65" height="72"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="roJ-1i-SZL"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -64,13 +64,13 @@ class TweetsViewController: UIViewController {
             let cell = sender as! TweetCell
             let indexPath = tableView.indexPath(for: cell)
             let tweet = tweets[indexPath!.row]
-            let detailsViewController = segue.destination as! TweetDetailsViewController
-            detailsViewController.tweet = tweet
+            let viewController = segue.destination as! TweetDetailsViewController
+            viewController.tweet = tweet
             
         } else if "newTweetSegue" == segue.identifier {
             let navigationController = segue.destination as! UINavigationController
-            let detailsViewController = navigationController.topViewController as! NewTweetViewController
-            detailsViewController.user = User.currentUser
+            let viewController = navigationController.topViewController as! NewTweetViewController
+            viewController.user = User.currentUser
         }
     } 
 }
