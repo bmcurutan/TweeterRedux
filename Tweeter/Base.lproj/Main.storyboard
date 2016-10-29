@@ -125,9 +125,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2H8-Yq-c5r">
-                                <frame key="frameInset" minY="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2H8-Yq-c5r">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailsCell" rowHeight="136" id="UJ7-aE-Ggt" customClass="DetailsCell" customModule="Tweeter" customModuleProvider="target">
@@ -183,6 +181,13 @@
                                                 <constraint firstItem="Rob-pR-BFB" firstAttribute="top" secondItem="faX-an-8kC" secondAttribute="top" constant="8" id="wqS-rX-tlC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Q55-i1-ymH" id="ReP-Ga-hwu"/>
+                                            <outlet property="profilePictureImageView" destination="Rob-pR-BFB" id="twV-Sq-Y5u"/>
+                                            <outlet property="screennameLabel" destination="fzH-Bp-KmS" id="blS-lu-7bx"/>
+                                            <outlet property="timestampLabel" destination="8kN-UD-dF2" id="MrI-rB-vhF"/>
+                                            <outlet property="tweetTextLabel" destination="EF8-K5-mJj" id="lkO-Oj-Hc9"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TotalsCell" rowHeight="37" id="5FG-KE-4js" customClass="TotalsCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="228" width="375" height="37"/>
@@ -244,6 +249,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kr3-ZV-ZI5" firstAttribute="top" secondItem="2H8-Yq-c5r" secondAttribute="bottom" id="8Bn-Yj-gKM"/>
+                            <constraint firstAttribute="trailing" secondItem="2H8-Yq-c5r" secondAttribute="trailing" id="PWI-j5-FW5"/>
+                            <constraint firstItem="2H8-Yq-c5r" firstAttribute="top" secondItem="kMV-ll-HEn" secondAttribute="top" id="qRh-B2-uzb"/>
+                            <constraint firstItem="2H8-Yq-c5r" firstAttribute="leading" secondItem="kMV-ll-HEn" secondAttribute="leading" id="sfN-Az-2aw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="T7K-5j-701">
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy"/>
@@ -254,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd2-fV-lkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="136"/>
+            <point key="canvasLocation" x="1365.5" y="135.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zkz-js-syC">

@@ -44,16 +44,15 @@ extension TweetDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch CellType(rawValue: indexPath.row)! {
         case CellType.details:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath)
-            cell.textLabel?.text = "SOME DETAILS!"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
+            cell.tweet = tweet
             return cell
         case CellType.totals:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalsCell", for: indexPath) as! TotalsCell
             cell.tweet = tweet
             return cell
         case CellType.actions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath)
-            cell.textLabel?.text = "ACTION!"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) // TODO
             return cell
         }
     }
