@@ -15,7 +15,7 @@ let twitterConsumerSecret = "2WyDKL8wqzGdBMIhfHzjThx6tz9likph82KXbK59mqQD3GPdIp"
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 
 class TwitterClient: BDBOAuth1SessionManager {
-
+    
     class var sharedInstance: TwitterClient {
         struct Static {
             static let instance = TwitterClient(baseURL: twitterBaseURL as URL!, consumerKey: twitterConsumerKey, consumerSecret: twitterConsumerSecret)
@@ -45,6 +45,12 @@ class TwitterClient: BDBOAuth1SessionManager {
                 self.loginFailure?(error!)
             }
         )
+    }
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: User.userDidLogoutNotification, object: nil)
     }
     
     func handleOpenUrl(_ url: NSURL) {

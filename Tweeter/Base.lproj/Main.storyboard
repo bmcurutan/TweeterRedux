@@ -39,7 +39,11 @@
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cn5-eA-uch">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="VYP-K3-5oP"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="VYP-K3-5oP">
+                            <connections>
+                                <action selector="onLogoutButton:" destination="BYZ-38-t0r" id="QCk-g3-thO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="8hL-vz-gCz">
                             <connections>
                                 <segue destination="MOu-49-kFK" kind="modal" id="txC-L1-T43"/>
@@ -158,7 +162,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zkz-js-syC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qoT-bh-Ujn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qoT-bh-Ujn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GCl-1Z-qZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

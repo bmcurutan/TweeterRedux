@@ -28,6 +28,11 @@ class TweetsViewController: UIViewController {
             }
         )
     }
+    
+    // MARK: - IBAction
+    @IBAction func onLogoutButton(_ sender: AnyObject) {
+        TwitterClient.sharedInstance.logout()
+    }
 }
 
 // MARK: - UITableViewDataSource

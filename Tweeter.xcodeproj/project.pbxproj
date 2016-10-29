@@ -38,6 +38,7 @@
 		676A6BC01DBECA99008BD753 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		67718CA81DC1C10E0066F0FC /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		67718CAA1DC1C4EA0066F0FC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		67B9108E1DC51530004E2CF0 /* Tweeter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tweeter.entitlements; sourceTree = "<group>"; };
 		67E422A21DC1BCA900893540 /* Tweeter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tweeter-Bridging-Header.h"; sourceTree = "<group>"; };
 		84598D1C58D33A104BBCABB3 /* Pods-Tweeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tweeter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tweeter/Pods-Tweeter.debug.xcconfig"; sourceTree = "<group>"; };
 		E4B18E995D77122F7D93FDFC /* Pods_Tweeter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tweeter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +85,7 @@
 		674E8CBC1DBEBE8600D465E0 /* Tweeter */ = {
 			isa = PBXGroup;
 			children = (
+				67B9108E1DC51530004E2CF0 /* Tweeter.entitlements */,
 				676A6BC21DBECDF4008BD753 /* API */,
 				676A6BBD1DBEC9DD008BD753 /* Models */,
 				676A6BBC1DBEC9D4008BD753 /* Views */,
@@ -178,8 +180,14 @@
 				TargetAttributes = {
 					674E8CB91DBEBE8500D465E0 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 22FG2JE75X;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -402,6 +410,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tweeter/Tweeter.entitlements;
+				DEVELOPMENT_TEAM = 22FG2JE75X;
 				INFOPLIST_FILE = Tweeter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bmcurutan.Tweeter;
@@ -418,6 +428,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tweeter/Tweeter.entitlements;
+				DEVELOPMENT_TEAM = 22FG2JE75X;
 				INFOPLIST_FILE = Tweeter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bmcurutan.Tweeter;

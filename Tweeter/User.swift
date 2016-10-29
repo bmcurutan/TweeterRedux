@@ -30,6 +30,7 @@ class User: NSObject {
         tagline = dictionary["description"] as? String
     }
     
+    static let userDidLogoutNotification = NSNotification.Name(rawValue: "UserDidLogout")
     static var _currentUser: User?
     
     class var currentUser: User? {
