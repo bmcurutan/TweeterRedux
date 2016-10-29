@@ -10,10 +10,14 @@ import UIKit
 
 class NewTweetViewController: UIViewController {
 
+    @IBOutlet var newTweetView: NewTweet!
+    
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        newTweetView.user = user
     }
 
     override func didReceiveMemoryWarning() {
