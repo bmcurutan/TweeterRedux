@@ -102,5 +102,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
-    // TODO func tweetWithText(_ text: String)
+    func tweetWithText(_ text: String) {
+        print("TESTTEST")
+    }
 }

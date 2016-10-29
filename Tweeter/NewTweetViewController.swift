@@ -16,6 +16,7 @@ class NewTweetViewController: UIViewController {
     let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
     
     var countdown: Int = 140
+    var tweetText: String?
     var user: User!
     
     override func viewDidLoad() {
@@ -28,13 +29,21 @@ class NewTweetViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onTweetButton(_ sender: AnyObject) {
-        if countdown < 0 {
+        if countdown == 140 {
+            onError("Tweet is empty. Please try again")
+        }
+            
+        else if countdown < 0 {
             onError("Tweet is more than 140 characters. Please try again")
+            
+        } else {
+            TwitterClient.sharedInstance.tweetWithText(tweetText!)
         }
     }
     
     @IBAction func onTweetTextField(_ sender: AnyObject) {
-        countdown = 140 - (newTweetView.tweetTextField.text?.characters.count)!
+        tweetText = newTweetView.tweetTextField.text!
+        countdown = 140 - (tweetText?.characters.count)!
         countdownTextField.text = "\(countdown)"
     }
     
