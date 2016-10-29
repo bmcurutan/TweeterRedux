@@ -12,7 +12,7 @@ class TweetsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var tweets: [Tweet]?
+    var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class TweetsViewController: UIViewController {
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets
                 self.tableView.reloadData()
+            
             }, failure: { (error: Error) -> () in
                 print("error: \(error.localizedDescription)")
             }
@@ -40,12 +41,12 @@ class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath)
-        cell.textLabel?.text = "Hello World"
+        cell.textLabel?.text = tweets[indexPath.row].text
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return tweets.count 
     }
 }
 
