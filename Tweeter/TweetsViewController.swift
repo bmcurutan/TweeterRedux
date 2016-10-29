@@ -19,10 +19,14 @@ class TweetsViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // For pull to refresh
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onPullToRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets
                 self.tableView.reloadData()
@@ -36,6 +40,19 @@ class TweetsViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
+    }
+    
+    // MARK: - Private Methods
+    func onPullToRefresh(refreshControl: UIRefreshControl) {
+        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+            
+            }, failure: { (error: Error) -> () in
+                print("error: \(error.localizedDescription)")
+            }
+        )
     }
 }
 
