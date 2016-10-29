@@ -37,7 +37,15 @@ class NewTweetViewController: UIViewController {
             onError("Tweet is more than 140 characters. Please try again")
             
         } else {
-            TwitterClient.sharedInstance.tweetWithText(tweetText!)
+            TwitterClient.sharedInstance.tweetWithText(tweetText!, success: { () -> () in
+                self.dismiss(animated: true, completion: nil)
+                print("Tweet successfully posted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+
         }
     }
     
@@ -57,16 +65,6 @@ class NewTweetViewController: UIViewController {
         
         present(alertController, animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - IBAction
     
