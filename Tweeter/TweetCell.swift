@@ -13,15 +13,16 @@ class TweetCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
-    @IBOutlet weak var screennameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
-            nameLabel.text = tweet.name
+            if let name = tweet.name,
+                let screenname = tweet.screenname {
+                nameLabel.text = "\(name) @\(screenname)" // TODO UI
+            }
             //profilePictureImageView.setImageWith(tweet.profilePictureUrl) // TODO
-            screennameLabel.text = tweet.screenname
             timestampLabel.text = tweet.timestamp
             tweetTextLabel.text = tweet.text
         }
