@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.barTintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        if nil != User.currentUser {
+            print("There is a current user")
+        } else {
+            print("There is no current user")
+        }
+        
         return true
     }
 
@@ -50,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         TwitterClient.sharedInstance.handleOpenUrl(url as NSURL)
-
         return true
     }
 }
