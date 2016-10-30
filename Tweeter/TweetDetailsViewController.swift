@@ -31,7 +31,7 @@ class TweetDetailsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "replySegue0" || segue.identifier == "replySegue1" {
+        if segue.identifier == "replySegue" || segue.identifier == "replySegue2" {
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
             viewController.user = User.currentUser

@@ -104,7 +104,6 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func tweetWithText(_ text: String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["status": text as AnyObject]
-        print("TESTTEST \(isAuthorized)") // TODO remove
         post("1.1/statuses/update.json", parameters: parameters, progress: { ( Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
