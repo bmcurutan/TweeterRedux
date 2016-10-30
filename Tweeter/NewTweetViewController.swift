@@ -16,19 +16,35 @@ class NewTweetViewController: UIViewController {
     let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
     
     var countdown: Int = 140
-    var tweet: Tweet?
+    var replyTweet: Tweet?
+    var retweetTweet: Tweet?
     var tweetText: String = ""
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let screenname = tweet?.user?.screenname {
+        if let replyTweet = replyTweet,
+           let screenname = replyTweet.user?.screenname {
             tweetText = "@\(screenname) "
         }
         
+        if let retweetTweet = retweetTweet {
+            if let name = retweetTweet.user?.name {
+                tweetText += "\(name) "
+            }
+            
+            if let screenname = retweetTweet.user?.screenname {
+                tweetText += "@\(screenname) "
+            }
+            
+            if let text = retweetTweet.text {
+                tweetText += "\(text) "
+            }
+        }
+        
         newTweetView.user = user
-        newTweetView.tweetTextField.text = tweetText
+        newTweetView.tweetTextView.text = tweetText
         
         countdownTextField.text = "\(140 - tweetText.characters.count)"
     }
@@ -36,7 +52,6 @@ class NewTweetViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onTweetButton(_ sender: AnyObject) {
-        // TODO Update reply count
         if countdown == 140 {
             onError("Tweet is empty. Please try again")
         }
@@ -58,7 +73,7 @@ class NewTweetViewController: UIViewController {
     }
     
     @IBAction func onTweetTextField(_ sender: AnyObject) {
-        tweetText = newTweetView.tweetTextField.text!
+        tweetText = newTweetView.tweetTextView.text!
         countdown = 140 - tweetText.characters.count
         countdownTextField.text = "\(countdown)"
     }

@@ -77,7 +77,7 @@ class TweetsViewController: UIViewController {
             let tweet = tweets[replyButton.tag]
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
-            viewController.tweet = tweet
+            viewController.replyTweet = tweet
             viewController.user = User.currentUser
         }
     }

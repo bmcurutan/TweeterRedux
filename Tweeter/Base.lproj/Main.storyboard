@@ -269,6 +269,9 @@
                                                         <constraint firstAttribute="width" constant="16" id="41X-Gd-Jta"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
+                                                    <connections>
+                                                        <segue destination="MOu-49-kFK" kind="modal" identifier="retweetSegue" id="TVy-8p-fw0"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-lr-PDP">
                                                     <constraints>
@@ -396,24 +399,23 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="PcN-OV-Jcj">
-                                <nil key="textColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="01G-ES-fr7">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onTweetTextField:" destination="amC-ZC-IBP" eventType="editingChanged" id="5i6-YY-Adl"/>
-                                </connections>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PcN-OV-Jcj" firstAttribute="trailing" secondItem="PTQ-un-xcn" secondAttribute="trailingMargin" constant="8" id="085-wB-on6"/>
                             <constraint firstItem="hHa-eX-ZhA" firstAttribute="top" secondItem="4bp-WN-SXx" secondAttribute="bottom" constant="8" id="5YW-Ue-l4l"/>
-                            <constraint firstItem="PcN-OV-Jcj" firstAttribute="leading" secondItem="PTQ-un-xcn" secondAttribute="leading" constant="8" id="91T-nW-fQN"/>
+                            <constraint firstItem="9aQ-HL-g3C" firstAttribute="top" secondItem="01G-ES-fr7" secondAttribute="bottom" constant="8" id="8mg-Jp-u6I"/>
                             <constraint firstItem="c3I-nk-U1m" firstAttribute="top" secondItem="qIi-2a-Ump" secondAttribute="bottom" id="GhE-kP-95b"/>
                             <constraint firstItem="c3I-nk-U1m" firstAttribute="leading" secondItem="hHa-eX-ZhA" secondAttribute="trailing" constant="8" id="UHW-zl-EDE"/>
-                            <constraint firstItem="PcN-OV-Jcj" firstAttribute="top" secondItem="hHa-eX-ZhA" secondAttribute="bottom" constant="8" id="Wds-rd-4QU"/>
+                            <constraint firstItem="01G-ES-fr7" firstAttribute="top" secondItem="hHa-eX-ZhA" secondAttribute="bottom" constant="8" id="XnY-eS-fc8"/>
                             <constraint firstAttribute="trailing" secondItem="c3I-nk-U1m" secondAttribute="trailing" constant="8" id="ZVN-lx-yMs"/>
+                            <constraint firstItem="01G-ES-fr7" firstAttribute="leading" secondItem="PTQ-un-xcn" secondAttribute="leading" constant="8" id="aiG-wS-Oq9"/>
+                            <constraint firstAttribute="trailing" secondItem="01G-ES-fr7" secondAttribute="trailing" constant="8" id="eYG-Sl-0hf"/>
                             <constraint firstAttribute="trailing" secondItem="qIi-2a-Ump" secondAttribute="trailing" constant="8" id="fSG-jk-e7L"/>
                             <constraint firstItem="qIi-2a-Ump" firstAttribute="leading" secondItem="hHa-eX-ZhA" secondAttribute="trailing" constant="8" id="jOl-O1-OQZ"/>
                             <constraint firstItem="qIi-2a-Ump" firstAttribute="top" secondItem="4bp-WN-SXx" secondAttribute="bottom" constant="5" id="qrJ-6x-dDO"/>
@@ -423,7 +425,7 @@
                             <outlet property="nameLabel" destination="qIi-2a-Ump" id="2AM-DP-MDO"/>
                             <outlet property="profilePictureImageView" destination="hHa-eX-ZhA" id="tm2-CM-hap"/>
                             <outlet property="screennameLabel" destination="c3I-nk-U1m" id="y3m-Jg-l3o"/>
-                            <outlet property="tweetTextField" destination="PcN-OV-Jcj" id="KOu-yx-qp6"/>
+                            <outlet property="tweetTextView" destination="01G-ES-fr7" id="6gH-W4-owh"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="9Xt-8P-jsT">
@@ -456,7 +458,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRQ-1j-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2309" y="-592"/>
+            <point key="canvasLocation" x="2308.5" y="-592.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqw-kN-yy5">
@@ -474,7 +476,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stz-c4-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="-768"/>
+            <point key="canvasLocation" x="1481" y="-358"/>
         </scene>
     </scenes>
     <resources>
@@ -488,6 +490,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="roJ-1i-SZL"/>
+        <segue reference="TVy-8p-fw0"/>
     </inferredMetricsTieBreakers>
 </document>

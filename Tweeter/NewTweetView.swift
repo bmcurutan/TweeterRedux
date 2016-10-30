@@ -13,7 +13,7 @@ class NewTweetView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var screennameLabel: UILabel!
-    @IBOutlet weak var tweetTextField: UITextField!
+    @IBOutlet weak var tweetTextView: UITextView!
 
     var user: User! {
         didSet {
@@ -26,7 +26,7 @@ class NewTweetView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        tweetTextField.becomeFirstResponder()
+        tweetTextView.becomeFirstResponder()
         
         profilePictureImageView.layer.cornerRadius = 5
         profilePictureImageView.clipsToBounds = true
