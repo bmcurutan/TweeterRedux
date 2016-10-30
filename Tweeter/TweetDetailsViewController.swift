@@ -58,7 +58,8 @@ extension TweetDetailsViewController: UITableViewDataSource {
             cell.tweet = tweet
             return cell
         case CellType.actions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) // TODO
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) as! ActionsCell
+            cell.tweet = tweet
             return cell
         }
     }

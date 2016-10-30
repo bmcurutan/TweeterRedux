@@ -104,7 +104,33 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func tweetWithText(_ text: String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["status": text as AnyObject]
-        post("1.1/statuses/update.json", parameters: parameters, progress: { ( Progress) -> Void in
+        post("1.1/statuses/update.json", parameters: parameters, progress: { (Progress) -> Void in
+            
+            }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                success()
+                
+            }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
+    func addFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let parameters: [String: AnyObject] = ["id": id as AnyObject]
+        post("1.1/favorites/create.json", parameters: parameters, progress: { (Progress) -> Void in
+            
+            }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                success()
+                
+            }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
+    func removeFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let parameters: [String: AnyObject] = ["id": id as AnyObject]
+        post("1.1/favorites/destroy.json", parameters: parameters, progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()

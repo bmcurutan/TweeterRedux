@@ -279,6 +279,10 @@
                                                         <constraint firstAttribute="height" constant="16" id="m0e-Q3-zVF"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="favorite"/>
+                                                    <state key="selected" image="favorite-on"/>
+                                                    <connections>
+                                                        <action selector="onFavoriteButton:" destination="iSv-OB-YHT" eventType="touchUpInside" id="ONq-Lr-7kS"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -293,6 +297,9 @@
                                                 <constraint firstItem="8NH-lr-PDP" firstAttribute="leading" secondItem="JuS-6s-0xD" secondAttribute="trailing" constant="64" id="lP6-rt-S5l"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favoriteButton" destination="8NH-lr-PDP" id="gfM-Gw-fiS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -481,6 +488,7 @@
     </scenes>
     <resources>
         <image name="favorite" width="54" height="72"/>
+        <image name="favorite-on" width="54" height="72"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
     </resources>

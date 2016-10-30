@@ -10,15 +10,38 @@ import UIKit
 
 class ActionsCell: UITableViewCell {
 
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    var tweet: Tweet! {
+        didSet {
+            favoriteButton.isSelected = tweet.favorited
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        favoriteButton.isSelected = !tweet.favorited
+        
+        if tweet.favorited { // Currented favorited, so unfavorite action
+            TwitterClient.sharedInstance.removeFavoriteWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully unfavorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Favorite action
+            TwitterClient.sharedInstance.addFavoriteWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully favorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
     }
-
 }
