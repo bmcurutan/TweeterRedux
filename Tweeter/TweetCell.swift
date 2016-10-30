@@ -75,12 +75,23 @@ class TweetCell: UITableViewCell {
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         retweetButton.isSelected = !tweet.retweeted
         
-        TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
-            print("Tweet successfully retweeted")
+        if tweet.retweeted { // Currently retweeted, so unretweet action
+            TwitterClient.sharedInstance.unretweetWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully unretweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
             
-            }, failure: { (error: Error) -> () in
-                print("error: \(error.localizedDescription)")
-            }
-        )
+        } else { // Retweet action
+            TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully retweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
     }
 }

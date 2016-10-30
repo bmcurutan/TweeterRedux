@@ -102,8 +102,10 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
-    func tweetWithText(_ text: String, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        let parameters: [String: AnyObject] = ["status": text as AnyObject]
+    func tweetWithText(_ text: String, replyId: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        let parameters: [String: AnyObject] = [
+            "status": text as AnyObject,
+            "in_reply_to_status_id": replyId as AnyObject]
         post("1.1/statuses/update.json", parameters: parameters, progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
@@ -117,6 +119,18 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func retweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
+            
+            }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                success()
+                
+            }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
+    func unretweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/unretweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()
