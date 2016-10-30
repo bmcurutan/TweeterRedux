@@ -71,8 +71,16 @@ class TweetsViewController: UIViewController {
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
             viewController.user = User.currentUser
+        
+        } else if "replySegue" == segue.identifier {
+            let replyButton = sender as! UIButton
+            let tweet = tweets[replyButton.tag]
+            let navigationController = segue.destination as! UINavigationController
+            let viewController = navigationController.topViewController as! NewTweetViewController
+            viewController.tweet = tweet
+            viewController.user = User.currentUser
         }
-    } 
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -80,6 +88,7 @@ class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.replyButton.tag = indexPath.row // TODO Fix??
         cell.tweet = tweets[indexPath.row]
         return cell
     }
