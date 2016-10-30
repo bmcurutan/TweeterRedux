@@ -11,12 +11,16 @@ import UIKit
 class ActionsCell: UITableViewCell {
 
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoritesLabel: UILabel!
     @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var retweetsLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
             favoriteButton.isSelected = tweet.favorited
+            favoritesLabel.text = "\(tweet.favoritesCount) FAVORITES"
             retweetButton.isSelected = tweet.retweeted
+            retweetsLabel.text = "\(tweet.retweetCount) RETWEETS"
         }
     }
     

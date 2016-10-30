@@ -9,7 +9,7 @@
 import UIKit
 
 enum CellType: Int {
-    case details = 0, totals, actions
+    case details = 0, actions
     static var count: Int { return CellType.actions.hashValue + 1}
 }
 
@@ -51,10 +51,6 @@ extension TweetDetailsViewController: UITableViewDataSource {
         switch CellType(rawValue: indexPath.row)! {
         case CellType.details:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
-            cell.tweet = tweet
-            return cell
-        case CellType.totals:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TotalsCell", for: indexPath) as! TotalsCell
             cell.tweet = tweet
             return cell
         case CellType.actions:
