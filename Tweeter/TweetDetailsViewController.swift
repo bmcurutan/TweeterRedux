@@ -37,12 +37,12 @@ class TweetDetailsViewController: UIViewController {
             viewController.user = User.currentUser
             viewController.replyTweet = tweet
             
-        } else if segue.identifier == "retweetSegue" {
+        } /*else if segue.identifier == "retweetSegue" {
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
             viewController.user = User.currentUser
             viewController.retweetTweet = tweet
-        }
+        }*/
     }
 }
 

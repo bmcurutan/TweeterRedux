@@ -11,10 +11,12 @@ import UIKit
 class ActionsCell: UITableViewCell {
 
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
     
     var tweet: Tweet! {
         didSet {
             favoriteButton.isSelected = tweet.favorited
+            retweetButton.isSelected = tweet.retweeted
         }
     }
     
@@ -22,7 +24,7 @@ class ActionsCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    // TODO movie this to view controller
+    // TODO move this to view controller
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         favoriteButton.isSelected = !tweet.favorited
         
@@ -44,5 +46,17 @@ class ActionsCell: UITableViewCell {
                 }
             )
         }
+    }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        retweetButton.isSelected = !tweet.retweeted
+        
+        TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
+            print("Tweet successfully retweeted")
+            
+            }, failure: { (error: Error) -> () in
+                print("error: \(error.localizedDescription)")
+            }
+        )
     }
 }

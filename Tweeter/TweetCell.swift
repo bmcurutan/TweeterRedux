@@ -13,6 +13,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -20,6 +21,7 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             favoriteButton.isSelected = tweet.favorited
+            retweetButton.isSelected = tweet.retweeted
             timestampLabel.text = tweet.timestamp
             tweetTextLabel.text = tweet.text
             
@@ -68,5 +70,17 @@ class TweetCell: UITableViewCell {
                 }
             )
         }
+    }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        retweetButton.isSelected = !tweet.retweeted
+        
+        TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
+            print("Tweet successfully retweeted")
+            
+            }, failure: { (error: Error) -> () in
+                print("error: \(error.localizedDescription)")
+            }
+        )
     }
 }

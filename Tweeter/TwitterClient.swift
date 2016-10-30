@@ -115,6 +115,18 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func retweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
+            
+            }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                success()
+                
+            }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
     func addFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]
         post("1.1/favorites/create.json", parameters: parameters, progress: { (Progress) -> Void in

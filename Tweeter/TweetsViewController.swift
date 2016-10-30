@@ -77,6 +77,7 @@ class TweetsViewController: UIViewController {
             let indexPath = tableView.indexPath(for: cell)
             let tweet = tweets[indexPath!.row]
             tweet.favorited = cell.favoriteButton.isSelected // TODO this seems hacky
+            tweet.retweeted = cell.retweetButton.isSelected // TODO this seems hacky
             let viewController = segue.destination as! TweetDetailsViewController
             viewController.tweet = tweet
             

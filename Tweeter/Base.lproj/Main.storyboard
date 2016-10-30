@@ -68,6 +68,10 @@
                                                         <constraint firstAttribute="width" constant="16" id="IEu-Kd-JHt"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
+                                                    <state key="selected" image="retweet-on"/>
+                                                    <connections>
+                                                        <action selector="onRetweetButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="FPR-xK-hSK"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-3O-pes">
                                                     <constraints>
@@ -108,6 +112,7 @@
                                             <outlet property="nameLabel" destination="bAX-bx-hLB" id="zfr-3K-vue"/>
                                             <outlet property="profilePictureImageView" destination="yay-Mn-GIf" id="EE3-Ex-8h1"/>
                                             <outlet property="replyButton" destination="TxQ-8Y-UXp" id="tAN-Jh-cZp"/>
+                                            <outlet property="retweetButton" destination="z2Z-fv-qfg" id="9wx-X6-871"/>
                                             <outlet property="timestampLabel" destination="H49-zk-c4V" id="9ux-zb-Q00"/>
                                             <outlet property="tweetTextLabel" destination="VkQ-8s-9Wg" id="sLa-Fi-R2C"/>
                                             <segue destination="8ac-yD-Gcy" kind="push" identifier="detailsSegue" id="gm8-gR-fap"/>
@@ -274,8 +279,9 @@
                                                         <constraint firstAttribute="width" constant="16" id="41X-Gd-Jta"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
+                                                    <state key="selected" image="retweet-on"/>
                                                     <connections>
-                                                        <segue destination="MOu-49-kFK" kind="modal" identifier="retweetSegue" id="TVy-8p-fw0"/>
+                                                        <action selector="onRetweetButton:" destination="iSv-OB-YHT" eventType="touchUpInside" id="CNq-tF-fFy"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-lr-PDP">
@@ -304,6 +310,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favoriteButton" destination="8NH-lr-PDP" id="gfM-Gw-fiS"/>
+                                            <outlet property="retweetButton" destination="JuS-6s-0xD" id="bwL-pK-cyd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -496,6 +503,7 @@
         <image name="favorite-on" width="54" height="72"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
+        <image name="retweet-on" width="75" height="72"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
