@@ -54,8 +54,8 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxQ-8Y-UXp">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="ZT1-gI-3F6"/>
-                                                        <constraint firstAttribute="width" constant="32" id="o8P-xg-fYy"/>
+                                                        <constraint firstAttribute="height" constant="16" id="ZT1-gI-3F6"/>
+                                                        <constraint firstAttribute="width" constant="16" id="o8P-xg-fYy"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
                                                     <connections>
@@ -64,15 +64,15 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2Z-fv-qfg">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="DmV-6O-5NB"/>
-                                                        <constraint firstAttribute="width" constant="32" id="IEu-Kd-JHt"/>
+                                                        <constraint firstAttribute="height" constant="16" id="DmV-6O-5NB"/>
+                                                        <constraint firstAttribute="width" constant="16" id="IEu-Kd-JHt"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-3O-pes">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="fkr-ua-Yp5"/>
-                                                        <constraint firstAttribute="width" constant="32" id="keN-nx-XqE"/>
+                                                        <constraint firstAttribute="height" constant="16" id="fkr-ua-Yp5"/>
+                                                        <constraint firstAttribute="width" constant="16" id="keN-nx-XqE"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="favorite"/>
                                                 </button>
@@ -246,17 +246,17 @@
                                             <outlet property="retweetsLabel" destination="kys-QW-E7e" id="t5w-lG-LSM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsCell" rowHeight="51" id="iSv-OB-YHT" customClass="ActionsCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="265" width="375" height="51"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsCell" rowHeight="34" id="iSv-OB-YHT" customClass="ActionsCell" customModule="Tweeter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="265" width="375" height="34"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iSv-OB-YHT" id="3j5-4s-V9b">
-                                            <frame key="frameInset" width="375" height="50"/>
+                                            <frame key="frameInset" width="375" height="33"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzK-be-v2K">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="CUT-bw-oMs"/>
-                                                        <constraint firstAttribute="width" constant="32" id="cU1-Ut-dd4"/>
+                                                        <constraint firstAttribute="height" constant="16" id="CUT-bw-oMs"/>
+                                                        <constraint firstAttribute="width" constant="16" id="cU1-Ut-dd4"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
                                                     <connections>
@@ -265,15 +265,15 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuS-6s-0xD">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="3rL-uK-u32"/>
-                                                        <constraint firstAttribute="width" constant="32" id="41X-Gd-Jta"/>
+                                                        <constraint firstAttribute="height" constant="16" id="3rL-uK-u32"/>
+                                                        <constraint firstAttribute="width" constant="16" id="41X-Gd-Jta"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-lr-PDP">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="32" id="9Zk-HN-YKk"/>
-                                                        <constraint firstAttribute="height" constant="32" id="m0e-Q3-zVF"/>
+                                                        <constraint firstAttribute="width" constant="16" id="9Zk-HN-YKk"/>
+                                                        <constraint firstAttribute="height" constant="16" id="m0e-Q3-zVF"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="favorite"/>
                                                 </button>
@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xd2-fV-lkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="341"/>
+            <point key="canvasLocation" x="1137.5" y="340.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zkz-js-syC">
@@ -488,6 +488,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="txC-L1-T43"/>
+        <segue reference="mby-rZ-Zy7"/>
     </inferredMetricsTieBreakers>
 </document>
