@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tweeter/NewTweetView.swift"
-            timestampString = "499506911.794484"
+            filePath = "Tweeter/TweetCell.swift"
+            timestampString = "499508433.993363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "NewTweetView"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "TweetCell"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

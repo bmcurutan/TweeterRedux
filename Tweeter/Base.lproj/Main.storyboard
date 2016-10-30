@@ -75,6 +75,10 @@
                                                         <constraint firstAttribute="width" constant="16" id="keN-nx-XqE"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="favorite"/>
+                                                    <state key="selected" image="favorite-on"/>
+                                                    <connections>
+                                                        <action selector="onFavoriteButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="HlW-xR-rvA"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -100,6 +104,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoriteButton" destination="TCN-3O-pes" id="rUO-JL-Adl"/>
                                             <outlet property="nameLabel" destination="bAX-bx-hLB" id="zfr-3K-vue"/>
                                             <outlet property="profilePictureImageView" destination="yay-Mn-GIf" id="EE3-Ex-8h1"/>
                                             <outlet property="replyButton" destination="TxQ-8Y-UXp" id="tAN-Jh-cZp"/>
@@ -498,6 +503,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TVy-8p-fw0"/>
+        <segue reference="txC-L1-T43"/>
     </inferredMetricsTieBreakers>
 </document>

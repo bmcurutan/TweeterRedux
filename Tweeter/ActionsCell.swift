@@ -22,10 +22,11 @@ class ActionsCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    // TODO movie this to view controller
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         favoriteButton.isSelected = !tweet.favorited
         
-        if tweet.favorited { // Currented favorited, so unfavorite action
+        if tweet.favorited { // Currently favorited, so unfavorite action
             TwitterClient.sharedInstance.removeFavoriteWithId(tweet.id, success: { () -> () in
                 print("Tweet successfully unfavorited")
                 

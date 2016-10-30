@@ -15,9 +15,11 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var tweet: Tweet! {
         didSet {
+            favoriteButton.isSelected = tweet.favorited
             timestampLabel.text = tweet.timestamp
             tweetTextLabel.text = tweet.text
             
@@ -44,4 +46,27 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    // TODO move to vc?
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        favoriteButton.isSelected = !tweet.favorited
+        
+        if tweet.favorited { // Currently favorited, so unfavorite action
+            TwitterClient.sharedInstance.removeFavoriteWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully unfavorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Favorite action
+            TwitterClient.sharedInstance.addFavoriteWithId(tweet.id, success: { () -> () in
+                print("Tweet successfully favorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
 }
