@@ -14,12 +14,12 @@ class MeViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var tweets: [Tweet] = []
-    var user: User = User.currentUser!
+    var user: User? = User.currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = user.name
+        self.title = user?.name
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -31,7 +31,7 @@ class MeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(onPullToRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
-        TwitterClient.sharedInstance.timelineForUser(screenname: user.screenname!, success: { (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance.timelineForUser(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             
@@ -47,8 +47,9 @@ class MeViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
     func onPullToRefresh(refreshControl: UIRefreshControl) {
-        TwitterClient.sharedInstance.timelineForUser(screenname: user.screenname!, success: { (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance.timelineForUser(screenname: (user?.screenname!)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             refreshControl.endRefreshing()

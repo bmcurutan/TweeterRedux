@@ -22,7 +22,10 @@ class MeCell: UITableViewCell {
             }
             
             nameLabel.text = user.name
-            screennameLabel.text = "@\(user.screenname)"
+            
+            if let screenname = user.screenname {
+                screennameLabel.text = "@\(screenname)"
+            }
             
             if let profilePictureUrl = user.profilePictureUrl {
                 profileImageView.setImageWith(profilePictureUrl)

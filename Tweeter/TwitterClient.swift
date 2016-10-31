@@ -9,7 +9,6 @@
 import BDBOAuth1Manager
 import UIKit
 
-// TODO put this in plist
 let twitterConsumerKey = "STX1NC1rVeFsRJoyqgDl85mV8"
 let twitterConsumerSecret = "2WyDKL8wqzGdBMIhfHzjThx6tz9likph82KXbK59mqQD3GPdIp"
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
@@ -29,7 +28,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     func login(success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         loginSuccess = success
         loginFailure = failure
-        
+
         deauthorize()
         // requestSerializer.removeAccessToken() TODO remove
         fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil, success: { (requestToken: BDBOAuth1Credential?) -> Void in

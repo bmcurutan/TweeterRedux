@@ -368,8 +368,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLn-Hb-JEL">
-                                <state key="normal" title="Login with Twitter"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLn-Hb-JEL">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="cn2-ys-Gkf"/>
+                                </constraints>
+                                <state key="normal" title="Login with Twitter" image="login"/>
                                 <connections>
                                     <action selector="onLoginButton:" destination="jaZ-cp-Lv4" eventType="touchUpInside" id="Jsk-Rk-ihn"/>
                                 </connections>
@@ -377,17 +380,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PLn-Hb-JEL" firstAttribute="leading" secondItem="6kj-qQ-Ekl" secondAttribute="leading" constant="8" id="Dam-tA-EUh"/>
+                            <constraint firstAttribute="trailing" secondItem="PLn-Hb-JEL" secondAttribute="trailing" constant="8" id="S9v-OB-4RW"/>
                             <constraint firstItem="PLn-Hb-JEL" firstAttribute="centerY" secondItem="6kj-qQ-Ekl" secondAttribute="centerY" id="meR-E8-1M1"/>
                             <constraint firstItem="PLn-Hb-JEL" firstAttribute="centerX" secondItem="6kj-qQ-Ekl" secondAttribute="centerX" id="qgr-hD-btS"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="PLn-Hb-JEL" id="Uca-be-naW"/>
                         <segue destination="qoT-bh-Ujn" kind="modal" identifier="loginSegue" id="afK-zh-FAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVm-Tt-3bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-456" y="-645"/>
+            <point key="canvasLocation" x="-456.5" y="-645.5"/>
         </scene>
         <!--New Tweet View Controller-->
         <scene sceneID="ZqA-e1-Hch">
@@ -681,6 +687,7 @@
     <resources>
         <image name="favorite" width="54" height="72"/>
         <image name="favorite-on" width="54" height="72"/>
+        <image name="login" width="1608" height="320"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
         <image name="retweet-on" width="75" height="72"/>
