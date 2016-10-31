@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ActionsCell: UITableViewCell {
+final class ActionsCell: UITableViewCell {
 
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoritesLabel: UILabel!

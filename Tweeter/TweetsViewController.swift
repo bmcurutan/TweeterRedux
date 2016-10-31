@@ -9,7 +9,7 @@
 import ReachabilitySwift
 import UIKit
 
-class TweetsViewController: UIViewController {
+final class TweetsViewController: UIViewController {
     
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -62,6 +62,7 @@ class TweetsViewController: UIViewController {
     }
     
     // MARK: - IBAction
+    
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }
@@ -70,6 +71,7 @@ class TweetsViewController: UIViewController {
     
     @objc fileprivate func onPullToRefresh(refreshControl: UIRefreshControl) {
         updateNetworkError()
+        
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()

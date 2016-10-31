@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserCell: UITableViewCell {
+final class UserCell: UITableViewCell {
 
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,12 +27,12 @@ class UserCell: UITableViewCell {
             locationLabel.text = user.location
             nameLabel.text = user.name
             
-            if let screenname = user.screenname {
-                screennameLabel.text = "@\(screenname)"
-            }
-            
             if let profilePictureUrl = user.profilePictureUrl {
                 profileImageView.setImageWith(profilePictureUrl)
+            }
+            
+            if let screenname = user.screenname {
+                screennameLabel.text = "@\(screenname)"
             }
         }
     }

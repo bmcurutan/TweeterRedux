@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewTweetView: UIView {
+final class NewTweetView: UIView {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!

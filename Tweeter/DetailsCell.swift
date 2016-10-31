@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsCell: UITableViewCell {
+final class DetailsCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
@@ -27,6 +27,7 @@ class DetailsCell: UITableViewCell {
                     nameLabel.text = name
                     screennameLabel.text = "@\(screenname)"
                 }
+                
                 profilePictureImageView.setImageWith(user.profilePictureUrl!)
             }
         }
@@ -38,11 +39,4 @@ class DetailsCell: UITableViewCell {
         profilePictureImageView.layer.cornerRadius = 5
         profilePictureImageView.clipsToBounds = true
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

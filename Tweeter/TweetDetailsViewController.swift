@@ -13,7 +13,7 @@ enum CellType: Int {
     static var count: Int { return CellType.actions.hashValue + 1}
 }
 
-class TweetDetailsViewController: UIViewController {
+final class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,14 +31,18 @@ class TweetDetailsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "replySegue" || segue.identifier == "replySegue2" {
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! NewTweetViewController
-            viewController.user = User.currentUser
-            viewController.replyTweet = tweet   
+        guard segue.identifier == "replySegue" || segue.identifier == "replySegue2" else {
+            return
         }
+        
+        let navigationController = segue.destination as! UINavigationController
+        let viewController = navigationController.topViewController as! NewTweetViewController
+        viewController.user = User.currentUser
+        viewController.replyTweet = tweet
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension TweetDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +63,8 @@ extension TweetDetailsViewController: UITableViewDataSource {
         return CellType.count
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension TweetDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class Tweet: NSObject {
+final class Tweet: NSObject {
+    
     var favorited: Bool = false
     var favoritesCount: Int = 0
     var id: NSNumber = 0
@@ -30,7 +31,6 @@ class Tweet: NSObject {
         if let timestampString = timestampString {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y" //TODO
-            //timestamp = formatter.date(from: timestampString)
             if let timestampDate = formatter.date(from: timestampString) {
                 formatter.dateStyle = .short
                 timestamp = formatter.string(from: timestampDate)

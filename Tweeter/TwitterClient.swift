@@ -13,7 +13,7 @@ let twitterConsumerKey = "STX1NC1rVeFsRJoyqgDl85mV8"
 let twitterConsumerSecret = "2WyDKL8wqzGdBMIhfHzjThx6tz9likph82KXbK59mqQD3GPdIp"
 let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 
-class TwitterClient: BDBOAuth1SessionManager {
+final class TwitterClient: BDBOAuth1SessionManager {
     
     class var sharedInstance: TwitterClient {
         struct Static {
@@ -87,6 +87,8 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    // MARK: - Timelines
+    
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/statuses/home_timeline.json", parameters: nil, progress: { (Progress) -> Void in
             
@@ -116,6 +118,8 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    // MARK: - Tweet
+    
     func tweetWithText(_ text: String, replyId: NSNumber?, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         var parameters: [String: AnyObject] = ["status": text as AnyObject]
         
@@ -133,6 +137,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             }
         )
     }
+    
+    // MARK: - Retweet
     
     func retweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
@@ -157,6 +163,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             }
         )
     }
+    
+    // MARK: - Favorite
     
     func addFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]

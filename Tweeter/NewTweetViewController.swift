@@ -12,7 +12,7 @@ protocol NewTweetViewControllerDelegate: class {
     func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet)
 }
 
-class NewTweetViewController: UIViewController {
+final class NewTweetViewController: UIViewController {
 
     @IBOutlet weak var countdownTextField: UITextField!
     @IBOutlet var newTweetView: NewTweetView!
@@ -54,7 +54,6 @@ class NewTweetViewController: UIViewController {
         
         newTweetView.user = user
         newTweetView.tweetTextView.text = tweetText
-        
         countdownTextField.text = "\(140 - tweetText.characters.count)"
     }
 

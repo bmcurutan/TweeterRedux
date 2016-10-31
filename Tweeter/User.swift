@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User: NSObject {
+final class User: NSObject {
 
     var location: String?
     var name: String?
@@ -22,13 +22,13 @@ class User: NSObject {
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
+        location = dictionary["location"] as? String
+        name = dictionary["name"] as? String
+        
         let profileBannerUrlString = dictionary["profile_banner_url"] as? String
         if let profileBannerUrlString = profileBannerUrlString {
             profileBannerUrl = URL(string: profileBannerUrlString)
         }
-        
-        location = dictionary["location"] as? String
-        name = dictionary["name"] as? String
         
         let profilePictureUrlString = dictionary["profile_image_url_https"] as? String
         if let profilePictureUrlString = profilePictureUrlString {
@@ -45,14 +45,16 @@ class User: NSObject {
     
     class var currentUser: User? {
         get {
-            if nil == _currentUser {
-                let defaults = UserDefaults.standard
-                let userData = defaults.object(forKey: "currentUserData") as? NSData
-                
-                if let userData = userData {
-                    let dictionary = try! JSONSerialization.jsonObject(with: userData as Data, options: [])
-                    _currentUser = User(dictionary: dictionary as! NSDictionary)
-                }
+            guard nil == _currentUser else {
+                return _currentUser
+            }
+            
+            let defaults = UserDefaults.standard
+            let userData = defaults.object(forKey: "currentUserData") as? NSData
+            
+            if let userData = userData {
+                let dictionary = try! JSONSerialization.jsonObject(with: userData as Data, options: [])
+                _currentUser = User(dictionary: dictionary as! NSDictionary)
             }
 
             return _currentUser
@@ -66,6 +68,7 @@ class User: NSObject {
             if let user = user {
                 let data = try! JSONSerialization.data(withJSONObject: user.dictionary! as NSDictionary, options: [])
                 defaults.set(data, forKey: "currentUserData")
+                
             } else {
                 defaults.removeObject(forKey: "currentUserData")
             }

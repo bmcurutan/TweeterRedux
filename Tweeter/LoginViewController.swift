@@ -9,7 +9,7 @@
 import BDBOAuth1Manager
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
     

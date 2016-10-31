@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+final class TweetCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePictureImageView: UIImageView!
@@ -43,6 +43,7 @@ class TweetCell: UITableViewCell {
                     
                     nameLabel.attributedText = mutableAttributedText
                 }
+                
                 profilePictureImageView.setImageWith(user.profilePictureUrl!)
             }
         }

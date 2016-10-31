@@ -9,7 +9,7 @@
 import UIKit
 
 // This can be modified later for all users
-class UserViewController: UITableViewController {
+final class UserViewController: UITableViewController {
     
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
@@ -63,7 +63,7 @@ class UserViewController: UITableViewController {
     
     // MARK: - Private Methods
     
-    func onPullToRefresh(refreshControl: UIRefreshControl) {
+    @objc fileprivate func onPullToRefresh(refreshControl: UIRefreshControl) {
         TwitterClient.sharedInstance.timelineForUser(screenname: (user?.screenname!)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
