@@ -115,6 +115,7 @@ class TweetsViewController: UIViewController {
         } else if "newTweetSegue" == segue.identifier {
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
+            viewController.delegate = self
             viewController.user = User.currentUser
         
         } else if "replySegue" == segue.identifier {
@@ -122,6 +123,7 @@ class TweetsViewController: UIViewController {
             let tweet = tweets[replyButton.tag]
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
+            viewController.delegate = self
             viewController.replyTweet = tweet
             viewController.user = User.currentUser
         }

@@ -70,7 +70,6 @@ class NewTweetViewController: UIViewController {
             
         } else {
             TwitterClient.sharedInstance.tweetWithText(tweetText, replyId: replyTweet?.id, success: { () -> () in
-                    self.dismiss(animated: true, completion: nil)
                     print("Tweet successfully posted")
                 
                     let tweetDictionary: [String: AnyObject] = [
@@ -85,6 +84,7 @@ class NewTweetViewController: UIViewController {
                     ]
                     let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
                     self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
+                    self.dismiss(animated: true, completion: nil)
                     
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")

@@ -27,13 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Home tab
         let tweetsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
-        //let tweetsViewController = tweetsNavigationController.topViewController as! TweetsViewController
         tweetsNavigationController.tabBarItem.title = "Home"
         tweetsNavigationController.tabBarItem.image = UIImage(named: "home")
         
         // Me tab
         let meNavigationController = storyboard.instantiateViewController(withIdentifier: "MeNavigationController") as! UINavigationController
-        //let meViewController = meNavigationController.topViewController // TODO as! UIViewController
         meNavigationController.tabBarItem.title = "Me"
         meNavigationController.tabBarItem.image = UIImage(named: "me")
 
@@ -50,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         if nil != User.currentUser {
-            print("There is a current user") // TODO remove
-            //let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            print("There is a current user") 
             window?.rootViewController = tabBarController
         }
         

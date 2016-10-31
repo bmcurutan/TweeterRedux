@@ -2,7 +2,7 @@
 
 Tweeter is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 19 hours spent in total
+Time spent: 20 hours spent in total
 
 ## User Stories
 
@@ -29,6 +29,7 @@ The following **additional** features are implemented:
 
 - [x] Customized launch screen and navigation bar
 - [x] Added Tab bar with options for Home or Me (current user's profile)
+- [x] Added network check and error message via Reachability
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -48,6 +49,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 - Sometimes it was difficult to test due to the Twitter API get and update limits
 - Some challenges with showing data instantaneously via the UI without doing another network call (such as the favorites and retweets counts, and the text character countdown)
 - Better ways to implement and call common functions throughout the app (e.g., reply tweet)
+- Some issues faced with date formatting
 
 ## Icons
 
