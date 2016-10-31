@@ -49,8 +49,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 - Sometimes it was difficult to test due to the Twitter API get and update limits
 - Some challenges with showing data instantaneously via the UI without doing another network call (such as the favorites and retweets counts, and the text character countdown)
 - Better ways to implement and call common functions throughout the app (e.g., reply tweet)
-- Some issues faced with date formatting to a specific pattern
-- Faced some difficulties with abstracting the individual tweet actions (reply, favorite, retweet) from the cell view
+- Some issues faced with date formatting to a specific pattern and finding the offset (time difference) using hours and minutes as units of time
+- Faced some difficulties with abstracting the individual tweet actions (reply, favorite, retweet) from the cell view - the actions should be separate from the views?
 
 ## Icons
 

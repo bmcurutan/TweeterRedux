@@ -22,7 +22,11 @@ final class TweetCell: UITableViewCell {
         didSet {
             favoriteButton.isSelected = tweet.favorited
             retweetButton.isSelected = tweet.retweeted
-            timestampLabel.text = tweet.timestamp
+            
+            if let timestamp = tweet.timestamp {
+                timestampLabel.text = timestamp
+            }
+            
             tweetTextLabel.text = tweet.text
             
             if let user = tweet.user {

@@ -16,7 +16,7 @@ final class Tweet: NSObject {
     var retweetCount: Int = 0
     var retweeted = false
     var text: String?
-    var timestamp: String?
+    var timestamp: String! = ""
     var user: User?
     
     init(dictionary: NSDictionary) {
@@ -29,11 +29,11 @@ final class Tweet: NSObject {
         
         let timestampString = dictionary["created_at"] as? String
         if let timestampString = timestampString {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y" //TODO
-            if let timestampDate = formatter.date(from: timestampString) {
-                formatter.dateStyle = .short
-                timestamp = formatter.string(from: timestampDate)
+            let now = Date()
+            
+            let offset = now.offsetFrom(dateString: timestampString)
+            if let offset = offset as? String {
+                timestamp = offset
             }
         }
         
