@@ -50,6 +50,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 - Some challenges with showing data instantaneously via the UI without doing another network call (such as the favorites and retweets counts, and the text character countdown)
 - Better ways to implement and call common functions throughout the app (e.g., reply tweet)
 - Some issues faced with date formatting to a specific pattern
+- Faced some difficulties with abstracting the individual tweet actions (reply, favorite, retweet) from the cell view
 
 ## Icons
 

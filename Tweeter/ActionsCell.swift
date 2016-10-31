@@ -24,7 +24,6 @@ final class ActionsCell: UITableViewCell {
         }
     }
     
-    // TODO move this to view controller
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         // UI updates
         favoriteButton.isSelected = !tweet.favorited

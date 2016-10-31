@@ -56,7 +56,6 @@ final class TweetCell: UITableViewCell {
         profilePictureImageView.clipsToBounds = true
     }
     
-    // TODO move to vc?
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         favoriteButton.isSelected = !tweet.favorited
         
