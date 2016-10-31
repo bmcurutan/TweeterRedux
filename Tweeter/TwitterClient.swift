@@ -30,7 +30,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         loginFailure = failure
 
         deauthorize()
-        // requestSerializer.removeAccessToken() TODO remove
+        
         fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil, success: { (requestToken: BDBOAuth1Credential?) -> Void in
             
             if let token = requestToken?.token {
