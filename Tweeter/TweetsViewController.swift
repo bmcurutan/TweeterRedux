@@ -37,7 +37,7 @@ class TweetsViewController: UIViewController {
         )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    /* TODO override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
@@ -47,7 +47,7 @@ class TweetsViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
-    }
+    }*/
     
     // MARK: - IBAction
     @IBAction func onLogoutButton(_ sender: AnyObject) {
@@ -55,6 +55,7 @@ class TweetsViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
     func onPullToRefresh(refreshControl: UIRefreshControl) {
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets

@@ -23,15 +23,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.barTintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // Home tab
+        let tweetsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
+        //let tweetsViewController = tweetsNavigationController.topViewController as! TweetsViewController
+        tweetsNavigationController.tabBarItem.title = "Home"
+        tweetsNavigationController.tabBarItem.image = UIImage(named: "home")
+        
+        // Me tab
+        let meNavigationController = storyboard.instantiateViewController(withIdentifier: "MeNavigationController") as! UINavigationController
+        //let meViewController = meNavigationController.topViewController // TODO as! UIViewController
+        meNavigationController.tabBarItem.title = "Me"
+        meNavigationController.tabBarItem.image = UIImage(named: "me")
+
+        // Create Tab bar
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [tweetsNavigationController, meNavigationController]
+        
+        // Customize Tab bar colours
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.tintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
+        tabBarAppearance.barTintColor = UIColor.white
+        tabBarAppearance.unselectedItemTintColor = UIColor.darkGray
+        
+        window?.makeKeyAndVisible()
+
         if nil != User.currentUser {
             print("There is a current user") // TODO remove
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-            window?.rootViewController = tweetsViewController
+            //let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            window?.rootViewController = tabBarController
         }
         
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = storyboard.instantiateInitialViewController()
             self.window?.rootViewController = loginViewController
         }
