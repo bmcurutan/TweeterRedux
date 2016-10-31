@@ -1,5 +1,5 @@
 //
-//  MeViewController.swift
+//  UserViewController.swift
 //  Tweeter
 //
 //  Created by Bianca Curutan on 10/30/16.
@@ -9,9 +9,7 @@
 import UIKit
 
 // This can be modified later for all users
-class MeViewController: UIViewController {
-
-    @IBOutlet var tableView: UITableView!
+class UserViewController: UITableViewController {
     
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
@@ -41,9 +39,26 @@ class MeViewController: UIViewController {
         )
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+            cell.user = user
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+            cell.tweet = tweets[indexPath.row-1]
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count + 1
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect row appearance after it has been selected
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Private Methods
@@ -58,36 +73,5 @@ class MeViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension MeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MeCell", for: indexPath) as! MeCell
-            cell.user = user
-            return cell
-        
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-            cell.tweet = tweets[indexPath.row-1]
-            return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count + 1
-    }
-}
-    
-
-// MARK: - UITableViewDelegate
-
-extension MeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Deselect row appearance after it has been selected
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

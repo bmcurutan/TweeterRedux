@@ -1,5 +1,5 @@
 //
-//  MeCell.swift
+//  UserCell.swift
 //  Tweeter
 //
 //  Created by Bianca Curutan on 10/30/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeCell: UITableViewCell {
+class UserCell: UITableViewCell {
 
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!

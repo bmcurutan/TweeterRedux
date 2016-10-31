@@ -505,16 +505,16 @@
             </objects>
             <point key="canvasLocation" x="2308.5" y="-592.5"/>
         </scene>
-        <!--Me-->
+        <!--User-->
         <scene sceneID="Me2-J1-qCm">
             <objects>
-                <tableViewController id="o9Y-tn-THx" customClass="MeViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="o9Y-tn-THx" customClass="UserViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="XmD-b0-puX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeCell" rowHeight="152" id="Ty6-JX-ulb" customClass="MeCell" customModule="Tweeter" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="152" id="Ty6-JX-ulb" customClass="UserCell" customModule="Tweeter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ty6-JX-ulb" id="S6g-kd-lJ0">
@@ -573,11 +573,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="bannerImageView" destination="44f-u5-cVc" id="FSb-v6-QYW"/>
+                                    <outlet property="bannerImageView" destination="44f-u5-cVc" id="EU5-Gc-Vc9"/>
                                     <outlet property="descriptionLabel" destination="aYO-Le-Tbz" id="5sK-Ub-Yhc"/>
                                     <outlet property="locationLabel" destination="Wbe-iK-G5f" id="1vh-3V-eID"/>
-                                    <outlet property="nameLabel" destination="rtX-fN-kGf" id="gpp-8c-s9q"/>
-                                    <outlet property="profileImageView" destination="7FA-3p-fpl" id="Q3Y-cw-5OO"/>
+                                    <outlet property="nameLabel" destination="rtX-fN-kGf" id="9vz-u3-pWv"/>
+                                    <outlet property="profileImageView" destination="7FA-3p-fpl" id="orF-po-s1g"/>
                                     <outlet property="screennameLabel" destination="ZwW-1v-VdH" id="hqP-vB-lDW"/>
                                 </connections>
                             </tableViewCell>
@@ -678,10 +678,7 @@
                             <outlet property="delegate" destination="o9Y-tn-THx" id="tLi-9M-OmD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Me" id="z00-yi-GQx"/>
-                    <connections>
-                        <outlet property="tableView" destination="XmD-b0-puX" id="rOj-oH-Ys2"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="User" id="z00-yi-GQx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tum-AN-z3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
