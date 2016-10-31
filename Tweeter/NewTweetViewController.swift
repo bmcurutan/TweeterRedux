@@ -60,6 +60,10 @@ class NewTweetViewController: UIViewController {
 
     // MARK: - IBAction
     
+    @IBAction func onCancelButton(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func onTweetButton(_ sender: AnyObject) {
         if countdown == 140 {
             onError("Tweet is empty. Please try again")
@@ -83,6 +87,7 @@ class NewTweetViewController: UIViewController {
                         "user": self.user.dictionary as AnyObject
                     ]
                     let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
+                
                     self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
                     self.dismiss(animated: true, completion: nil)
                     
@@ -103,12 +108,6 @@ class NewTweetViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)
-    }
-
-    // MARK: - IBAction
-    
-    @IBAction func onCancelButton(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
     }
 }
 

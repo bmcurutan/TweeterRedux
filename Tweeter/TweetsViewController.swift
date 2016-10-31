@@ -68,7 +68,7 @@ class TweetsViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    func onPullToRefresh(refreshControl: UIRefreshControl) {
+    @objc fileprivate func onPullToRefresh(refreshControl: UIRefreshControl) {
         updateNetworkError()
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
@@ -81,7 +81,7 @@ class TweetsViewController: UIViewController {
         )
     }
     
-    func updateNetworkError() {
+    fileprivate func updateNetworkError() {
         if reachability.isReachable {
             self.errorView.isHidden = true // Hide Network Error message
         } else {
@@ -89,7 +89,7 @@ class TweetsViewController: UIViewController {
         }
     }
     
-    func reachabilityChanged(notification: NSNotification) {
+    @objc fileprivate func reachabilityChanged(notification: NSNotification) {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             self.errorView.isHidden = true // Hide Network Error message
@@ -102,31 +102,45 @@ class TweetsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if "detailsSegue" == segue.identifier {
-            let cell = sender as! TweetCell
-            let indexPath = tableView.indexPath(for: cell)
-            
-            let tweet = tweets[indexPath!.row]
-            tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
-            tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
-            
-            let viewController = segue.destination as! TweetDetailsViewController
-            viewController.tweet = tweet
+            onDetailsSegue(segue: segue, sender: sender)
             
         } else if "newTweetSegue" == segue.identifier {
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! NewTweetViewController
-            viewController.delegate = self
-            viewController.user = User.currentUser
+            onNewTweetSegue(segue: segue, sender: sender)
         
         } else if "replySegue" == segue.identifier {
-            let replyButton = sender as! UIButton
-            let tweet = tweets[replyButton.tag]
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! NewTweetViewController
-            viewController.delegate = self
-            viewController.replyTweet = tweet
-            viewController.user = User.currentUser
+            onReplySegue(segue: segue, sender: sender)
         }
+    }
+    
+    // MARK: - Segues
+    
+    fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! TweetCell
+        let indexPath = tableView.indexPath(for: cell)
+        
+        let tweet = tweets[indexPath!.row]
+        tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
+        tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
+        
+        let viewController = segue.destination as! TweetDetailsViewController
+        viewController.tweet = tweet
+    }
+    
+    fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let viewController = navigationController.topViewController as! NewTweetViewController
+        viewController.delegate = self
+        viewController.user = User.currentUser
+    }
+    
+    fileprivate func onReplySegue(segue: UIStoryboardSegue, sender: Any?) {
+        let replyButton = sender as! UIButton
+        let tweet = tweets[replyButton.tag]
+        let navigationController = segue.destination as! UINavigationController
+        let viewController = navigationController.topViewController as! NewTweetViewController
+        viewController.delegate = self
+        viewController.replyTweet = tweet
+        viewController.user = User.currentUser
     }
 }
 

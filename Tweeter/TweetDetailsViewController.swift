@@ -37,12 +37,7 @@ class TweetDetailsViewController: UIViewController {
             viewController.user = User.currentUser
             viewController.replyTweet = tweet
             
-        } /*else if segue.identifier == "retweetSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let viewController = navigationController.topViewController as! NewTweetViewController
-            viewController.user = User.currentUser
-            viewController.retweetTweet = tweet
-        }*/
+        }
     }
 }
 
@@ -53,6 +48,7 @@ extension TweetDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
             cell.tweet = tweet
             return cell
+            
         case CellType.actions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) as! ActionsCell
             cell.tweet = tweet
