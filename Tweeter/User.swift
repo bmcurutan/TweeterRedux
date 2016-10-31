@@ -30,7 +30,8 @@ class User: NSObject {
         
         let profilePictureUrlString = dictionary["profile_image_url_https"] as? String
         if let profilePictureUrlString = profilePictureUrlString {
-            profilePictureUrl = URL(string: profilePictureUrlString)
+            // Use higher res profile picture
+            profilePictureUrl = URL(string: profilePictureUrlString.replacingOccurrences(of: "_normal", with: ""))
         }
         
         screenname = dictionary["screen_name"] as? String

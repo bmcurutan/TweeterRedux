@@ -101,14 +101,14 @@ class TweetsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //let navigationController = segue.destination as! UINavigationController TODO
-        
         if "detailsSegue" == segue.identifier {
             let cell = sender as! TweetCell
             let indexPath = tableView.indexPath(for: cell)
+            
             let tweet = tweets[indexPath!.row]
-            tweet.favorited = cell.favoriteButton.isSelected // TODO this seems hacky
-            tweet.retweeted = cell.retweetButton.isSelected // TODO this seems hacky
+            tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
+            tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
+            
             let viewController = segue.destination as! TweetDetailsViewController
             viewController.tweet = tweet
             
@@ -135,7 +135,7 @@ class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.replyButton.tag = indexPath.row // TODO Fix??
+        cell.replyButton.tag = indexPath.row 
         cell.tweet = tweets[indexPath.row]
         return cell
     }
