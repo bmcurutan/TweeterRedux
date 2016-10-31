@@ -10,17 +10,12 @@ import UIKit
 
 class MeCell: UITableViewCell {
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var screennameLabel: UILabel!
     
     var user: User! {
         didSet {
-            if let backgroundImageUrl = user.backgroundImageUrl {
-                backgroundImageView.setImageWith(backgroundImageUrl)
-            }
-            
             nameLabel.text = user.name
             
             if let screenname = user.screenname {

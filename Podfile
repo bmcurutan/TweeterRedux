@@ -7,5 +7,6 @@ target 'Tweeter' do
 
   pod "AFNetworking"
   pod "BDBOAuth1Manager"
+  pod "ReachabilitySwift"
 
 end

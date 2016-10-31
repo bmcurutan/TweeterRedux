@@ -6,12 +6,15 @@
 //  Copyright © 2016 Bianca Curutan. All rights reserved.
 //
 
+import ReachabilitySwift
 import UIKit
 
 class TweetsViewController: UIViewController {
-
+    
+    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var reachability: Reachability = Reachability()!
     var tweets: [Tweet] = []
     
     override func viewDidLoad() {
@@ -21,6 +24,14 @@ class TweetsViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Reachability
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: ReachabilityChangedNotification, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Error: Could not start reachability notifier")
+        }
         
         // For pull to refresh
         let refreshControl = UIRefreshControl()
@@ -37,17 +48,18 @@ class TweetsViewController: UIViewController {
         )
     }
     
-    /* TODO override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
+        updateNetworkError()
+        /* TODO TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             
             }, failure: { (error: Error) -> () in
                 print("error: \(error.localizedDescription)")
             }
-        )
-    }*/
+        )*/
+    }
     
     // MARK: - IBAction
     @IBAction func onLogoutButton(_ sender: AnyObject) {
@@ -57,6 +69,7 @@ class TweetsViewController: UIViewController {
     // MARK: - Private Methods
     
     func onPullToRefresh(refreshControl: UIRefreshControl) {
+        updateNetworkError()
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
@@ -66,6 +79,23 @@ class TweetsViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
+    }
+    
+    func updateNetworkError() {
+        if reachability.isReachable {
+            self.errorView.isHidden = true // Hide Network Error message
+        } else {
+            self.errorView.isHidden = false// Display Network Error message
+        }
+    }
+    
+    func reachabilityChanged(notification: NSNotification) {
+        let reachability = notification.object as! Reachability
+        if reachability.isReachable {
+            self.errorView.isHidden = true // Hide Network Error message
+        } else {
+            self.errorView.isHidden = false // Display Network Error message
+        }
     }
     
     // MARK: - Navigation
