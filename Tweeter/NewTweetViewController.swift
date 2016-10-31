@@ -54,7 +54,10 @@ final class NewTweetViewController: UIViewController {
         
         newTweetView.user = user
         newTweetView.tweetTextView.text = tweetText
-        countdownTextField.text = "\(140 - tweetText.characters.count)"
+        
+        // Update countdown 
+        countdown = 140 - tweetText.characters.count
+        countdownTextField.text = "\(countdown)"
     }
 
     // MARK: - IBAction

@@ -22,7 +22,7 @@ final class UserViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = user?.name
+        self.title = "Me"
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -33,6 +33,10 @@ final class UserViewController: UITableViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
@@ -74,6 +78,23 @@ final class UserViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return UserSection.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch (UserSection(rawValue: section)!) {
+        case UserSection.tweets:
+            return ""
+        default:
+            return nil
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if nil != self.tableView(tableView, titleForHeaderInSection: section) {
+            return 8
+        } else {
+            return 0
+        }
     }
     
     // MARK: - Private Methods

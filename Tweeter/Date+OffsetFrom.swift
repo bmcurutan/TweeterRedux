@@ -18,8 +18,9 @@ extension Date {
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         
         if let date = formatter.date(from: dateString) {
-            let dayHourMinuteSecond: Set<Calendar.Component> = [.hour, .minute]
+            let dayHourMinuteSecond: Set<Calendar.Component> = [.hour, .minute, .second]
             let difference = Calendar.current.dateComponents(dayHourMinuteSecond, from: date, to: self)
+            let seconds = "\(difference.second!)m"
             let minutes = "\(difference.minute!)m"
             let hours = "\(difference.hour!)h"
             
@@ -27,6 +28,8 @@ extension Date {
                 formattedString = hours
             } else if difference.minute! > 0 {
                 formattedString = minutes
+            } else if difference.second! > 0 {
+                formattedString = seconds
             } else {
                 formatter.dateStyle = .short
                 formattedString = formatter.string(from: date)

@@ -30,11 +30,7 @@ final class Tweet: NSObject {
         let timestampString = dictionary["created_at"] as? String
         if let timestampString = timestampString {
             let now = Date()
-            
-            let offset = now.offsetFrom(dateString: timestampString)
-            if let offset = offset as? String {
-                timestamp = offset
-            }
+            timestamp = now.offsetFrom(dateString: timestampString)
         }
         
         if let userDictionary = dictionary["user"] {
