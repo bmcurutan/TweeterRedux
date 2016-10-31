@@ -19,16 +19,16 @@ final class UserCell: UITableViewCell {
     
     var user: User! {
         didSet {
-            if let profileBannerUrl = user.profileBannerUrl {
-                bannerImageView.setImageWith(profileBannerUrl)
+            if let profileBannerURL = user.profileBannerURL {
+                bannerImageView.setImageWith(profileBannerURL)
             }
             
             descriptionLabel.text = user.tagline
             locationLabel.text = user.location
             nameLabel.text = user.name
             
-            if let profilePictureUrl = user.profilePictureUrl {
-                profileImageView.setImageWith(profilePictureUrl)
+            if let profilePictureURL = user.profilePictureURL {
+                profileImageView.setImageWith(profilePictureURL)
             }
             
             if let screenname = user.screenname {

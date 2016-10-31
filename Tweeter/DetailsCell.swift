@@ -28,7 +28,7 @@ final class DetailsCell: UITableViewCell {
                     screennameLabel.text = "@\(screenname)"
                 }
                 
-                profilePictureImageView.setImageWith(user.profilePictureUrl!)
+                profilePictureImageView.setImageWith(user.profilePictureURL!)
             }
         }
     }

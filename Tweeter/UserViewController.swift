@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum UserSection: Int {
+    case details = 0, tweets
+    static var count: Int { return UserSection.tweets.hashValue + 1}
+}
+
 // This can be modified later for all users
 final class UserViewController: UITableViewController {
     
@@ -26,10 +31,10 @@ final class UserViewController: UITableViewController {
         
         // For pull to refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(onPullToRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
-        TwitterClient.sharedInstance.timelineForUser(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             
@@ -40,20 +45,26 @@ final class UserViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        switch (UserSection(rawValue: indexPath.section)!) {
+        case UserSection.details:
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
             cell.user = user
             return cell
             
-        } else {
+        case UserSection.tweets:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-            cell.tweet = tweets[indexPath.row-1]
+            cell.tweet = tweets[indexPath.row]
             return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count + 1
+        switch (UserSection(rawValue: section)!) {
+        case UserSection.tweets:
+            return tweets.count
+        default:
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,10 +72,14 @@ final class UserViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return UserSection.count
+    }
+    
     // MARK: - Private Methods
     
-    @objc fileprivate func onPullToRefresh(refreshControl: UIRefreshControl) {
-        TwitterClient.sharedInstance.timelineForUser(screenname: (user?.screenname!)!, success: { (tweets: [Tweet]) -> () in
+    @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
+        TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname!)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
             self.tableView.reloadData()
             refreshControl.endRefreshing()

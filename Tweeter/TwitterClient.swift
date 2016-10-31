@@ -103,7 +103,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
-    func timelineForUser(screenname: String, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+    func timelineForUserWith(screenname: String, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["screen_name": screenname as AnyObject]
         get("1.1/statuses/user_timeline.json", parameters: parameters, progress: { (Progress) -> Void in
             
@@ -120,7 +120,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     // MARK: - Tweet
     
-    func tweetWithText(_ text: String, replyId: NSNumber?, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+    func tweetWith(text: String, replyId: NSNumber?, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         var parameters: [String: AnyObject] = ["status": text as AnyObject]
         
         if 0 != replyId {
@@ -140,7 +140,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     // MARK: - Retweet
     
-    func retweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+    func retweetWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
@@ -152,7 +152,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
-    func unretweetWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+    func unretweetWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         post("1.1/statuses/unretweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
@@ -166,7 +166,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     // MARK: - Favorite
     
-    func addFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+    func addFavoriteWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]
         post("1.1/favorites/create.json", parameters: parameters, progress: { (Progress) -> Void in
             
@@ -179,7 +179,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
-    func removeFavoriteWithId(_ id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+    func removeFavoriteWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]
         post("1.1/favorites/destroy.json", parameters: parameters, progress: { (Progress) -> Void in
             

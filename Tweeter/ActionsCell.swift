@@ -35,7 +35,7 @@ final class ActionsCell: UITableViewCell {
         favoritesLabel.text = !tweet.favorited ? "\(tweet.favoritesCount+1) FAVORITES" : "\(tweet.favoritesCount-1) FAVORITES"
         
         if tweet.favorited { // Currently favorited, so unfavorite action
-            TwitterClient.sharedInstance.removeFavoriteWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully unfavorited")
                 
                 }, failure: { (error: Error) -> () in
@@ -44,7 +44,7 @@ final class ActionsCell: UITableViewCell {
             )
             
         } else { // Favorite action
-            TwitterClient.sharedInstance.addFavoriteWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully favorited")
                 
                 }, failure: { (error: Error) -> () in
@@ -59,7 +59,7 @@ final class ActionsCell: UITableViewCell {
         retweetsLabel.text = !tweet.retweeted ? "\(tweet.retweetCount+1) RETWEETS" : "\(tweet.retweetCount-1) RETWEETS"
         
         if tweet.retweeted { // Currently retweeted, so unretweet action
-            TwitterClient.sharedInstance.unretweetWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully unretweeted")
                 
                 }, failure: { (error: Error) -> () in
@@ -68,7 +68,7 @@ final class ActionsCell: UITableViewCell {
             )
             
         } else { // Retweet action
-            TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
             print("Tweet successfully retweeted")
             
             }, failure: { (error: Error) -> () in

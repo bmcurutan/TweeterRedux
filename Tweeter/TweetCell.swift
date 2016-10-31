@@ -44,7 +44,7 @@ final class TweetCell: UITableViewCell {
                     nameLabel.attributedText = mutableAttributedText
                 }
                 
-                profilePictureImageView.setImageWith(user.profilePictureUrl!)
+                profilePictureImageView.setImageWith(user.profilePictureURL!)
             }
         }
     }
@@ -61,7 +61,7 @@ final class TweetCell: UITableViewCell {
         favoriteButton.isSelected = !tweet.favorited
         
         if tweet.favorited { // Currently favorited, so unfavorite action
-            TwitterClient.sharedInstance.removeFavoriteWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully unfavorited")
                 
                 }, failure: { (error: Error) -> () in
@@ -70,7 +70,7 @@ final class TweetCell: UITableViewCell {
             )
             
         } else { // Favorite action
-            TwitterClient.sharedInstance.addFavoriteWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully favorited")
                 
                 }, failure: { (error: Error) -> () in
@@ -84,7 +84,7 @@ final class TweetCell: UITableViewCell {
         retweetButton.isSelected = !tweet.retweeted
         
         if tweet.retweeted { // Currently retweeted, so unretweet action
-            TwitterClient.sharedInstance.unretweetWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully unretweeted")
                 
                 }, failure: { (error: Error) -> () in
@@ -93,7 +93,7 @@ final class TweetCell: UITableViewCell {
             )
             
         } else { // Retweet action
-            TwitterClient.sharedInstance.retweetWithId(tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
                 print("Tweet successfully retweeted")
                 
                 }, failure: { (error: Error) -> () in

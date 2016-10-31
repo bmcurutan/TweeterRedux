@@ -26,7 +26,7 @@ final class TweetsViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Reachability
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: ReachabilityChangedNotification, object: reachability)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChangedWith(notification:)), name: ReachabilityChangedNotification, object: reachability)
         do {
             try reachability.startNotifier()
         } catch {
@@ -35,7 +35,7 @@ final class TweetsViewController: UIViewController {
         
         // For pull to refresh
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(onPullToRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
 
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
@@ -69,7 +69,7 @@ final class TweetsViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    @objc fileprivate func onPullToRefresh(refreshControl: UIRefreshControl) {
+    @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
         updateNetworkError()
         
         TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
@@ -91,7 +91,7 @@ final class TweetsViewController: UIViewController {
         }
     }
     
-    @objc fileprivate func reachabilityChanged(notification: NSNotification) {
+    @objc fileprivate func reachabilityChangedWith(notification: NSNotification) {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             self.errorView.isHidden = true // Hide Network Error message

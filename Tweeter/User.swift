@@ -10,14 +10,13 @@ import UIKit
 
 final class User: NSObject {
 
+    var dictionary: NSDictionary?
     var location: String?
     var name: String?
-    var profileBannerUrl: URL?
-    var profilePictureUrl: URL?
+    var profileBannerURL: URL?
+    var profilePictureURL: URL?
     var screenname: String?
     var tagline: String?
-    
-    var dictionary: NSDictionary?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -25,15 +24,15 @@ final class User: NSObject {
         location = dictionary["location"] as? String
         name = dictionary["name"] as? String
         
-        let profileBannerUrlString = dictionary["profile_banner_url"] as? String
-        if let profileBannerUrlString = profileBannerUrlString {
-            profileBannerUrl = URL(string: profileBannerUrlString)
+        let profileBannerURLString = dictionary["profile_banner_url"] as? String
+        if let profileBannerURLString = profileBannerURLString {
+            profileBannerURL = URL(string: profileBannerURLString)
         }
         
-        let profilePictureUrlString = dictionary["profile_image_url_https"] as? String
-        if let profilePictureUrlString = profilePictureUrlString {
+        let profilePictureURLString = dictionary["profile_image_url_https"] as? String
+        if let profilePictureURLString = profilePictureURLString {
             // Use higher res profile picture
-            profilePictureUrl = URL(string: profilePictureUrlString.replacingOccurrences(of: "_normal", with: ""))
+            profilePictureURL = URL(string: profilePictureURLString.replacingOccurrences(of: "_normal", with: ""))
         }
         
         screenname = dictionary["screen_name"] as? String

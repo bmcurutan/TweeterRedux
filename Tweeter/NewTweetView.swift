@@ -18,7 +18,7 @@ final class NewTweetView: UIView {
     var user: User! {
         didSet {
             nameLabel.text = user.name
-            profilePictureImageView.setImageWith(user.profilePictureUrl!)
+            profilePictureImageView.setImageWith(user.profilePictureURL!)
             screennameLabel.text = user.screenname
         }
     }

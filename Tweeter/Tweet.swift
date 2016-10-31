@@ -10,11 +10,11 @@ import UIKit
 
 final class Tweet: NSObject {
     
-    var favorited: Bool = false
+    var favorited = false
     var favoritesCount: Int = 0
     var id: NSNumber = 0
     var retweetCount: Int = 0
-    var retweeted: Bool = false
+    var retweeted = false
     var text: String?
     var timestamp: String?
     var user: User?
