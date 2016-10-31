@@ -2,7 +2,7 @@
 
 Tweeter is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 18 hours spent in total
+Time spent: 19 hours spent in total
 
 ## User Stories
 
@@ -27,12 +27,12 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Added launch screen and customized navigation bar
+- [x] Customized launch screen and navigation bar
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How and when to use stack views as opposed to Autolayout constraints
+2. Better ways to store and display data instantaneously without having to use a network call
 
 ## Video Walkthrough
 
@@ -44,13 +44,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
-## Icons
-
-- material-core star icon from [IconFinder](https://www.iconfinder.com)
-- entypo reply and retweet icons from [IconFinder](https://www.iconfinder.com)
-- Twitter bird from [Twitter](https://www.twitter.com)
+- Sometimes it was difficult to test due to the Twitter API get and update limits
+- Some challenges with showing data instantaneously via the UI without doing another network call (such as the favorites and retweets counts, and the text character countdown)
+- Better ways to implement and call common functions throughout the app (e.g., reply tweet)
 
 ## License
 

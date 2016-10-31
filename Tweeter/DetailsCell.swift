@@ -25,7 +25,7 @@ class DetailsCell: UITableViewCell {
                 if let name = user.name,
                     let screenname = user.screenname {
                     nameLabel.text = name
-                    screennameLabel.text = screenname
+                    screennameLabel.text = "@\(screenname)"
                 }
                 profilePictureImageView.setImageWith(user.profilePictureUrl!)
             }
