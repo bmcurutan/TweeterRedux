@@ -358,10 +358,11 @@
             </objects>
             <point key="canvasLocation" x="1137.5" y="340.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="zkz-js-syC">
             <objects>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qoT-bh-Ujn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mrk-Ps-cEr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GCl-1Z-qZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -374,7 +375,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXT-LT-y3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.5" y="-606.5"/>
+            <point key="canvasLocation" x="747.5" y="-606.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kql-7h-G7s">
@@ -408,7 +409,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="PLn-Hb-JEL" id="Uca-be-naW"/>
-                        <segue destination="qoT-bh-Ujn" kind="modal" identifier="loginSegue" id="afK-zh-FAR"/>
+                        <segue destination="dCA-kG-Ivu" kind="modal" identifier="loginSegue" id="afK-zh-FAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVm-Tt-3bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,7 +504,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRQ-1j-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2308.5" y="-592.5"/>
+            <point key="canvasLocation" x="2895.5" y="-592.5"/>
         </scene>
         <!--User-->
         <scene sceneID="Me2-J1-qCm">
@@ -682,7 +683,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tum-AN-z3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113.5" y="-735.5"/>
+            <point key="canvasLocation" x="1700.5" y="-735.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qUb-aH-4fi">
@@ -698,7 +699,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eg-6A-nBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="-674"/>
+            <point key="canvasLocation" x="1186.5" y="-674.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqw-kN-yy5">
@@ -716,7 +717,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stz-c4-1LC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="-358"/>
+            <point key="canvasLocation" x="2067.5" y="-358.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4Fm-zm-0UW">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="dCA-kG-Ivu" customClass="TabBarController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="pFe-eP-K3N">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qoT-bh-Ujn" kind="relationship" relationship="viewControllers" id="Jo8-yE-Gti"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKI-Wv-AbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.5" y="-606.5"/>
         </scene>
     </scenes>
     <resources>

@@ -25,31 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        // Home tab
-        let tweetsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
-        tweetsNavigationController.tabBarItem.title = "Home"
-        tweetsNavigationController.tabBarItem.image = UIImage(named: "home")
-        
-        // Me tab
-        let meNavigationController = storyboard.instantiateViewController(withIdentifier: "MeNavigationController") as! UINavigationController
-        meNavigationController.tabBarItem.title = "Me"
-        meNavigationController.tabBarItem.image = UIImage(named: "me")
-
-        // Create Tab bar
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [tweetsNavigationController, meNavigationController]
-        
-        // Customize Tab bar colours
-        let tabBarAppearance = UITabBar.appearance()
-        tabBarAppearance.tintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
-        tabBarAppearance.barTintColor = UIColor.white
-        tabBarAppearance.unselectedItemTintColor = UIColor.darkGray
-        
         window?.makeKeyAndVisible()
 
         if nil != User.currentUser {
             print("There is a current user") 
-            window?.rootViewController = tabBarController
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
         }
         
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
