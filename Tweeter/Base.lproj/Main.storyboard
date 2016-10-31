@@ -375,7 +375,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXT-LT-y3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747.5" y="-606.5"/>
+            <point key="canvasLocation" x="705" y="-736"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kql-7h-G7s">
@@ -725,6 +725,7 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="dCA-kG-Ivu" customClass="TabBarController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="pFe-eP-K3N">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

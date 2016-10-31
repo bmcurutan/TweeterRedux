@@ -31,6 +31,7 @@ class TabBarController: UITabBarController {
         let tabBarAppearance = UITabBar.appearance()
         tabBarAppearance.tintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
         tabBarAppearance.barTintColor = UIColor.white
+        tabBarAppearance.isTranslucent = false
         tabBarAppearance.unselectedItemTintColor = UIColor.darkGray
     }
 }
