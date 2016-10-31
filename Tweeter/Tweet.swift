@@ -50,9 +50,6 @@ final class Tweet: NSObject {
             tweets.append(tweet)
         }
         
-        // TODO remove
-        print(dictionaries[0])
-        
         return tweets
     }
 }

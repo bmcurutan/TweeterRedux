@@ -24,10 +24,6 @@ final class ActionsCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     // TODO move this to view controller
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         // UI updates
