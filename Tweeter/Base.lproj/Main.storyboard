@@ -472,6 +472,7 @@
                     <connections>
                         <outlet property="countdownTextField" destination="VX7-Yf-Tgu" id="oZG-5Y-G1V"/>
                         <outlet property="newTweetView" destination="PTQ-un-xcn" id="JLj-vL-hf3"/>
+                        <outlet property="tweetTextView" destination="01G-ES-fr7" id="XSp-py-rOM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRQ-1j-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>

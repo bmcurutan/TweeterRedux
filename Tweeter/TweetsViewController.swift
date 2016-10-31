@@ -121,3 +121,12 @@ extension TweetsViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - NewTweetViewControllerDelegate
+
+extension TweetsViewController: NewTweetViewControllerDelegate {
+    
+    func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet) {
+        tweets.insert(tweet, at: 0)
+        tableView.reloadData()
+    }
+}

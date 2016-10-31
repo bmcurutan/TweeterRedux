@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol NewTweetViewControllerDelegate: class {
+    func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet)
+}
+
 class NewTweetViewController: UIViewController {
 
     @IBOutlet weak var countdownTextField: UITextField!
     @IBOutlet var newTweetView: NewTweetView!
+    @IBOutlet weak var tweetTextView: UITextView!
+    
+    weak var delegate: NewTweetViewControllerDelegate?
     
     let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
     
@@ -23,6 +30,8 @@ class NewTweetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tweetTextView.delegate = self
         
         if let replyTweet = replyTweet,
            let screenname = replyTweet.user?.screenname {
@@ -61,21 +70,28 @@ class NewTweetViewController: UIViewController {
             
         } else {
             TwitterClient.sharedInstance.tweetWithText(tweetText, replyId: (replyTweet?.id)!, success: { () -> () in
-                self.dismiss(animated: true, completion: nil)
-                print("Tweet successfully posted")
+                    self.dismiss(animated: true, completion: nil)
+                    print("Tweet successfully posted")
                 
+                    let tweetDictionary: [String: AnyObject] = [
+                        "favorited": false as AnyObject,
+                        "favoritesCount": 0 as AnyObject,
+                        // id not yet available
+                        "retweetCount": 0 as AnyObject,
+                        "retweeted": false as AnyObject,
+                        "text": self.tweetText as AnyObject,
+                        // TODO timestamp
+                        "user": self.user as AnyObject
+                    ]
+                    let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
+                    self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
+                    
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
 
         }
-    }
-    
-    @IBAction func onTweetTextField(_ sender: AnyObject) {
-        tweetText = newTweetView.tweetTextView.text!
-        countdown = 140 - tweetText.characters.count
-        countdownTextField.text = "\(countdown)"
     }
     
     // MARK: - UIAlert
@@ -93,5 +109,15 @@ class NewTweetViewController: UIViewController {
     
     @IBAction func onCancelButton(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension NewTweetViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        tweetText = tweetTextView.text!
+        countdown = 140 - tweetText.characters.count
+        countdownTextField.text = "\(countdown)"
     }
 }
