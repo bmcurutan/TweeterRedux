@@ -29,18 +29,18 @@ The following **additional** features are implemented:
 
 - [x] Customized launch screen and navigation bar
 - [x] Added Tab bar with options for Home and Me (current user's profile)
-- [x] Added network check and error message via Reachability
+- [x] Added network check and error message 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. How and when to use stack views as opposed to Autolayout constraints
+1. Best practices to abstract the individual actions from the cell view (reply, favorite, retweet)
 2. Better ways to store and display data instantaneously without having to use a network call
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Tweeter Video Walkthrough' width='' alt='Tweeter Video Walkthrough' />
+<img src='http://i.imgur.com/NNHrWoR.gif' title='Tweeter Video Walkthrough' width='' alt='Tweeter Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
