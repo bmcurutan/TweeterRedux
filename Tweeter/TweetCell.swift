@@ -28,7 +28,20 @@ class TweetCell: UITableViewCell {
             if let user = tweet.user {
                 if let name = user.name,
                     let screenname = user.screenname {
-                    nameLabel.text = "\(name) @\(screenname)" // TODO UI
+                    let nameAttributes = [
+                        NSForegroundColorAttributeName: UIColor.black,
+                        NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14.0)
+                    ]
+                    
+                    let screennameAttributes = [
+                        NSForegroundColorAttributeName: UIColor.lightGray,
+                        NSFontAttributeName: UIFont.systemFont(ofSize: 12.0)
+                    ]
+
+                    let mutableAttributedText = NSMutableAttributedString(string: "\(name)", attributes: nameAttributes)
+                    mutableAttributedText.append(NSAttributedString(string: " @\(screenname)", attributes: screennameAttributes))
+                    
+                    nameLabel.attributedText = mutableAttributedText
                 }
                 profilePictureImageView.setImageWith(user.profilePictureUrl!)
             }

@@ -79,7 +79,7 @@ class NewTweetViewController: UIViewController {
                         "retweetCount": 0 as AnyObject,
                         "retweeted": false as AnyObject,
                         "text": self.tweetText as AnyObject,
-                        // TODO timestamp
+                        // TODO "timestamp": timestamp as AnyObject,
                         "user": self.user.dictionary as AnyObject
                     ]
                     let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
