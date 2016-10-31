@@ -2,7 +2,7 @@
 
 Tweeter is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 20 hours spent in total
+Time spent: 21 hours spent in total
 
 ## User Stories
 
@@ -49,7 +49,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 - Sometimes it was difficult to test due to the Twitter API get and update limits
 - Some challenges with showing data instantaneously via the UI without doing another network call (such as the favorites and retweets counts, and the text character countdown)
 - Better ways to implement and call common functions throughout the app (e.g., reply tweet)
-- Some issues faced with date formatting
+- Some issues faced with date formatting to a specific pattern
 
 ## Icons
 

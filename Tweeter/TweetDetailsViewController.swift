@@ -35,8 +35,7 @@ class TweetDetailsViewController: UIViewController {
             let navigationController = segue.destination as! UINavigationController
             let viewController = navigationController.topViewController as! NewTweetViewController
             viewController.user = User.currentUser
-            viewController.replyTweet = tweet
-            
+            viewController.replyTweet = tweet   
         }
     }
 }
