@@ -69,7 +69,7 @@ class NewTweetViewController: UIViewController {
             onError("Tweet is more than 140 characters. Please try again")
             
         } else {
-            TwitterClient.sharedInstance.tweetWithText(tweetText, replyId: (replyTweet?.id)!, success: { () -> () in
+            TwitterClient.sharedInstance.tweetWithText(tweetText, replyId: replyTweet?.id, success: { () -> () in
                     self.dismiss(animated: true, completion: nil)
                     print("Tweet successfully posted")
                 
@@ -81,7 +81,7 @@ class NewTweetViewController: UIViewController {
                         "retweeted": false as AnyObject,
                         "text": self.tweetText as AnyObject,
                         // TODO timestamp
-                        "user": self.user as AnyObject
+                        "user": self.user.dictionary as AnyObject
                     ]
                     let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
                     self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
