@@ -64,13 +64,20 @@ class MeViewController: UIViewController {
 
 extension MeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.tweet = tweets[indexPath.row]
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MeCell", for: indexPath) as! MeCell
+            cell.user = user
+            return cell
+        
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+            cell.tweet = tweets[indexPath.row-1]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
+        return tweets.count + 1
     }
 }
     

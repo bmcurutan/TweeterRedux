@@ -488,22 +488,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeCell" rowHeight="244" id="Ty6-JX-ulb">
-                                <rect key="frame" x="0.0" y="92" width="375" height="244"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeCell" rowHeight="149" id="Ty6-JX-ulb" customClass="MeCell" customModule="Tweeter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="149"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ty6-JX-ulb" id="S6g-kd-lJ0">
-                                    <frame key="frameInset" width="375" height="243"/>
+                                    <frame key="frameInset" width="375" height="148"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zy1-ax-gh7">
-                                            <frame key="frameInset" minX="38" minY="29" width="193" height="56"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zy1-ax-gh7">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="7Ua-bU-6Y4"/>
+                                            </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7FA-3p-fpl">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="e7b-cA-Iol"/>
+                                                <constraint firstAttribute="height" constant="50" id="kza-7V-Pk9"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bianca Monica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtX-fN-kGf">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@bmcurutan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwW-1v-VdH">
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ZwW-1v-VdH" firstAttribute="top" secondItem="rtX-fN-kGf" secondAttribute="bottom" id="0qU-uD-R7F"/>
+                                        <constraint firstItem="ZwW-1v-VdH" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="8" id="5D7-ao-I4l"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZwW-1v-VdH" secondAttribute="bottom" constant="8" id="BIx-k9-oXV"/>
+                                        <constraint firstItem="Zy1-ax-gh7" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" id="Kda-1n-cjm"/>
+                                        <constraint firstItem="7FA-3p-fpl" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="8" id="TZO-8P-Yoq"/>
+                                        <constraint firstAttribute="trailing" secondItem="Zy1-ax-gh7" secondAttribute="trailing" id="Tyu-O6-X4L"/>
+                                        <constraint firstItem="rtX-fN-kGf" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="8" id="caI-sB-c18"/>
+                                        <constraint firstItem="rtX-fN-kGf" firstAttribute="top" secondItem="7FA-3p-fpl" secondAttribute="bottom" constant="8" id="rpr-rR-gAS"/>
+                                        <constraint firstItem="7FA-3p-fpl" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" constant="50" id="uuT-PL-4dz"/>
+                                        <constraint firstItem="Zy1-ax-gh7" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" id="yvY-hA-HbY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="backgroundImageView" destination="Zy1-ax-gh7" id="Niw-FC-AAg"/>
+                                    <outlet property="nameLabel" destination="rtX-fN-kGf" id="gpp-8c-s9q"/>
+                                    <outlet property="profileImageView" destination="7FA-3p-fpl" id="Q3Y-cw-5OO"/>
+                                    <outlet property="screennameLabel" destination="ZwW-1v-VdH" id="hqP-vB-lDW"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="duE-ml-sbK" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="336" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="241" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="duE-ml-sbK" id="iOi-Qb-hqs">
                                     <frame key="frameInset" width="375" height="129"/>
@@ -656,6 +691,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="txC-L1-T43"/>
+        <segue reference="roJ-1i-SZL"/>
     </inferredMetricsTieBreakers>
 </document>

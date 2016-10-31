@@ -41,13 +41,7 @@ class TweetCell: UITableViewCell {
         profilePictureImageView.layer.cornerRadius = 5
         profilePictureImageView.clipsToBounds = true
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
     // TODO move to vc?
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         favoriteButton.isSelected = !tweet.favorited

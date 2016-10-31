@@ -10,6 +10,7 @@ import UIKit
 
 class User: NSObject {
 
+    var backgroundImageUrl: URL?
     var name: String?
     var profilePictureUrl: URL?
     var screenname: String?
@@ -19,6 +20,12 @@ class User: NSObject {
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
+        
+        let backgroundImageUrlString = dictionary["profile_background_image_url_https"] as? String
+        if let backgroundImageUrlString = backgroundImageUrlString {
+            backgroundImageUrl = URL(string: backgroundImageUrlString)
+        }
+        
         name = dictionary["name"] as? String
         
         let profilePictureUrlString = dictionary["profile_image_url_https"] as? String
