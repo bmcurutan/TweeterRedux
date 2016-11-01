@@ -62,7 +62,7 @@ final class TweetDetailsViewController: UIViewController {
             )
         }
         
-        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: <#T##TweetDetailsViewController#>, didUpdateTweet: <#T##Tweet#>)
+        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: self, didUpdateTweet: tweet)
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
@@ -70,6 +70,8 @@ final class TweetDetailsViewController: UIViewController {
             TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully unretweeted")
+                    self.tweet.retweeted = false
+                    self.tweet.retweetCount -= 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -80,12 +82,16 @@ final class TweetDetailsViewController: UIViewController {
             TwitterClient.sharedInstance.retweetWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully retweeted")
+                    self.tweet.retweeted = true
+                    self.tweet.retweetCount += 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
         }
+        
+        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: self, didUpdateTweet: tweet)
     }
     
     // MARK: - Navigation
@@ -130,5 +136,14 @@ extension TweetDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - TweetsViewControllerDelegate
+
+extension TweetDetailsViewController: TweetsViewControllerDelegate {
+    
+    func tweetsViewController(tweetsViewController: TweetsViewController, didUpdateTweet tweet: Tweet) {
+        self.tweet = tweet
     }
 }

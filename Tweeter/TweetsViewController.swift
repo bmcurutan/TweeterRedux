@@ -9,10 +9,16 @@
 import ReachabilitySwift
 import UIKit
 
+protocol TweetsViewControllerDelegate: class {
+    func tweetsViewController(tweetsViewController: TweetsViewController, didUpdateTweet tweet: Tweet)
+}
+
 final class TweetsViewController: UIViewController {
     
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: TweetsViewControllerDelegate?
     
     var reachability: Reachability = Reachability()!
     var tweets: [Tweet] = []
@@ -69,6 +75,8 @@ final class TweetsViewController: UIViewController {
             TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully unfavorited")
+                    tweet.favorited = false
+                    tweet.favoritesCount -= 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -79,12 +87,16 @@ final class TweetsViewController: UIViewController {
             TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully favorited")
+                    tweet.favorited = true
+                    tweet.favoritesCount += 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
         }
+        
+        self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
@@ -95,6 +107,8 @@ final class TweetsViewController: UIViewController {
             TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully unretweeted")
+                    tweet.retweeted = false
+                    tweet.retweetCount -= 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -105,12 +119,16 @@ final class TweetsViewController: UIViewController {
             TwitterClient.sharedInstance.retweetWith(id: tweet.id,
                 success: { () -> () in
                     print("Tweet successfully retweeted")
+                    tweet.retweeted = true
+                    tweet.retweetCount += 1
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
         }
+
+        self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
     }
     
     // MARK: - Private Methods
@@ -172,6 +190,7 @@ final class TweetsViewController: UIViewController {
         //tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
         
         let viewController = segue.destination as! TweetDetailsViewController
+        viewController.delegate = self
         viewController.tweet = tweet
     }
     
@@ -228,3 +247,14 @@ extension TweetsViewController: NewTweetViewControllerDelegate {
         tableView.reloadData()
     }
 }
+
+// MARK: - TweetDetailsViewControllerDelegate
+
+extension TweetsViewController: TweetDetailsViewControllerDelegate {
+    
+    func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
+        // TODO update tweet
+        tableView.reloadData()
+    }
+}
+
