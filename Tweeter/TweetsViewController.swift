@@ -162,8 +162,8 @@ final class TweetsViewController: UIViewController {
         let indexPath = tableView.indexPath(for: cell)
         
         let tweet = tweets[indexPath!.row]
-        tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
-        tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
+        //tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
+        //tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
         
         let viewController = segue.destination as! TweetDetailsViewController
         viewController.tweet = tweet

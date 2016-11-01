@@ -13,6 +13,10 @@ enum CellType: Int {
     static var count: Int { return CellType.actions.hashValue + 1}
 }
 
+protocol TweetDetailsViewControllerDelegate: class {
+    func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet)
+}
+
 final class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
