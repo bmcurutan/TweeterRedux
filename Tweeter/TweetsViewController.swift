@@ -252,9 +252,16 @@ extension TweetsViewController: NewTweetViewControllerDelegate {
 extension TweetsViewController: TweetDetailsViewControllerDelegate {
     
     func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
-        let index = Tweet.getIndexForTweetWith(id: tweet.id, tweets: tweets)
-        tweets[index] = tweet
-        tableView.reloadData()
+        
+        TwitterClient.sharedInstance.homeTimeline(
+            success: { (tweets: [Tweet]) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                
+            }, failure: { (error: Error) -> () in
+                print("error: \(error.localizedDescription)")
+            }
+        )
     }
 }
 

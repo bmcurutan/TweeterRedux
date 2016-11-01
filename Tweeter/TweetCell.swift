@@ -62,26 +62,10 @@ final class TweetCell: UITableViewCell {
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         favoriteButton.isSelected = !tweet.favorited
-        
-        if !favoriteButton.isSelected {
-            self.tweet.favorited = false
-            self.tweet.favoritesCount -= 1
-        } else {
-            self.tweet.favorited = true
-            self.tweet.favoritesCount += 1
-        }
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         retweetButton.isSelected = !tweet.retweeted
-        
-        if !retweetButton.isSelected {
-                self.tweet.retweeted = false
-                self.tweet.retweetCount -= 1
-        } else {
-            self.tweet.retweeted = true
-            self.tweet.retweetCount += 1
-        }
     }
 }
 

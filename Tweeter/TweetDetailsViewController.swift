@@ -42,7 +42,6 @@ final class TweetDetailsViewController: UIViewController {
                 success: { () -> () in
                     print("Tweet successfully unfavorited")
                     self.tweet.favorited = false
-                    self.tweet.favoritesCount -= 1
 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -54,7 +53,6 @@ final class TweetDetailsViewController: UIViewController {
                 success: { () -> () in
                     print("Tweet successfully favorited")
                     self.tweet.favorited = true
-                    self.tweet.favoritesCount += 1
 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
