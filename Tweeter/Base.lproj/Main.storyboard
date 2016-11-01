@@ -258,7 +258,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
                                                     <connections>
-                                                        <segue destination="MOu-49-kFK" kind="modal" identifier="replySegue" id="mby-rZ-Zy7"/>
+                                                        <segue destination="MOu-49-kFK" kind="modal" identifier="actionReplySegue" id="mby-rZ-Zy7"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuS-6s-0xD">
@@ -346,7 +346,7 @@
                     <navigationItem key="navigationItem" title="Tweet" id="T7K-5j-701">
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy">
                             <connections>
-                                <segue destination="MOu-49-kFK" kind="modal" identifier="replySegue2" id="roJ-1i-SZL"/>
+                                <segue destination="MOu-49-kFK" kind="modal" identifier="replySegue" id="roJ-1i-SZL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -752,6 +752,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="txC-L1-T43"/>
+        <segue reference="mby-rZ-Zy7"/>
     </inferredMetricsTieBreakers>
 </document>
