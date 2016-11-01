@@ -60,6 +60,54 @@ final class TweetsViewController: UIViewController {
         TwitterClient.sharedInstance.logout()
     }
     
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        let favoriteButton = sender as! UIButton
+        let tweet = tweets[favoriteButton.tag]
+        
+        if tweet.favorited { // Currently favorited, so unfavorite action
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully unfavorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Favorite action
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully favorited")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        let retweetButton = sender as! UIButton
+        let tweet = tweets[retweetButton.tag]
+        
+        if tweet.retweeted { // Currently retweeted, so unretweet action
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully unretweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Retweet action
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully retweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
+    
     // MARK: - Private Methods
     
     @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
@@ -144,7 +192,9 @@ final class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.replyButton.tag = indexPath.row 
+        cell.replyButton.tag = indexPath.row
+        cell.retweetButton.tag = indexPath.row
+        cell.favoriteButton.tag = indexPath.row
         cell.tweet = tweets[indexPath.row]
         return cell
     }

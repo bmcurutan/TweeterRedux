@@ -71,6 +71,7 @@
                                                     <state key="selected" image="retweet-on"/>
                                                     <connections>
                                                         <action selector="onRetweetButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="FPR-xK-hSK"/>
+                                                        <action selector="onRetweetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kJJ-Iz-mcL"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-3O-pes">
@@ -81,6 +82,7 @@
                                                     <state key="normal" title="Button" image="favorite"/>
                                                     <state key="selected" image="favorite-on"/>
                                                     <connections>
+                                                        <action selector="onFavoriteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FdC-NQ-DCZ"/>
                                                         <action selector="onFavoriteButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="HlW-xR-rvA"/>
                                                     </connections>
                                                 </button>
@@ -270,6 +272,7 @@
                                                     <state key="selected" image="retweet-on"/>
                                                     <connections>
                                                         <action selector="onRetweetButton:" destination="iSv-OB-YHT" eventType="touchUpInside" id="CNq-tF-fFy"/>
+                                                        <action selector="onRetweetButton:" destination="8ac-yD-Gcy" eventType="touchUpInside" id="mUM-ch-3Ju"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NH-lr-PDP">
@@ -281,6 +284,7 @@
                                                     <state key="selected" image="favorite-on"/>
                                                     <connections>
                                                         <action selector="onFavoriteButton:" destination="iSv-OB-YHT" eventType="touchUpInside" id="ONq-Lr-7kS"/>
+                                                        <action selector="onFavoriteButton:" destination="8ac-yD-Gcy" eventType="touchUpInside" id="gdh-uZ-Nm1"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 RETWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kys-QW-E7e">

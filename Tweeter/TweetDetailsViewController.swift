@@ -28,6 +28,50 @@ final class TweetDetailsViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    // MARK: - IBAction
+    
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        if tweet.favorited { // Currently favorited, so unfavorite action
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully unfavorited")
+
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+
+        } else { // Favorite action
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
+                    print("Tweet successfully favorited")
+
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        if tweet.retweeted { // Currently retweeted, so unretweet action
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully unretweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Retweet action
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
+                print("Tweet successfully retweeted")
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
