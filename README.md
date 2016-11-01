@@ -2,7 +2,7 @@
 
 Tweeter is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 22 hours spent in total
+Time spent: 23 hours spent in total
 
 ## User Stories
 
@@ -40,7 +40,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/NNHrWoR.gif' title='Tweeter Video Walkthrough' width='' alt='Tweeter Video Walkthrough' />
+<img src='http://i.imgur.com/1aHg6T1.gif' title='Tweeter Video Walkthrough' width='' alt='Tweeter Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
