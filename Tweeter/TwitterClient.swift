@@ -31,13 +31,14 @@ final class TwitterClient: BDBOAuth1SessionManager {
 
         deauthorize()
         
-        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil, success: { (requestToken: BDBOAuth1Credential?) -> Void in
+        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil,
+            success: { (requestToken: BDBOAuth1Credential?) -> Void in
             
-            if let token = requestToken?.token {
-                let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")
-                let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
-                UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
-            }
+                if let token = requestToken?.token {
+                    let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")
+                    let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
+                    UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
+                }
             
             }, failure: { (error: Error?) -> Void in
                 print("error: \(error?.localizedDescription)")
@@ -55,16 +56,18 @@ final class TwitterClient: BDBOAuth1SessionManager {
     func handleOpenUrl(_ url: NSURL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
 
-        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) -> Void in
+        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken,
+            success: { (accessToken: BDBOAuth1Credential?) -> Void in
             
-            self.currentAccount(success: { (user: User) -> () in
-                    User.currentUser = user
-                    self.loginSuccess?()
+                self.currentAccount(
+                    success: { (user: User) -> () in
+                        User.currentUser = user
+                        self.loginSuccess?()
                 
-                }, failure: { (error: Error) -> () in
-                    self.loginFailure?(error)
-                }
-            )
+                    }, failure: { (error: Error) -> () in
+                        self.loginFailure?(error)
+                    }
+                )
             
             }, failure: { (error: Error?) -> Void in
                 print("error: \(error?.localizedDescription)")
@@ -74,7 +77,9 @@ final class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func currentAccount(success: @escaping (User) -> (), failure: (Error) -> ()) {
-        get("1.1/account/verify_credentials.json", parameters: nil, progress: { (Progress) -> Void in
+        get("1.1/account/verify_credentials.json", parameters: nil,
+            progress: { (Progress) -> Void in
+                
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let userDictionary = response as! NSDictionary
                 let user = User(dictionary: userDictionary)
@@ -90,7 +95,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     // MARK: - Timelines
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
-        get("1.1/statuses/home_timeline.json", parameters: nil, progress: { (Progress) -> Void in
+        get("1.1/statuses/home_timeline.json", parameters: nil,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dictionaries = response as! [NSDictionary]
@@ -105,7 +111,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     func timelineForUserWith(screenname: String, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["screen_name": screenname as AnyObject]
-        get("1.1/statuses/user_timeline.json", parameters: parameters, progress: { (Progress) -> Void in
+        get("1.1/statuses/user_timeline.json", parameters: parameters,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 let dictionaries = response as! [NSDictionary]
@@ -127,7 +134,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
             parameters["in_reply_to_status_id"] = replyId
         }
         
-        post("1.1/statuses/update.json", parameters: parameters, progress: { (Progress) -> Void in
+        post("1.1/statuses/update.json", parameters: parameters,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()
@@ -141,7 +149,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     // MARK: - Retweet
     
     func retweetWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        post("1.1/statuses/retweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
+        post("1.1/statuses/retweet/\(id).json", parameters: nil,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()
@@ -153,7 +162,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func unretweetWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        post("1.1/statuses/unretweet/\(id).json", parameters: nil, progress: { (Progress) -> Void in
+        post("1.1/statuses/unretweet/\(id).json", parameters: nil,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()
@@ -168,7 +178,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     func addFavoriteWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]
-        post("1.1/favorites/create.json", parameters: parameters, progress: { (Progress) -> Void in
+        post("1.1/favorites/create.json", parameters: parameters,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()
@@ -181,7 +192,8 @@ final class TwitterClient: BDBOAuth1SessionManager {
     
     func removeFavoriteWith(id: NSNumber, success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         let parameters: [String: AnyObject] = ["id": id as AnyObject]
-        post("1.1/favorites/destroy.json", parameters: parameters, progress: { (Progress) -> Void in
+        post("1.1/favorites/destroy.json", parameters: parameters,
+            progress: { (Progress) -> Void in
             
             }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
                 success()

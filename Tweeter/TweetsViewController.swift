@@ -38,7 +38,8 @@ final class TweetsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
 
-        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
+        TwitterClient.sharedInstance.homeTimeline(
+            success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets
                 self.tableView.reloadData()
             
@@ -65,8 +66,9 @@ final class TweetsViewController: UIViewController {
         let tweet = tweets[favoriteButton.tag]
         
         if tweet.favorited { // Currently favorited, so unfavorite action
-            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully unfavorited")
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully unfavorited")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -74,8 +76,9 @@ final class TweetsViewController: UIViewController {
             )
             
         } else { // Favorite action
-            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully favorited")
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully favorited")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -89,8 +92,9 @@ final class TweetsViewController: UIViewController {
         let tweet = tweets[retweetButton.tag]
         
         if tweet.retweeted { // Currently retweeted, so unretweet action
-            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully unretweeted")
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully unretweeted")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -98,8 +102,9 @@ final class TweetsViewController: UIViewController {
             )
             
         } else { // Retweet action
-            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully retweeted")
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully retweeted")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -113,10 +118,11 @@ final class TweetsViewController: UIViewController {
     @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
         updateNetworkError()
         
-        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
+        TwitterClient.sharedInstance.homeTimeline(
+            success: { (tweets: [Tweet]) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
             
             }, failure: { (error: Error) -> () in
                 print("error: \(error.localizedDescription)")

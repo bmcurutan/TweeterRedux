@@ -21,6 +21,8 @@ final class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    weak var delegate: TweetDetailsViewControllerDelegate?
+    
     var tweet: Tweet!
     
     override func viewDidLoad() {
@@ -36,8 +38,11 @@ final class TweetDetailsViewController: UIViewController {
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         if tweet.favorited { // Currently favorited, so unfavorite action
-            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully unfavorited")
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully unfavorited")
+                    self.tweet.favorited = false
+                    self.tweet.favoritesCount -= 1
 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -45,20 +50,26 @@ final class TweetDetailsViewController: UIViewController {
             )
 
         } else { // Favorite action
-            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id, success: { () -> () in
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id,
+                success: { () -> () in
                     print("Tweet successfully favorited")
+                    self.tweet.favorited = true
+                    self.tweet.favoritesCount += 1
 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
         }
+        
+        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: <#T##TweetDetailsViewController#>, didUpdateTweet: <#T##Tweet#>)
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         if tweet.retweeted { // Currently retweeted, so unretweet action
-            TwitterClient.sharedInstance.unretweetWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully unretweeted")
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully unretweeted")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
@@ -66,8 +77,9 @@ final class TweetDetailsViewController: UIViewController {
             )
             
         } else { // Retweet action
-            TwitterClient.sharedInstance.retweetWith(id: tweet.id, success: { () -> () in
-                print("Tweet successfully retweeted")
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id,
+                success: { () -> () in
+                    print("Tweet successfully retweeted")
                 
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")

@@ -75,7 +75,8 @@ final class NewTweetViewController: UIViewController {
             onError("Tweet is more than 140 characters. Please try again")
             
         } else {
-            TwitterClient.sharedInstance.tweetWith(text: tweetText, replyId: replyTweet?.id, success: { () -> () in
+            TwitterClient.sharedInstance.tweetWith(text: tweetText, replyId: replyTweet?.id,
+                success: { () -> () in
                     print("Tweet successfully posted")
                 
                     // Timestamp
