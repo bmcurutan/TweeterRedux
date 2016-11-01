@@ -24,6 +24,7 @@
 		67B910961DC54E20004E2CF0 /* NewTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B910951DC54E20004E2CF0 /* NewTweetView.swift */; };
 		67C082831DC6F97300A9ED86 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C082821DC6F97300A9ED86 /* TabBarController.swift */; };
 		67C082871DC7108B00A9ED86 /* Date+OffsetFrom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C082861DC7108B00A9ED86 /* Date+OffsetFrom.swift */; };
+		67EA37D51DC8687A00688CA9 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA37D41DC8687A00688CA9 /* HamburgerViewController.swift */; };
 		67F4F37D1DC6D8DA0037DF87 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4F37C1DC6D8DA0037DF87 /* UserViewController.swift */; };
 		67F4F37F1DC6DE020037DF87 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4F37E1DC6DE020037DF87 /* UserCell.swift */; };
 		E23C43C2B82F3E36AF845431 /* Pods_Tweeter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B18E995D77122F7D93FDFC /* Pods_Tweeter.framework */; };
@@ -52,6 +53,7 @@
 		67C082821DC6F97300A9ED86 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
 		67C082861DC7108B00A9ED86 /* Date+OffsetFrom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+OffsetFrom.swift"; sourceTree = "<group>"; };
 		67E422A21DC1BCA900893540 /* Tweeter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tweeter-Bridging-Header.h"; sourceTree = "<group>"; };
+		67EA37D41DC8687A00688CA9 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		67F4F37C1DC6D8DA0037DF87 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		67F4F37E1DC6DE020037DF87 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		84598D1C58D33A104BBCABB3 /* Pods-Tweeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tweeter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tweeter/Pods-Tweeter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		676A6BB91DBEC8C1008BD753 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				67EA37D41DC8687A00688CA9 /* HamburgerViewController.swift */,
 				67C082821DC6F97300A9ED86 /* TabBarController.swift */,
 				674E8CBF1DBEBE8600D465E0 /* TweetsViewController.swift */,
 				67F4F37C1DC6D8DA0037DF87 /* UserViewController.swift */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67EA37D51DC8687A00688CA9 /* HamburgerViewController.swift in Sources */,
 				67F4F37D1DC6D8DA0037DF87 /* UserViewController.swift in Sources */,
 				67718CAB1DC1C4EA0066F0FC /* LoginViewController.swift in Sources */,
 				674E8CC01DBEBE8600D465E0 /* TweetsViewController.swift in Sources */,

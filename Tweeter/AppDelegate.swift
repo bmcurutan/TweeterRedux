@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // Customize Navigation bar colors
-        let navigationBarAppearance = UINavigationBar.appearance()
+        // Customize Navigation bar colors 
+        /* TODO let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
             let loginViewController = storyboard.instantiateInitialViewController()
             self.window?.rootViewController = loginViewController
-        }
+        }*/
         
         return true
     }
