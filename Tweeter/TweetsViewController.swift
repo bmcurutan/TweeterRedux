@@ -184,14 +184,13 @@ final class TweetsViewController: UIViewController {
     fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
         let indexPath = tableView.indexPath(for: cell)
-        
         let tweet = tweets[indexPath!.row]
-        //tweet.favorited = cell.favoriteButton.isSelected // Update UI without network call
-        //tweet.retweeted = cell.retweetButton.isSelected // Update UI without network call
         
         let viewController = segue.destination as! TweetDetailsViewController
         viewController.delegate = self
         viewController.tweet = tweet
+        
+        self.delegate = viewController
     }
     
     fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
