@@ -48,4 +48,14 @@ final class Tweet: NSObject {
         
         return tweets
     }
+    
+    class func getIndexForTweetWith(id: NSNumber, tweets: [Tweet]) -> Int {
+        for (index, tweet) in tweets.enumerated() {
+            if 0 != tweet.id && id == tweet.id {
+                return index
+            }
+        }
+        
+        return -1
+    }
 }

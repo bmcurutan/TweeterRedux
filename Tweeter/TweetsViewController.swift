@@ -253,7 +253,8 @@ extension TweetsViewController: NewTweetViewControllerDelegate {
 extension TweetsViewController: TweetDetailsViewControllerDelegate {
     
     func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
-        // TODO update tweet
+        let index = Tweet.getIndexForTweetWith(id: tweet.id, tweets: tweets)
+        tweets[index] = tweet
         tableView.reloadData()
     }
 }
