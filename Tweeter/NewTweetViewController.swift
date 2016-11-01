@@ -78,6 +78,11 @@ final class NewTweetViewController: UIViewController {
             TwitterClient.sharedInstance.tweetWith(text: tweetText, replyId: replyTweet?.id, success: { () -> () in
                     print("Tweet successfully posted")
                 
+                    // Timestamp
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+                    let nowString = formatter.string(from: Date())
+                
                     let tweetDictionary: [String: AnyObject] = [
                         "favorited": false as AnyObject,
                         "favoritesCount": 0 as AnyObject,
@@ -85,7 +90,7 @@ final class NewTweetViewController: UIViewController {
                         "retweetCount": 0 as AnyObject,
                         "retweeted": false as AnyObject,
                         "text": self.tweetText as AnyObject,
-                        // TODO "timestamp": timestamp as AnyObject,
+                        "created_at": nowString as AnyObject,
                         "user": self.user.dictionary as AnyObject
                     ]
                     let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)

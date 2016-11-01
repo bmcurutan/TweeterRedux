@@ -30,6 +30,8 @@ extension Date {
                 formattedString = minutes
             } else if difference.second! > 0 {
                 formattedString = seconds
+            } else if difference.hour! == 0 && difference.minute! == 0 && difference.second! == 0 {
+                formattedString = "Just now"
             } else {
                 formatter.dateStyle = .short
                 formattedString = formatter.string(from: date)
