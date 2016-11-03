@@ -63,10 +63,6 @@ final class TweetsViewController: UIViewController {
     
     // MARK: - IBAction
     
-    @IBAction func onLogoutButton(_ sender: AnyObject) {
-        TwitterClient.sharedInstance.logout()
-    }
-    
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         let favoriteButton = sender as! UIButton
         let tweet = tweets[favoriteButton.tag]

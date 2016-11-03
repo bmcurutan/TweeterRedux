@@ -22,39 +22,36 @@ class MenuViewController: UIViewController {
         tableView.delegate = self
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tweetsNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
-        let userNavigationController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
-        //blueNavigationController = storyboard.instantiateViewController(withIdentifier: "BlueViewController")
+        let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
+        let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
+        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") // tODO
         
-        viewControllers.append(tweetsNavigationController)
-        viewControllers.append(userNavigationController)
-        //viewControllers.append(blueNavigationController)
+        viewControllers.append(userViewController)
+        viewControllers.append(tweetsViewController)
+        viewControllers.append(mentionsViewController)
         
-        hamburgerViewController.contentViewController = tweetsNavigationController
+        hamburgerViewController.contentViewController = userViewController
     }
 }
 
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2 // TODO 3
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
         
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Home Timeline"
-        case 1:
-            cell.textLabel?.text = "Profile"
-        case 2:
-            cell.textLabel?.text = "Mentions"
-        default:
-            break
+        if 0 == indexPath.row {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath)
+            //cell.textLabel?.text = "Profile"
+            return cell
+        
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath)
+            //cell.textLabel?.text = 1 == indexPath.row ? "Home Timeline" : "Mentions"
+            return cell
         }
-        
-        return cell
     }
 }
 
