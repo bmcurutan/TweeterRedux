@@ -168,7 +168,7 @@ final class TweetsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if "detailsSegue" == segue.identifier {
+        /*if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
             
         } else if "newTweetSegue" == segue.identifier {
@@ -176,12 +176,12 @@ final class TweetsViewController: UIViewController {
         
         } else if "replySegue" == segue.identifier {
             onReplySegue(segue: segue, sender: sender)
-        }
+        }*/
     }
     
     // MARK: - Segues
     
-    fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
+    /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
         let indexPath = tableView.indexPath(for: cell)
         let tweet = tweets[indexPath!.row]
@@ -208,7 +208,7 @@ final class TweetsViewController: UIViewController {
         viewController.delegate = self
         viewController.replyTweet = tweet
         viewController.user = User.currentUser
-    }
+    }*/
 }
 
 // MARK: - UITableViewDataSource

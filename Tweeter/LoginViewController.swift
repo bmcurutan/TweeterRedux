@@ -23,7 +23,7 @@ final class LoginViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onLoginButton(_ sender: AnyObject) {
-        let client = TwitterClient.sharedInstance
+        /*let client = TwitterClient.sharedInstance
         client.login(
             success: { () -> () in
                 print("I've logged in!")
@@ -32,6 +32,6 @@ final class LoginViewController: UIViewController {
             }, failure: { (error: Error) -> () in
                 print("Error: \(error.localizedDescription)")
             }
-        )
+        )*/
     }
 }

@@ -95,14 +95,14 @@ final class TweetDetailsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "replySegue" || segue.identifier == "actionReplySegue" else {
+        /*guard segue.identifier == "replySegue" || segue.identifier == "actionReplySegue" else {
             return
         }
         
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
         viewController.user = User.currentUser
-        viewController.replyTweet = tweet
+        viewController.replyTweet = tweet*/
     }
 }
 

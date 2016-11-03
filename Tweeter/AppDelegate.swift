@@ -16,31 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let hamburgerViewController = window!.rootViewController as! HamburgerViewController
+        
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+        
         menuViewController.hamburgerViewController = hamburgerViewController
         hamburgerViewController.menuViewController = menuViewController
         
         // Customize Navigation bar colors 
-        /* TODO let navigationBarAppearance = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor(red: 94/255, green: 195/255, blue: 1, alpha: 1.0)
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         window?.makeKeyAndVisible()
 
         if nil != User.currentUser {
             print("There is a current user") 
-            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            window?.rootViewController = hamburgerViewController
         }
         
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
             let loginViewController = storyboard.instantiateInitialViewController()
             self.window?.rootViewController = loginViewController
-        }*/
+        }
         
         return true
     }

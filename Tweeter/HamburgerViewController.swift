@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO fix initial view controller
 class HamburgerViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!
