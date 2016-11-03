@@ -24,15 +24,19 @@ final class LoginViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onLoginButton(_ sender: AnyObject) {
-        /*let client = TwitterClient.sharedInstance
+        let client = TwitterClient.sharedInstance
         client.login(
             success: { () -> () in
                 print("I've logged in!")
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                //self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController")
+                //let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
+                self.navigationController?.pushViewController(hamburgerViewController, animated: true)
             
             }, failure: { (error: Error) -> () in
                 print("Error: \(error.localizedDescription)")
             }
-        )*/
+        )
     }
 }

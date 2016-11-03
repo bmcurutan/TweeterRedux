@@ -26,22 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Customize Navigation bar colors 
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.barTintColor = UIColor(red: 0, green: 132/255, blue: 180/255, alpha: 1.0)
+        navigationBarAppearance.barTintColor = UIColor(red: 0, green: 172/255, blue: 237/255, alpha: 1.0)
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationBarAppearance.isTranslucent = false
         
         window?.makeKeyAndVisible()
 
-        if nil != User.currentUser {
+        //if nil != User.currentUser {
             print("There is a current user") 
             // TODO window?.rootViewController = hamburgerViewController
             let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
             window?.rootViewController = navigationController
-        }
+        //}
         
-        NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
+        /*NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
             let loginViewController = storyboard.instantiateInitialViewController()
             self.window?.rootViewController = loginViewController
-        }
+        }*/
         
         return true
     }
