@@ -347,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="842" y="-737"/>
         </scene>
-        <!--Hamburger View Controller-->
+        <!--Tweeter-->
         <scene sceneID="U2i-Km-lQ6">
             <objects>
                 <viewController storyboardIdentifier="HamburgerViewController" id="TeA-PA-gMn" customClass="HamburgerViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
@@ -371,14 +371,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xks-RG-blO" secondAttribute="trailing" id="2cO-e3-Rob"/>
                             <constraint firstItem="Fju-Ak-OcR" firstAttribute="top" secondItem="xks-RG-blO" secondAttribute="bottom" id="3Bo-aE-rkB"/>
-                            <constraint firstItem="xks-RG-blO" firstAttribute="top" secondItem="bQ2-PP-gfI" secondAttribute="top" id="U8P-vH-6Dv"/>
+                            <constraint firstItem="YBZ-rO-vQV" firstAttribute="top" secondItem="8XW-zp-h5d" secondAttribute="bottom" id="4PW-Le-qXW"/>
+                            <constraint firstItem="xks-RG-blO" firstAttribute="top" secondItem="8XW-zp-h5d" secondAttribute="bottom" id="68Q-Jb-45f"/>
                             <constraint firstItem="YBZ-rO-vQV" firstAttribute="width" secondItem="bQ2-PP-gfI" secondAttribute="width" id="dri-KW-05Y"/>
                             <constraint firstItem="Fju-Ak-OcR" firstAttribute="top" secondItem="YBZ-rO-vQV" secondAttribute="bottom" id="eWx-RE-kIh"/>
                             <constraint firstItem="YBZ-rO-vQV" firstAttribute="leading" secondItem="bQ2-PP-gfI" secondAttribute="leading" id="hzZ-Ka-pnt"/>
-                            <constraint firstItem="YBZ-rO-vQV" firstAttribute="top" secondItem="bQ2-PP-gfI" secondAttribute="top" id="juB-UK-g2h"/>
                             <constraint firstItem="xks-RG-blO" firstAttribute="leading" secondItem="bQ2-PP-gfI" secondAttribute="leading" id="qmh-Bq-Ofy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Tweeter" id="TE0-yb-0gW"/>
                     <connections>
                         <outlet property="contentView" destination="YBZ-rO-vQV" id="NoB-JS-PtM"/>
                         <outlet property="leftMarginConstraint" destination="hzZ-Ka-pnt" id="mLA-Hy-dgi"/>
@@ -392,7 +393,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="449" y="-1558"/>
+            <point key="canvasLocation" x="1035.5" y="-1558.5"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="HKJ-ti-L4N">
@@ -434,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHo-FL-nbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="-1558"/>
+            <point key="canvasLocation" x="1574.5" y="-1558.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kql-7h-G7s">
@@ -450,19 +451,27 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLn-Hb-JEL">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="cn2-ys-Gkf"/>
+                                    <constraint firstAttribute="height" constant="100" id="cn2-ys-Gkf"/>
                                 </constraints>
-                                <state key="normal" title="Login with Twitter" image="login"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Login to Tweeter">
+                                    <color key="titleColor" red="0.1137254902" green="0.5568627451" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="jaZ-cp-Lv4" eventType="touchUpInside" id="Jsk-Rk-ihn"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-yl-1Q6"/>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.55686274509803924" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="PLn-Hb-JEL" firstAttribute="leading" secondItem="6kj-qQ-Ekl" secondAttribute="leading" constant="8" id="Dam-tA-EUh"/>
-                            <constraint firstAttribute="trailing" secondItem="PLn-Hb-JEL" secondAttribute="trailing" constant="8" id="S9v-OB-4RW"/>
+                            <constraint firstItem="vuF-yl-1Q6" firstAttribute="leading" secondItem="6kj-qQ-Ekl" secondAttribute="leading" id="7nj-1H-BTY"/>
+                            <constraint firstAttribute="trailing" secondItem="PLn-Hb-JEL" secondAttribute="trailing" id="Egw-OH-Qrx"/>
+                            <constraint firstItem="PLn-Hb-JEL" firstAttribute="leading" secondItem="6kj-qQ-Ekl" secondAttribute="leading" id="VMX-Yq-7jA"/>
+                            <constraint firstItem="vuF-yl-1Q6" firstAttribute="centerY" secondItem="6kj-qQ-Ekl" secondAttribute="centerY" id="a3Q-CV-nVX"/>
                             <constraint firstItem="PLn-Hb-JEL" firstAttribute="centerY" secondItem="6kj-qQ-Ekl" secondAttribute="centerY" id="meR-E8-1M1"/>
+                            <constraint firstItem="vuF-yl-1Q6" firstAttribute="centerX" secondItem="6kj-qQ-Ekl" secondAttribute="centerX" id="odM-Ht-qLz"/>
+                            <constraint firstAttribute="trailing" secondItem="vuF-yl-1Q6" secondAttribute="trailing" id="qUX-pT-AyW"/>
                             <constraint firstItem="PLn-Hb-JEL" firstAttribute="centerX" secondItem="6kj-qQ-Ekl" secondAttribute="centerX" id="qgr-hD-btS"/>
                         </constraints>
                     </view>
@@ -743,14 +752,32 @@
             </objects>
             <point key="canvasLocation" x="1368" y="-718"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SDZ-Z4-paF">
+            <objects>
+                <navigationController storyboardIdentifier="HamburgerNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ygR-rd-0gI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TXZ-yt-ANq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TeA-PA-gMn" kind="relationship" relationship="rootViewController" id="KDe-SI-Ty4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfn-zh-zgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448.5" y="-1558.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="favorite" width="54" height="72"/>
         <image name="favorite-on" width="54" height="72"/>
-        <image name="login" width="1608" height="320"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
         <image name="retweet-on" width="75" height="72"/>
+        <image name="twitterbird" width="400" height="400"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -13,7 +13,7 @@ enum UserSection: Int {
     static var count: Int { return UserSection.tweets.hashValue + 1}
 }
 
-// This can be modified later for all users
+// TODO - put in UIViewController instead
 final class UserViewController: UITableViewController {
     
     var tweets: [Tweet] = []

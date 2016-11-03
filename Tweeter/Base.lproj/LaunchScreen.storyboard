@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,53 +15,26 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="m77-gM-ws3"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-gl-KoB">
-                                <attributedString key="attributedText">
-                                    <fragment content="A simple Twitter client">
-                                        <attributes>
-                                            <color key="NSColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="AmericanTypewriter"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-DB-RU1">
-                                <attributedString key="attributedText">
-                                    <fragment content="Tweeter">
-                                        <attributes>
-                                            <color key="NSColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="72" name="AmericanTypewriter"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="cQe-h6-182"/>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.55686274509803924" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="y6D-gl-KoB" firstAttribute="top" secondItem="WB9-DB-RU1" secondAttribute="bottom" constant="-8" id="7s7-TP-5Ke"/>
-                            <constraint firstItem="m77-gM-ws3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="9yC-SR-I68"/>
-                            <constraint firstItem="m77-gM-ws3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Olc-Ba-H6t"/>
-                            <constraint firstItem="WB9-DB-RU1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="8" id="ShO-VF-ZlB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="y6D-gl-KoB" secondAttribute="trailing" constant="-8" id="VyQ-P6-59m"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="m77-gM-ws3" secondAttribute="bottom" id="hCf-f3-lf0"/>
-                            <constraint firstItem="WB9-DB-RU1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="70" id="iDS-tq-Pdv"/>
-                            <constraint firstAttribute="trailing" secondItem="m77-gM-ws3" secondAttribute="trailing" id="zKM-S7-15f"/>
+                            <constraint firstItem="cQe-h6-182" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="AQy-YM-BoW"/>
+                            <constraint firstItem="cQe-h6-182" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YZ0-vk-SzM"/>
+                            <constraint firstItem="cQe-h6-182" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZgI-GO-Peg"/>
+                            <constraint firstAttribute="trailing" secondItem="cQe-h6-182" secondAttribute="trailing" id="pAR-jk-Aoc"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="50.625" y="373.94366197183098"/>
+            <point key="canvasLocation" x="50.399999999999999" y="373.76311844077964"/>
         </scene>
     </scenes>
     <resources>
-        <image name="twitterbird" width="580" height="470"/>
+        <image name="twitterbird" width="400" height="400"/>
     </resources>
 </document>
