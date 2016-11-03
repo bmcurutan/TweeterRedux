@@ -31,8 +31,7 @@ final class LoginViewController: UIViewController {
                 //self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController")
-                //let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
-                self.navigationController?.pushViewController(hamburgerViewController, animated: true)
+                self.present(hamburgerViewController, animated: true, completion: nil)
             
             }, failure: { (error: Error) -> () in
                 print("Error: \(error.localizedDescription)")
