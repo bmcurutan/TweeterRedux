@@ -51,6 +51,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+## Icons
+
+- Icons made by [Icon Works](http://www.flaticon.com/authors/icon-works) from [Flaticon](http://www.flaticon.com)
+- Icons made by [ionicons](http://ionicons.com/) from [ICONFINDER](http://www.iconfinder.com)
+
 ## License
 
     Copyright 2016 Bianca Curutan

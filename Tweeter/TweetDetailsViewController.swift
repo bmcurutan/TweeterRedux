@@ -111,12 +111,12 @@ final class TweetDetailsViewController: UIViewController {
 extension TweetDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch CellType(rawValue: indexPath.row)! {
-        case CellType.details:
+        case .details:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
             cell.tweet = tweet
             return cell
             
-        case CellType.actions:
+        case .actions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) as! ActionsCell
             cell.tweet = tweet
             return cell

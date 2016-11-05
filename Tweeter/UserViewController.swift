@@ -50,12 +50,12 @@ final class UserViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (UserSection(rawValue: indexPath.section)!) {
-        case UserSection.details:
+        case .details:
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
             cell.user = user
             return cell
             
-        case UserSection.tweets:
+        case .tweets:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
             cell.tweet = tweets[indexPath.row]
             return cell
@@ -64,7 +64,7 @@ final class UserViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (UserSection(rawValue: section)!) {
-        case UserSection.tweets:
+        case .tweets:
             return tweets.count
         default:
             return 1
@@ -82,7 +82,7 @@ final class UserViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (UserSection(rawValue: section)!) {
-        case UserSection.tweets:
+        case .tweets:
             return "My Tweets"
         default:
             return nil

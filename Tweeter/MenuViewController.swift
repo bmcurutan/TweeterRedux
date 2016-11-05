@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum MenuCellType: Int {
+    case profile = 0, timeline, mentions
+    static var count: Int { return MenuCellType.mentions.hashValue + 1}
+}
+
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -20,36 +25,44 @@ class MenuViewController: UIViewController {
 
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
         let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
-        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") // tODO
+        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") // TODO
         
         viewControllers.append(userViewController)
         viewControllers.append(tweetsViewController)
         viewControllers.append(mentionsViewController)
         
-        hamburgerViewController.contentViewController = userViewController
+        // Default to home timeline
+        hamburgerViewController.contentViewController = tweetsViewController
     }
 }
 
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return MenuCellType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if 0 == indexPath.row {
+        switch MenuCellType(rawValue: indexPath.row)! {
+        case .profile:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath)
-            //cell.textLabel?.text = "Profile"
             return cell
-        
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath)
-            //cell.textLabel?.text = 1 == indexPath.row ? "Home Timeline" : "Mentions"
+        case .timeline:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
+            cell.iconImageView.image = UIImage(named: "home")
+            cell.titleLabel.text = "Home Timeline"
+            return cell
+        case .mentions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
+            cell.iconImageView.image = UIImage(named: "at")
+            cell.titleLabel.text = "Mentions"
             return cell
         }
     }
