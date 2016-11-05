@@ -52,12 +52,13 @@ extension MenuViewController: UITableViewDataSource {
         
         switch MenuCellType(rawValue: indexPath.row)! {
         case .profile:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as! ProfileMenuCell
+            cell.user = User.currentUser
             return cell
         case .timeline:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
             cell.iconImageView.image = UIImage(named: "home")
-            cell.titleLabel.text = "Home Timeline"
+            cell.titleLabel.text = "Timeline"
             return cell
         case .mentions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
