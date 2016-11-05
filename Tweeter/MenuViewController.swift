@@ -8,9 +8,9 @@
 
 import UIKit
 
-enum MenuCellType: Int {
+enum SelectionType: Int {
     case profile = 0, timeline, mentions
-    static var count: Int { return MenuCellType.mentions.hashValue + 1}
+    static var count: Int { return SelectionType.mentions.hashValue + 1}
 }
 
 class MenuViewController: UIViewController {
@@ -45,12 +45,12 @@ class MenuViewController: UIViewController {
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuCellType.count
+        return SelectionType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch MenuCellType(rawValue: indexPath.row)! {
+        switch SelectionType(rawValue: indexPath.row)! {
         case .profile:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as! ProfileMenuCell
             cell.user = User.currentUser

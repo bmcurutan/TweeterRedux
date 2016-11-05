@@ -125,6 +125,21 @@ final class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func mentionsTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        get("1.1/statuses/mentions_timeline.json", parameters: nil,
+            progress: { (Progress) -> Void in
+                
+            }, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                let dictionaries = response as! [NSDictionary]
+                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                success(tweets)
+                
+            }, failure: { (task: URLSessionTask?, error: Error) -> Void in
+                failure(error)
+            }
+        )
+    }
+    
     // MARK: - Tweet
     
     func tweetWith(text: String, replyId: NSNumber?, success: @escaping () -> (), failure: @escaping (Error) -> ()) {

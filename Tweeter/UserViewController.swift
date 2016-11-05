@@ -21,8 +21,6 @@ final class UserViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Me"
 
         tableView.dataSource = self
         tableView.delegate = self

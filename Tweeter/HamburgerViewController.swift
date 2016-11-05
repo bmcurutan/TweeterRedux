@@ -57,7 +57,7 @@ class HamburgerViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onSignoutButton(_ sender: AnyObject) {
-        TwitterClient.sharedInstance.logout()
+        // TODO TwitterClient.sharedInstance.logout()
     }
     
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {

@@ -20,13 +20,12 @@ final class TweetsViewController: UIViewController {
     
     weak var delegate: TweetsViewControllerDelegate?
     
+    var isHome: Bool = true // Default to home timeline
     var reachability: Reachability = Reachability()!
     var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Timeline"
         
         tableView.dataSource = self
         tableView.delegate = self
