@@ -31,7 +31,7 @@ class MenuViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
         let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
-        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") // TODO
+        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "MentionsViewController")
         
         viewControllers.append(userViewController)
         viewControllers.append(tweetsViewController)
