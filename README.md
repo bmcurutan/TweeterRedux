@@ -53,6 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## Icons
 
+- Icons made by [Elegant Themes](http://www.flaticon.com/authors/elegant-themes) from [Flaticon](http://www.flaticon.com) 
 - Icons made by [Icon Works](http://www.flaticon.com/authors/icon-works) from [Flaticon](http://www.flaticon.com)
 - Icons made by [ionicons](http://ionicons.com/) from [ICONFINDER](http://www.iconfinder.com)
 
