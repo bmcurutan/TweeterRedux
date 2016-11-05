@@ -10,7 +10,6 @@ import UIKit
 
 final class MentionsViewController: UIViewController {
     
-    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     var isHome: Bool = true // Default to home timeline

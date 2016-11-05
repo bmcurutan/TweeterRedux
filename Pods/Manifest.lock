@@ -16,18 +16,15 @@ PODS:
     - AFNetworking/NSURLSession
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
-  - ReachabilitySwift (3)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
-  - ReachabilitySwift
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
-  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
 
-PODFILE CHECKSUM: ac42b7307e9a3e38357437c02e102b349c3c5518
+PODFILE CHECKSUM: 8e61b7885a5b08179744ad94a147b4a84d342a20
 
 COCOAPODS: 1.0.1

@@ -13,8 +13,9 @@ enum UserSection: Int {
     static var count: Int { return UserSection.tweets.hashValue + 1}
 }
 
-// TODO - put in UIViewController instead
-final class UserViewController: UITableViewController {
+final class UserViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
@@ -45,46 +46,6 @@ final class UserViewController: UITableViewController {
             }
         )
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (UserSection(rawValue: indexPath.section)!) {
-        case .details:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
-            cell.user = user
-            return cell
-            
-        case .tweets:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-            cell.tweet = tweets[indexPath.row]
-            return cell
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch (UserSection(rawValue: section)!) {
-        case .tweets:
-            return tweets.count
-        default:
-            return 1
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Deselect row appearance after it has been selected
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return UserSection.count
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (UserSection(rawValue: section)! == .tweets ? " " : nil)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (nil != self.tableView(tableView, titleForHeaderInSection: section) ? 8 : 0)
-    }
     
     // MARK: - Private Methods
     
@@ -98,5 +59,45 @@ final class UserViewController: UITableViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
+    }
+}
+
+extension UserViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (UserSection(rawValue: indexPath.section)!) {
+        case .details:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+            cell.user = user
+            return cell
+            
+        case .tweets:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+            cell.tweet = tweets[indexPath.row]
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (UserSection(rawValue: section)! == .tweets ? tweets.count : 1)
+    }
+    
+    /* TODO func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect row appearance after it has been selected
+        tableView.deselectRow(at: indexPath, animated: true)
+    }*/
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return UserSection.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (UserSection(rawValue: section)! == .tweets ? " " : nil)
+    }
+}
+
+extension UserViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (nil != self.tableView(tableView, titleForHeaderInSection: section) ? 8 : 0)
     }
 }

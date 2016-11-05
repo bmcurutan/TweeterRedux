@@ -6,7 +6,6 @@
 //  Copyright © 2016 Bianca Curutan. All rights reserved.
 //
 
-import ReachabilitySwift
 import UIKit
 
 protocol TweetsViewControllerDelegate: class {
@@ -15,13 +14,10 @@ protocol TweetsViewControllerDelegate: class {
 
 final class TweetsViewController: UIViewController {
     
-    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: TweetsViewControllerDelegate?
     
-    var isHome: Bool = true // Default to home timeline
-    var reachability: Reachability = Reachability()!
     var tweets: [Tweet] = []
     
     override func viewDidLoad() {
@@ -31,14 +27,6 @@ final class TweetsViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Reachability
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChangedWith(notification:)), name: ReachabilityChangedNotification, object: reachability)
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Error: Could not start reachability notifier")
-        }
         
         // For pull to refresh
         let refreshControl = UIRefreshControl()
@@ -54,12 +42,6 @@ final class TweetsViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateNetworkError()
     }
     
     // MARK: - IBAction
@@ -131,8 +113,6 @@ final class TweetsViewController: UIViewController {
     // MARK: - Private Methods
     
     @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
-        updateNetworkError()
-        
         TwitterClient.sharedInstance.homeTimeline(
             success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets
@@ -143,23 +123,6 @@ final class TweetsViewController: UIViewController {
                 print("error: \(error.localizedDescription)")
             }
         )
-    }
-    
-    fileprivate func updateNetworkError() {
-        if reachability.isReachable {
-            self.errorView.isHidden = true // Hide Network Error message
-        } else {
-            self.errorView.isHidden = false// Display Network Error message
-        }
-    }
-    
-    @objc fileprivate func reachabilityChangedWith(notification: NSNotification) {
-        let reachability = notification.object as! Reachability
-        if reachability.isReachable {
-            self.errorView.isHidden = true // Hide Network Error message
-        } else {
-            self.errorView.isHidden = false // Display Network Error message
-        }
     }
     
     // MARK: - Navigation
