@@ -79,12 +79,11 @@ final class UserViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (UserSection(rawValue: section)!) {
-        case .tweets:
-            return "My Tweets"
-        default:
-            return nil
-        }
+        return (UserSection(rawValue: section)! == .tweets ? " " : nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return (nil != self.tableView(tableView, titleForHeaderInSection: section) ? 8 : 0)
     }
     
     // MARK: - Private Methods

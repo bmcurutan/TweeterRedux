@@ -18,8 +18,14 @@ final class User: NSObject {
     var screenname: String?
     var tagline: String?
     
+    var countTweets: Int?
+    var countFollowing: Int?
+    var countFollowers: Int?
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
+        
+        print(dictionary) // TODO remove
         
         location = dictionary["location"] as? String
         name = dictionary["name"] as? String
@@ -37,6 +43,10 @@ final class User: NSObject {
         
         screenname = dictionary["screen_name"] as? String
         tagline = dictionary["description"] as? String
+        
+        countTweets = dictionary["statuses_count"] as? Int
+        countFollowing = dictionary["following"] as? Int
+        countFollowers = dictionary["followers_count"] as? Int
     }
     
     static let userDidLogoutNotification = NSNotification.Name(rawValue: "UserDidLogout")
