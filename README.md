@@ -1,6 +1,6 @@
 # Project 4 - Tweeter Redux
 
-Time spent: 3 hours spent in total
+Time spent: 4 hours spent in total
 
 ## User Stories
 
@@ -12,7 +12,7 @@ The following **required** functionality is completed:
    - [x] The menu can look similar to the example or feel free to take liberty with the UI.
 - [x] Profile page
    - [x] Contains the user header view
-   - [ ] Contains a section with the users basic stats: # tweets, # following, # followers
+   - [x] Contains a section with the users basic stats: # tweets, # following, # followers
 - [x] Home Timeline
    - [ ] Tapping on a user image should bring up that user's profile page
 
