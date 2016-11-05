@@ -71,7 +71,7 @@ class HamburgerViewController: UIViewController {
             leftMarginConstraint.constant = originalLeftMargin + translation.x
             
         } else if sender.state == UIGestureRecognizerState.ended {
-            UIView.animate(withDuration: 0.3,
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [],
                 animations: {
                     if velocity.x > 0 {
                         self.leftMarginConstraint.constant = self.view.frame.size.width - 60
