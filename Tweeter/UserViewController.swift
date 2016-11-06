@@ -143,17 +143,56 @@ final class UserViewController: UIViewController {
         view.addSubview(pageControl)
         
         // Page 1
-        let bannerImageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let bannerImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         if let profileBannerURL = user?.profileBannerURL {
-            bannerImageView1.setImageWith(profileBannerURL)
+            bannerImageView.setImageWith(profileBannerURL)
         }
-        scrollView.addSubview(bannerImageView1)
+        scrollView.addSubview(bannerImageView)
+        
+        if let profilePictureURL = user?.profilePictureURL {
+            let profileImageView = UIImageView(frame: CGRect(x: 0, y: 8, width: 60, height: 60))
+            profileImageView.setImageWith(profilePictureURL)
+            profileImageView.layer.cornerRadius = 5
+            profileImageView.clipsToBounds = true
+            profileImageView.center.x = view.center.x
+            scrollView.addSubview(profileImageView)
+        }
+        
+        if let name = user?.name {
+            let nameLabel = UILabel(frame: CGRect(x: 0, y: 76, width: width - 16, height: 16))
+            let nameAttributes = [
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0)
+            ]
+            let attributedText = NSAttributedString(string: "\(name)", attributes: nameAttributes)
+            nameLabel.attributedText = attributedText
+            nameLabel.numberOfLines = 0
+            nameLabel.lineBreakMode = .byWordWrapping
+            nameLabel.sizeToFit()
+            nameLabel.center.x = view.center.x
+            scrollView.addSubview(nameLabel)
+        }
+        
+        if let screenname = user?.screenname {
+            let screennameLabel = UILabel(frame: CGRect(x: 0, y: 100, width: width - 16, height: 16))
+            let screennameAttributes = [
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
+                ]
+            let attributedText = NSAttributedString(string: "\(screenname)", attributes: screennameAttributes)
+            screennameLabel.attributedText = attributedText
+            screennameLabel.numberOfLines = 0
+            screennameLabel.lineBreakMode = .byWordWrapping
+            screennameLabel.sizeToFit()
+            screennameLabel.center.x = view.center.x
+            scrollView.addSubview(screennameLabel)
+        }
         
         // Page 2
         if let profileBannerURL = user?.profileBannerURL {
-            let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
-            bannerImageView2.setImageWith(profileBannerURL)
-            scrollView.addSubview(bannerImageView2)
+            let bannerImageView = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
+            bannerImageView.setImageWith(profileBannerURL)
+            scrollView.addSubview(bannerImageView)
         }
         
         if let tagline = user?.tagline {
