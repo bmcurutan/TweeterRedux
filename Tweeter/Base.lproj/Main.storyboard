@@ -890,7 +890,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="W7j-Kb-0x8" secondAttribute="trailing" id="8XR-n3-vSw"/>
-                            <constraint firstItem="W7j-Kb-0x8" firstAttribute="top" secondItem="0zB-58-Ayx" secondAttribute="bottom" constant="144" id="GX8-GU-LF3"/>
+                            <constraint firstItem="W7j-Kb-0x8" firstAttribute="top" secondItem="0zB-58-Ayx" secondAttribute="bottom" constant="136" id="GX8-GU-LF3"/>
                             <constraint firstItem="kC3-Jb-sXN" firstAttribute="top" secondItem="W7j-Kb-0x8" secondAttribute="bottom" id="V70-BY-snd"/>
                             <constraint firstItem="W7j-Kb-0x8" firstAttribute="leading" secondItem="uv3-Ad-vd3" secondAttribute="leading" id="qeL-dV-nHv"/>
                         </constraints>

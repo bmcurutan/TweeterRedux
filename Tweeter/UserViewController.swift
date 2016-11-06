@@ -18,9 +18,9 @@ final class UserViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var width: CGFloat = UIScreen.main.bounds.width
-    var height: CGFloat = 144
-    var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 112, width: 38, height: 36))
-    var scrollView: UIScrollView! = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 144))
+    var height: CGFloat = 136
+    var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 104, width: 38, height: 36))
+    var scrollView: UIScrollView! = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 136))
     
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
@@ -174,12 +174,12 @@ final class UserViewController: UIViewController {
         }
         
         if let screenname = user?.screenname {
-            let screennameLabel = UILabel(frame: CGRect(x: 0, y: 100, width: width - 16, height: 16))
+            let screennameLabel = UILabel(frame: CGRect(x: 0, y: 96, width: width - 16, height: 16))
             let screennameAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
                 ]
-            let attributedText = NSAttributedString(string: "\(screenname)", attributes: screennameAttributes)
+            let attributedText = NSAttributedString(string: "@\(screenname)", attributes: screennameAttributes)
             screennameLabel.attributedText = attributedText
             screennameLabel.numberOfLines = 0
             screennameLabel.lineBreakMode = .byWordWrapping
@@ -189,17 +189,32 @@ final class UserViewController: UIViewController {
         }
         
         // Page 2
+        let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
         if let profileBannerURL = user?.profileBannerURL {
-            let bannerImageView = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
-            bannerImageView.setImageWith(profileBannerURL)
-            scrollView.addSubview(bannerImageView)
+            bannerImageView2.setImageWith(profileBannerURL)
+            scrollView.addSubview(bannerImageView2)
+        }
+        
+        let locationLabel = UILabel(frame: CGRect(x: width + 8, y: 40, width: width - 16, height: 16))
+        if let location = user?.location {
+            let locationAttributes = [
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)
+            ]
+            let attributedText = NSAttributedString(string: "\(location)", attributes: locationAttributes)
+            locationLabel.attributedText = attributedText
+            locationLabel.numberOfLines = 0
+            locationLabel.lineBreakMode = .byWordWrapping
+            locationLabel.sizeToFit()
+            locationLabel.center = bannerImageView2.center
+            scrollView.addSubview(locationLabel)
         }
         
         if let tagline = user?.tagline {
-            let taglineLabel = UILabel(frame: CGRect(x: width, y: 16, width: width - 16, height: 16))
+            let taglineLabel = UILabel(frame: CGRect(x: width, y: locationLabel.frame.origin.y - 20, width: width - 16, height: 16))
             let taglineAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
+                NSFontAttributeName: UIFont.systemFont(ofSize: 14.0)
             ]
             let attributedText = NSAttributedString(string: "\(tagline)", attributes: taglineAttributes)
             taglineLabel.attributedText = attributedText
@@ -208,21 +223,6 @@ final class UserViewController: UIViewController {
             taglineLabel.sizeToFit()
             taglineLabel.center.x = view.center.x + width
             scrollView.addSubview(taglineLabel)
-        }
-        
-        if let location = user?.location {
-            let locationLabel = UILabel(frame: CGRect(x: width + 8, y: 40, width: width - 16, height: 16))
-            let locationAttributes = [
-                NSForegroundColorAttributeName: UIColor.white,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
-            ]
-            let attributedText = NSAttributedString(string: "\(location)", attributes: locationAttributes)
-            locationLabel.attributedText = attributedText
-            locationLabel.numberOfLines = 0
-            locationLabel.lineBreakMode = .byWordWrapping
-            locationLabel.sizeToFit()
-            locationLabel.center.x = view.center.x + width
-            scrollView.addSubview(locationLabel)
         }
     }
     
