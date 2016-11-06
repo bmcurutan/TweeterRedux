@@ -35,7 +35,7 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-  1.
+  1. Better ways to implement controller layer between model and view so as to use the same view with multiple models.
   2.
 
 
@@ -49,7 +49,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Faced some challenges implementing the controller layer between model and view so as to use the same view with multiple models
+- Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented 
 
 ## Icons
 
