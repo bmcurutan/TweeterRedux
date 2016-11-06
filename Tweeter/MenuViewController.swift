@@ -29,10 +29,9 @@ class MenuViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let userNavController = storyboard.instantiateViewController(withIdentifier: "UserNavigationController")
-        //let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
-        //let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-        viewControllers.append(userNavController)
+        
+        let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
+        viewControllers.append(userViewController)
         
         let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
         tweetsViewController.timelineType = .home
@@ -43,7 +42,7 @@ class MenuViewController: UIViewController {
         viewControllers.append(mentionsViewController)
         
         let navController = UINavigationController(rootViewController: tweetsViewController)
-        hamburgerViewController.contentViewController = navController // TODO fix initial load
+        hamburgerViewController.contentViewController = navController
     }
 }
 
@@ -86,9 +85,6 @@ extension MenuViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch SelectionType(rawValue: indexPath.row)! {
-        case .profile:
-            hamburgerViewController.contentViewController = viewControllers[indexPath.row]
-            
         case .signout:
             //TODO uncomment TwitterClient.sharedInstance.logout()
             break
