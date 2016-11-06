@@ -129,6 +129,7 @@ final class UserViewController: UIViewController {
     
     // MARK: - Private Methods
     
+    // put this in a view
     fileprivate func setupScrollView() {
         // Actual scroll view
         scrollView.delegate = self

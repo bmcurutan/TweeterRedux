@@ -8,13 +8,9 @@
 
 import UIKit
 
+// TODO pull this out into a view instead of a cell
 final class UserCell: UITableViewCell {
 
-    @IBOutlet weak var bannerImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var screennameLabel: UILabel!
-    
     @IBOutlet weak var tweetsCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
@@ -24,20 +20,6 @@ final class UserCell: UITableViewCell {
     
     var user: User! {
         didSet {
-            if let profileBannerURL = user.profileBannerURL {
-                bannerImageView.setImageWith(profileBannerURL)
-            }
-            
-            nameLabel.text = user.name
-            
-            if let profilePictureURL = user.profilePictureURL {
-                profileImageView.setImageWith(profilePictureURL)
-            }
-            
-            if let screenname = user.screenname {
-                screennameLabel.text = "@\(screenname)"
-            }
-            
             let countAttributes = [
                 NSForegroundColorAttributeName: UIColor.black,
                 NSFontAttributeName: UIFont.boldSystemFont(ofSize: 12.0)
@@ -65,14 +47,5 @@ final class UserCell: UITableViewCell {
                 followersCountLabel.attributedText = mutableFollowersText
             }
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        profileImageView.layer.borderColor = UIColor.white.cgColor
-        profileImageView.layer.borderWidth = 2
-        profileImageView.layer.cornerRadius = 5
-        profileImageView.clipsToBounds = true
     }
 }
