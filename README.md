@@ -1,6 +1,6 @@
 # Project 4 - Tweeter Redux
 
-Time spent: 4 hours spent in total
+Time spent: 5 hours spent in total
 
 ## User Stories
 
