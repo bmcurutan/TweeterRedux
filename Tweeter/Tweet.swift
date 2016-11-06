@@ -8,7 +8,34 @@
 
 import UIKit
 
+enum TimelineType: Int {
+    case home = 0, mentions
+}
+
 final class Tweet: NSObject {
+    
+    var tweets: [Tweet]! = []
+    var timelineType: TimelineType! {
+        didSet {
+            if timelineType == .home {
+                TwitterClient.sharedInstance.homeTimeline(
+                    success: { (tweets: [Tweet]) -> () in
+                        self.tweets = tweets
+                    }, failure: { (error: Error) -> () in
+                        print("error: \(error.localizedDescription)")
+                    }
+                )
+            } else if timelineType == .mentions {
+                TwitterClient.sharedInstance.mentionsTimeline(
+                    success: { (tweets: [Tweet]) -> () in
+                        self.tweets = tweets
+                    }, failure: { (error: Error) -> () in
+                        print("error: \(error.localizedDescription)")
+                    }
+                )
+            }
+        }
+    }
     
     var favorited = false
     var favoritesCount: Int = 0
@@ -18,6 +45,10 @@ final class Tweet: NSObject {
     var text: String?
     var timestamp: String! = ""
     var user: User?
+    
+    override init() {
+        super.init()
+    }
     
     init(dictionary: NSDictionary) {
         favorited = (dictionary["favorited"] as? Bool)!

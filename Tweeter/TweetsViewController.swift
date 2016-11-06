@@ -18,10 +18,22 @@ final class TweetsViewController: UIViewController {
     
     weak var delegate: TweetsViewControllerDelegate?
     
+    var dataController: Tweet!
+    var timelineType: TimelineType! {
+        didSet {
+            if nil == dataController {
+                dataController = Tweet()
+            }
+            dataController.timelineType = timelineType
+        }
+    }
+    
     var tweets: [Tweet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = timelineType == .home ? "Home" : "Mentions"
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -33,7 +45,9 @@ final class TweetsViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
 
-        TwitterClient.sharedInstance.homeTimeline(
+        tweets = dataController.tweets
+        
+        /*TwitterClient.sharedInstance.homeTimeline(
             success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets
                 self.tableView.reloadData()
@@ -41,7 +55,7 @@ final class TweetsViewController: UIViewController {
             }, failure: { (error: Error) -> () in
                 print("error: \(error.localizedDescription)")
             }
-        )
+        )*/
     }
     
     // MARK: - IBAction

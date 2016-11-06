@@ -9,7 +9,7 @@
 import UIKit
 
 enum SelectionType: Int {
-    case profile = 0, timeline, mentions, signout
+    case profile = 0, home, mentions, signout
     static var count: Int { return SelectionType.signout.hashValue + 1}
 }
 
@@ -30,12 +30,28 @@ class MenuViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let userNavController = storyboard.instantiateViewController(withIdentifier: "UserNavigationController")
-        let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-        let mentionsNavController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationController")
-        
+        //let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
+        //let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
         viewControllers.append(userNavController)
-        viewControllers.append(tweetsNavController)
-        viewControllers.append(mentionsNavController)
+        
+        let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
+        tweetsViewController.timelineType = .home
+        viewControllers.append(tweetsViewController)
+        
+        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
+        mentionsViewController.timelineType = .mentions
+        viewControllers.append(mentionsViewController)
+        /*let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
+        let tweetsViewController = tweetsNavController.topViewController as! TweetsViewController
+        tweetsViewController.timelineType = .home*/
+        
+        //let mentionsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+        //let mentionsViewController = tweetsNavController.topViewController as! TweetsViewController
+        //mentionsViewController.timelineType = .mentions
+        
+        
+        
+        //viewControllers.append(tweetsNavController)
         
         hamburgerViewController.contentViewController = userNavController
     }
@@ -54,10 +70,10 @@ extension MenuViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as! ProfileMenuCell
             cell.user = User.currentUser
             return cell
-        case .timeline:
+        case .home:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
             cell.iconImageView.image = UIImage(named: "home")
-            cell.titleLabel.text = "Timeline"
+            cell.titleLabel.text = "Home"
             return cell
         case .mentions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
@@ -78,10 +94,17 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
-        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
         
-        if SelectionType(rawValue: indexPath.row) == .signout {
+        if SelectionType(rawValue: indexPath.row) == .profile {
+            hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        }
+        else if SelectionType(rawValue: indexPath.row) == .signout {
             TwitterClient.sharedInstance.logout()
+        } else {
+            // Embed in navigation controller
+            let viewController = viewControllers[indexPath.row]
+            let navController = UINavigationController(rootViewController: viewController)
+            hamburgerViewController.contentViewController = navController
         }
     }
 }

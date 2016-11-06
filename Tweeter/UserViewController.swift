@@ -326,6 +326,7 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 
 // MARK: - UIScrollViewDelegate 
 
+// TODO Shouldn't be phasing in and out with table view scroll 
 extension UserViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
