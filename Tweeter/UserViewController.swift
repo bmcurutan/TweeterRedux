@@ -15,8 +15,10 @@ enum UserSection: Int {
 
 final class UserViewController: UIViewController {
     
+    @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
+    // Scroll View
     var width: CGFloat = UIScreen.main.bounds.width
     var height: CGFloat = 136
     var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 104, width: 38, height: 36))
@@ -30,6 +32,9 @@ final class UserViewController: UIViewController {
         
         self.title = (user == User.currentUser ? "Me" : user?.name)
 
+        if let profileBannerURL = user?.profileBannerURL {
+            bannerImageView.setImageWith(profileBannerURL)
+        }
         setupScrollView()
         
         tableView.dataSource = self
@@ -134,7 +139,6 @@ final class UserViewController: UIViewController {
         // Actual scroll view
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: width * 2, height: height)
-        scrollView.backgroundColor = UIColor.lightGray
         scrollView.bounces = false
         view.addSubview(scrollView)
         
@@ -144,12 +148,6 @@ final class UserViewController: UIViewController {
         view.addSubview(pageControl)
         
         // Page 1
-        let bannerImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        if let profileBannerURL = user?.profileBannerURL {
-            bannerImageView.setImageWith(profileBannerURL)
-        }
-        scrollView.addSubview(bannerImageView)
-        
         if let profilePictureURL = user?.profilePictureURL {
             let profileImageView = UIImageView(frame: CGRect(x: 0, y: 8, width: 60, height: 60))
             profileImageView.setImageWith(profilePictureURL)
@@ -190,12 +188,6 @@ final class UserViewController: UIViewController {
         }
         
         // Page 2
-        let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
-        if let profileBannerURL = user?.profileBannerURL {
-            bannerImageView2.setImageWith(profileBannerURL)
-            scrollView.addSubview(bannerImageView2)
-        }
-        
         let locationLabel = UILabel(frame: CGRect(x: width + 8, y: 40, width: width - 16, height: 16))
         if let location = user?.location {
             let locationAttributes = [
@@ -207,7 +199,8 @@ final class UserViewController: UIViewController {
             locationLabel.numberOfLines = 0
             locationLabel.lineBreakMode = .byWordWrapping
             locationLabel.sizeToFit()
-            locationLabel.center = bannerImageView2.center
+            locationLabel.center.x = width / 2 + width
+            locationLabel.center.y = height / 2
             scrollView.addSubview(locationLabel)
         }
         
@@ -334,6 +327,26 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 // MARK: - UIScrollViewDelegate 
 
 extension UserViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+            // Left (Page 1)
+            let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
+            let duration: TimeInterval = Double(width / velocity)
+            
+            UIView.animate(withDuration: duration, animations: {
+                self.bannerImageView.alpha = 1
+            })
+        } else {
+            // Right (Page 2)
+            let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
+            let duration: TimeInterval = Double(width / velocity)
+            
+            UIView.animate(withDuration: duration, animations: { 
+                self.bannerImageView.alpha = 0
+            })
+        }*/
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page : Int = Int(round(scrollView.contentOffset.x / width))
         pageControl.currentPage = page

@@ -57,7 +57,7 @@ class HamburgerViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
-        /*let translation = sender.translation(in: view)
+        let translation = sender.translation(in: view)
         let velocity = sender.velocity(in: view)
         
         if sender.state == UIGestureRecognizerState.began {
@@ -77,6 +77,6 @@ class HamburgerViewController: UIViewController {
                     self.view.layoutIfNeeded()
                 }
             )
-        }*/
+        }
     }
 }
