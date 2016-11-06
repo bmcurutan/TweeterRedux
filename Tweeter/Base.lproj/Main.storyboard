@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="jaZ-cp-Lv4">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -735,16 +736,16 @@
                                             <constraints>
                                                 <constraint firstItem="ccB-xj-Pfz" firstAttribute="top" secondItem="tQW-TM-sY9" secondAttribute="bottom" constant="8" id="6y0-tT-l75"/>
                                                 <constraint firstItem="Foy-gD-YXe" firstAttribute="leading" secondItem="cn1-Wd-iQh" secondAttribute="trailing" id="8VD-0J-1bW"/>
-                                                <constraint firstItem="tQW-TM-sY9" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" constant="8" id="9qw-K4-lGN"/>
+                                                <constraint firstItem="tQW-TM-sY9" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" id="9qw-K4-lGN"/>
                                                 <constraint firstItem="Foy-gD-YXe" firstAttribute="width" secondItem="tQW-TM-sY9" secondAttribute="width" id="CN8-D1-ACe"/>
-                                                <constraint firstItem="ZIp-vY-vx6" firstAttribute="leading" secondItem="ccB-xj-Pfz" secondAttribute="trailing" constant="8" id="Hdq-dE-pPF"/>
-                                                <constraint firstItem="ccB-xj-Pfz" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="8" id="LA9-FB-K11"/>
-                                                <constraint firstAttribute="trailing" secondItem="Foy-gD-YXe" secondAttribute="trailing" constant="8" id="Lyo-X8-eTg"/>
-                                                <constraint firstItem="cn1-Wd-iQh" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" constant="8" id="Qjg-a5-F5g"/>
+                                                <constraint firstItem="ZIp-vY-vx6" firstAttribute="leading" secondItem="ccB-xj-Pfz" secondAttribute="trailing" constant="16" id="Hdq-dE-pPF"/>
+                                                <constraint firstItem="ccB-xj-Pfz" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="16" id="LA9-FB-K11"/>
+                                                <constraint firstAttribute="trailing" secondItem="Foy-gD-YXe" secondAttribute="trailing" constant="16" id="Lyo-X8-eTg"/>
+                                                <constraint firstItem="cn1-Wd-iQh" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" id="Qjg-a5-F5g"/>
                                                 <constraint firstItem="cn1-Wd-iQh" firstAttribute="width" secondItem="tQW-TM-sY9" secondAttribute="width" id="TMX-21-xiI"/>
-                                                <constraint firstItem="Foy-gD-YXe" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" constant="8" id="Zv5-7l-r6U"/>
+                                                <constraint firstItem="Foy-gD-YXe" firstAttribute="top" secondItem="S6g-kd-lJ0" secondAttribute="top" id="Zv5-7l-r6U"/>
                                                 <constraint firstItem="ZIp-vY-vx6" firstAttribute="top" secondItem="tQW-TM-sY9" secondAttribute="bottom" constant="8" id="hjC-Nt-2Un"/>
-                                                <constraint firstItem="tQW-TM-sY9" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="8" id="mer-M6-ZUf"/>
+                                                <constraint firstItem="tQW-TM-sY9" firstAttribute="leading" secondItem="S6g-kd-lJ0" secondAttribute="leading" constant="16" id="mer-M6-ZUf"/>
                                                 <constraint firstAttribute="bottom" secondItem="ccB-xj-Pfz" secondAttribute="bottom" constant="8" id="nlW-O4-OEb"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZIp-vY-vx6" secondAttribute="bottom" constant="8" id="tH5-ZA-td5"/>
                                                 <constraint firstItem="cn1-Wd-iQh" firstAttribute="leading" secondItem="tQW-TM-sY9" secondAttribute="trailing" id="tYj-nO-16e"/>
@@ -945,6 +946,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kb5-SN-ABU"/>
+        <segue reference="bzR-Gu-hSD"/>
     </inferredMetricsTieBreakers>
 </document>

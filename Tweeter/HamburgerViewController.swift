@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO  add / remove the view controllers as children of the hamburger view controller as part of the lifecycle
 class HamburgerViewController: UIViewController {
 
     @IBOutlet weak var contentView: UIView!

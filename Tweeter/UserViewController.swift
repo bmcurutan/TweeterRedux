@@ -326,7 +326,6 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 
 // MARK: - UIScrollViewDelegate 
 
-// TODO Shouldn't be phasing in and out with table view scroll 
 extension UserViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         

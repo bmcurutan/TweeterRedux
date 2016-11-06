@@ -42,7 +42,8 @@ class MenuViewController: UIViewController {
         mentionsViewController.timelineType = .mentions
         viewControllers.append(mentionsViewController)
         
-        hamburgerViewController.contentViewController = userNavController
+        let navController = UINavigationController(rootViewController: tweetsViewController)
+        hamburgerViewController.contentViewController = navController // TODO fix initial load
     }
 }
 
@@ -89,7 +90,8 @@ extension MenuViewController: UITableViewDelegate {
             hamburgerViewController.contentViewController = viewControllers[indexPath.row]
             
         case .signout:
-            TwitterClient.sharedInstance.logout()
+            //TODO uncomment TwitterClient.sharedInstance.logout()
+            break
             
         default:
             // Embed in navigation controller
