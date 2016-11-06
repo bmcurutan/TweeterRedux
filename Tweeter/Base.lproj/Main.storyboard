@@ -87,20 +87,10 @@
                                                         <action selector="onFavoriteButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="HlW-xR-rvA"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArG-AA-WWJ" userLabel="Hidden Button">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="CSE-eg-Ten"/>
-                                                        <constraint firstAttribute="width" constant="50" id="EWX-0c-HAc"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <segue destination="XBR-LL-MnM" kind="push" identifier="userSegue" id="JmX-rv-y0t"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="TxQ-8Y-UXp" firstAttribute="top" secondItem="VkQ-8s-9Wg" secondAttribute="bottom" constant="5" id="5Kb-SD-uek"/>
                                                 <constraint firstItem="TCN-3O-pes" firstAttribute="top" secondItem="VkQ-8s-9Wg" secondAttribute="bottom" constant="5" id="8N1-aI-NyL"/>
-                                                <constraint firstItem="ArG-AA-WWJ" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="8" id="9Xa-um-hEI"/>
                                                 <constraint firstItem="H49-zk-c4V" firstAttribute="top" secondItem="bAX-bx-hLB" secondAttribute="top" id="9ia-mC-nix"/>
                                                 <constraint firstItem="yay-Mn-GIf" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="8" id="GDP-a0-YWh"/>
                                                 <constraint firstItem="bAX-bx-hLB" firstAttribute="leading" secondItem="yay-Mn-GIf" secondAttribute="trailing" constant="8" id="O7T-3Y-y86"/>
@@ -116,7 +106,6 @@
                                                 <constraint firstItem="VkQ-8s-9Wg" firstAttribute="leading" secondItem="yay-Mn-GIf" secondAttribute="trailing" constant="8" id="hZ2-52-Kgm"/>
                                                 <constraint firstItem="TCN-3O-pes" firstAttribute="leading" secondItem="z2Z-fv-qfg" secondAttribute="trailing" constant="32" id="l9u-0e-kkX"/>
                                                 <constraint firstItem="bAX-bx-hLB" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="5" id="nir-1v-d0Y"/>
-                                                <constraint firstItem="ArG-AA-WWJ" firstAttribute="leading" secondItem="DkT-1s-XME" secondAttribute="leading" constant="8" id="t6C-tI-Ejk"/>
                                                 <constraint firstAttribute="bottom" secondItem="TCN-3O-pes" secondAttribute="bottom" constant="8" id="uWE-sx-asg"/>
                                                 <constraint firstAttribute="trailing" secondItem="VkQ-8s-9Wg" secondAttribute="trailing" constant="8" id="uwr-MJ-Fz6"/>
                                             </constraints>
@@ -124,7 +113,6 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="favoriteButton" destination="TCN-3O-pes" id="rUO-JL-Adl"/>
-                                            <outlet property="hiddenButton" destination="ArG-AA-WWJ" id="409-ki-ouU"/>
                                             <outlet property="nameLabel" destination="bAX-bx-hLB" id="zfr-3K-vue"/>
                                             <outlet property="profilePictureImageView" destination="yay-Mn-GIf" id="EE3-Ex-8h1"/>
                                             <outlet property="replyButton" destination="TxQ-8Y-UXp" id="tAN-Jh-cZp"/>
@@ -958,7 +946,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JmX-rv-y0t"/>
         <segue reference="kb5-SN-ABU"/>
     </inferredMetricsTieBreakers>
 </document>
