@@ -17,6 +17,11 @@ final class UserViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var width: CGFloat = UIScreen.main.bounds.width
+    var height: CGFloat = 144
+    var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 100, width: 38, height: 36))
+    var scrollView: UIScrollView! = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 144))
+    
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
     
@@ -25,15 +30,12 @@ final class UserViewController: UIViewController {
         
         self.title = (user == User.currentUser ? "Me" : user?.name)
 
+        setupScrollView()
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // For pull to refresh
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
-        tableView.insertSubview(refreshControl, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,16 +66,6 @@ final class UserViewController: UIViewController {
     }
     
     // MARK: - IBAction
-    
-    /*@IBAction func onTweetButton(_ sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "NewTweetViewController") as! NewTweetViewController
-        
-        viewController.delegate = self
-        viewController.user = User.currentUser
-        
-        self.present(viewController, animated: true, completion: nil)
-    }*/
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         let favoriteButton = sender as! UIButton
@@ -135,6 +127,25 @@ final class UserViewController: UIViewController {
         }
     }
     
+    // MARK: - Private Methods
+    
+    fileprivate func setupScrollView() {
+        // Actual scroll view
+        scrollView.delegate = self
+        scrollView.contentSize = CGSize(width: width * 2, height: height)
+        scrollView.backgroundColor = UIColor.green
+        view.addSubview(scrollView)
+        
+        // Page control
+        pageControl.center.x = view.center.x
+        pageControl.numberOfPages = 2
+        view.addSubview(pageControl)
+        
+        // Page 1
+        
+        
+    }
+    
     // MARK: - Segues
     
     fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
@@ -165,20 +176,6 @@ final class UserViewController: UIViewController {
         viewController.delegate = self
         viewController.replyTweet = tweet
         viewController.user = User.currentUser
-    }
-    
-    // MARK: - Private Methods
-    
-    @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
-        TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname!)!, success: { (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-            
-            }, failure: { (error: Error) -> () in
-                print("error: \(error.localizedDescription)")
-            }
-        )
     }
 }
 
@@ -253,4 +250,11 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
     }
 }
 
+// MARK: - UIScrollViewDelegate 
 
+extension UserViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page : Int = Int(round(scrollView.contentOffset.x / width))
+        pageControl.currentPage = page
+    }
+}
