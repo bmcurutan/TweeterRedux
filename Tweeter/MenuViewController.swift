@@ -29,16 +29,16 @@ class MenuViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let userViewController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
-        let tweetsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
-        let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "MentionsViewController")
+        let userNavController = storyboard.instantiateViewController(withIdentifier: "UserNavigationController")
+        let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+        let mentionsNavController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationController")
         
-        viewControllers.append(userViewController)
-        viewControllers.append(tweetsViewController)
-        viewControllers.append(mentionsViewController)
+        viewControllers.append(userNavController)
+        viewControllers.append(tweetsNavController)
+        viewControllers.append(mentionsNavController)
         
         // Default to home timeline
-        hamburgerViewController.contentViewController = tweetsViewController
+        hamburgerViewController.contentViewController = tweetsNavController
     }
 }
 

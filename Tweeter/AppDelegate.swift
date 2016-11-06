@@ -23,20 +23,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuViewController.hamburgerViewController = hamburgerViewController
         hamburgerViewController.menuViewController = menuViewController
         
-        // Customize Navigation bar colors 
+        let twitterBlueColor: UIColor = UIColor(red: 0, green: 172/255, blue: 237/255, alpha: 1.0)
+        
+        // Customize Navigation bar
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.barTintColor = UIColor(red: 0, green: 172/255, blue: 237/255, alpha: 1.0)
+        navigationBarAppearance.barTintColor = twitterBlueColor
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationBarAppearance.isTranslucent = false
+        
+        // Customize status bar
+        UIApplication.shared.statusBarStyle = .lightContent
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
+            statusBar.backgroundColor = twitterBlueColor
+        }
         
         window?.makeKeyAndVisible()
 
         if nil != User.currentUser {
             print("There is a current user") 
-            // TODO window?.rootViewController = hamburgerViewController
-            let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
-            window?.rootViewController = navigationController
+            window?.rootViewController = hamburgerViewController
+            //let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
+            //window?.rootViewController = navigationController
         }
         
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in
