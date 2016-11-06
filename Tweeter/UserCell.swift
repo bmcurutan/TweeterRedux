@@ -48,4 +48,11 @@ final class UserCell: UITableViewCell {
             }
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        followingCountLabel.layer.borderWidth = 1
+        followingCountLabel.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+    }
 }
