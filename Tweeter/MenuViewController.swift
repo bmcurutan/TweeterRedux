@@ -9,8 +9,8 @@
 import UIKit
 
 enum SelectionType: Int {
-    case profile = 0, timeline, mentions
-    static var count: Int { return SelectionType.mentions.hashValue + 1}
+    case profile = 0, timeline, mentions, signout
+    static var count: Int { return SelectionType.signout.hashValue + 1}
 }
 
 class MenuViewController: UIViewController {
@@ -37,7 +37,6 @@ class MenuViewController: UIViewController {
         viewControllers.append(tweetsNavController)
         viewControllers.append(mentionsNavController)
         
-        // Default to home timeline
         hamburgerViewController.contentViewController = userNavController
     }
 }
@@ -65,6 +64,11 @@ extension MenuViewController: UITableViewDataSource {
             cell.iconImageView.image = UIImage(named: "at")
             cell.titleLabel.text = "Mentions"
             return cell
+        case .signout:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
+            cell.iconImageView.image = UIImage(named: "stop")
+            cell.titleLabel.text = "Sign Out"
+            return cell
         }
     }
 }
@@ -75,5 +79,9 @@ extension MenuViewController: UITableViewDelegate {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
         hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        
+        if SelectionType(rawValue: indexPath.row) == .signout {
+            TwitterClient.sharedInstance.logout()
+        }
     }
 }

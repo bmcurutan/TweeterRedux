@@ -151,8 +151,6 @@ final class MentionsViewController: UIViewController {
         
          viewController.delegate = self
          viewController.tweet = tweet
-         
-         // TODO self.delegate = viewController
      }
      
      fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {

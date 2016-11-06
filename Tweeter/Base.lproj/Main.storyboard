@@ -145,8 +145,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cn5-eA-uch">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="VYP-K3-5oP"/>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="8hL-vz-gCz">
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="8hL-vz-gCz">
                             <connections>
                                 <segue destination="P1K-Eh-krp" kind="modal" identifier="newTweetSegue" id="kb5-SN-ABU"/>
                             </connections>
@@ -568,6 +567,7 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="PLn-Hb-JEL" id="Uca-be-naW"/>
+                        <segue destination="TeA-PA-gMn" kind="modal" identifier="loginSegue" id="c00-4Q-byM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVm-Tt-3bz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -830,6 +830,7 @@
                                                     <state key="normal" title="Button" image="retweet"/>
                                                     <state key="selected" image="retweet-on"/>
                                                     <connections>
+                                                        <action selector="onRetweetButton:" destination="XBR-LL-MnM" eventType="touchUpInside" id="Xw3-NP-pMO"/>
                                                         <action selector="onRetweetButton:" destination="duE-ml-sbK" eventType="touchUpInside" id="Yaq-CI-f0u"/>
                                                     </connections>
                                                 </button>
@@ -841,6 +842,7 @@
                                                     <state key="normal" title="Button" image="favorite"/>
                                                     <state key="selected" image="favorite-on"/>
                                                     <connections>
+                                                        <action selector="onFavoriteButton:" destination="XBR-LL-MnM" eventType="touchUpInside" id="G9I-e3-Xyu"/>
                                                         <action selector="onFavoriteButton:" destination="duE-ml-sbK" eventType="touchUpInside" id="mQb-BY-ofl"/>
                                                     </connections>
                                                 </button>
@@ -893,14 +895,25 @@
                             <constraint firstItem="W7j-Kb-0x8" firstAttribute="top" secondItem="0zB-58-Ayx" secondAttribute="bottom" id="zDL-Ne-ekE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Me" id="M32-kc-E6l"/>
+                    <navigationItem key="navigationItem" title="Me" id="M32-kc-E6l">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="b5C-fv-IoO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lMf-eg-2MB">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <segue destination="P1K-Eh-krp" kind="modal" identifier="newTweetSegue" id="Lcd-4L-hGh"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="W7j-Kb-0x8" id="7bz-Dt-b4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1fQ-v9-Y7Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2599.5" y="-721.5"/>
+            <point key="canvasLocation" x="2732" y="-722"/>
         </scene>
         <!--Mentions View Controller-->
         <scene sceneID="JS3-0H-6Ac">
@@ -1038,8 +1051,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Mentions" id="Kpd-yU-xsb">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="6dC-NN-LSK"/>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="Cbi-BV-i8G">
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="Cbi-BV-i8G">
                             <connections>
                                 <segue destination="P1K-Eh-krp" kind="modal" identifier="newTweetSegue" id="djU-2o-dzg"/>
                             </connections>
@@ -1144,7 +1156,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kXw-4a-KuQ"/>
         <segue reference="ZZQ-Rx-1mb"/>
+        <segue reference="kXw-4a-KuQ"/>
     </inferredMetricsTieBreakers>
 </document>

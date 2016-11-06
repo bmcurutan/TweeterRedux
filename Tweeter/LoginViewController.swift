@@ -28,9 +28,15 @@ final class LoginViewController: UIViewController {
         client.login(
             success: { () -> () in
                 print("I've logged in!")
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                
+                //self.performSegue(withIdentifier: "loginSegue", sender: nil) TODO remove
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController")
+                let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+                let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+                
+                menuViewController.hamburgerViewController = hamburgerViewController
+                hamburgerViewController.menuViewController = menuViewController
                 self.present(hamburgerViewController, animated: true, completion: nil)
             
             }, failure: { (error: Error) -> () in

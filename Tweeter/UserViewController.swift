@@ -23,7 +23,7 @@ final class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = user?.name
+        self.title = (user == User.currentUser ? "Me" : user?.name)
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -52,13 +52,10 @@ final class UserViewController: UIViewController {
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if "userSegue" == segue.identifier {
-            onUserSegue(segue: segue, sender: sender)
-            
-        } else if "detailsSegue" == segue.identifier {
+        if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
             
-        } else if "newTweetSegue" == segue.identifier {
+        } else if "newTweetSegue" == segue.identifier { 
             onNewTweetSegue(segue: segue, sender: sender)
             
         } else if "replySegue" == segue.identifier {
@@ -66,15 +63,79 @@ final class UserViewController: UIViewController {
         }
     }
     
-    // MARK: - Segues
+    // MARK: - IBAction
     
-    fileprivate func onUserSegue(segue: UIStoryboardSegue, sender: Any?) {
-        let button = sender as! UIButton
-        let tweet = tweets[button.tag]
-        let viewController = segue.destination as! UserViewController
+    /*@IBAction func onTweetButton(_ sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NewTweetViewController") as! NewTweetViewController
         
-        viewController.user = tweet.user
+        viewController.delegate = self
+        viewController.user = User.currentUser
+        
+        self.present(viewController, animated: true, completion: nil)
+    }*/
+    
+    @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        let favoriteButton = sender as! UIButton
+        let tweet = tweets[favoriteButton.tag]
+        
+        if tweet.favorited { // Currently favorited, so unfavorite action
+            TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id,
+                                                            success: { () -> () in
+                                                                print("Tweet successfully unfavorited")
+                                                                tweet.favorited = false
+                                                                tweet.favoritesCount -= 1
+                                                                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Favorite action
+            TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id,
+                                                         success: { () -> () in
+                                                            print("Tweet successfully favorited")
+                                                            tweet.favorited = true
+                                                            tweet.favoritesCount += 1
+                                                            
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
     }
+    
+    @IBAction func onRetweetButton(_ sender: AnyObject) {
+        let retweetButton = sender as! UIButton
+        let tweet = tweets[retweetButton.tag]
+        
+        if tweet.retweeted { // Currently retweeted, so unretweet action
+            TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
+                                                       success: { () -> () in
+                                                        print("Tweet successfully unretweeted")
+                                                        tweet.retweeted = false
+                                                        tweet.retweetCount -= 1
+                                                        
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else { // Retweet action
+            TwitterClient.sharedInstance.retweetWith(id: tweet.id,
+                                                     success: { () -> () in
+                                                        print("Tweet successfully retweeted")
+                                                        tweet.retweeted = true
+                                                        tweet.retweetCount += 1
+                                                        
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+    }
+    
+    // MARK: - Segues
     
     fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
@@ -82,9 +143,8 @@ final class UserViewController: UIViewController {
         let tweet = tweets[indexPath!.row]
         let viewController = segue.destination as! TweetDetailsViewController
         
-        //viewController.delegate = self
+        viewController.delegate = self
         viewController.tweet = tweet
-        
         //self.delegate = viewController
     }
     
@@ -92,7 +152,7 @@ final class UserViewController: UIViewController {
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
         
-        //viewController.delegate = self
+        viewController.delegate = self
         viewController.user = User.currentUser
     }
     
@@ -102,7 +162,7 @@ final class UserViewController: UIViewController {
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
         
-        //viewController.delegate = self
+        viewController.delegate = self
         viewController.replyTweet = tweet
         viewController.user = User.currentUser
     }
@@ -164,3 +224,33 @@ extension UserViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+// MARK: - NewTweetViewControllerDelegate
+
+extension UserViewController: NewTweetViewControllerDelegate {
+    
+    func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet) {
+        tweets.insert(tweet, at: 0)
+        tableView.reloadData()
+    }
+}
+
+// MARK: - TweetDetailsViewControllerDelegate
+
+extension UserViewController: TweetDetailsViewControllerDelegate {
+    
+    func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
+        
+        TwitterClient.sharedInstance.homeTimeline(
+            success: { (tweets: [Tweet]) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                
+            }, failure: { (error: Error) -> () in
+                print("error: \(error.localizedDescription)")
+            }
+        )
+    }
+}
+
+
