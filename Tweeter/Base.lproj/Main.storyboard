@@ -84,11 +84,14 @@
                                                         <action selector="onFavoriteButton:" destination="xKo-GX-qjX" eventType="touchUpInside" id="HlW-xR-rvA"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArG-AA-WWJ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArG-AA-WWJ" userLabel="Hidden Button">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="CSE-eg-Ten"/>
                                                         <constraint firstAttribute="width" constant="50" id="EWX-0c-HAc"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <segue destination="XBR-LL-MnM" kind="push" identifier="userSegue" id="JmX-rv-y0t"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -118,6 +121,7 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="favoriteButton" destination="TCN-3O-pes" id="rUO-JL-Adl"/>
+                                            <outlet property="hiddenButton" destination="ArG-AA-WWJ" id="409-ki-ouU"/>
                                             <outlet property="nameLabel" destination="bAX-bx-hLB" id="zfr-3K-vue"/>
                                             <outlet property="profilePictureImageView" destination="yay-Mn-GIf" id="EE3-Ex-8h1"/>
                                             <outlet property="replyButton" destination="TxQ-8Y-UXp" id="tAN-Jh-cZp"/>
@@ -1081,4 +1085,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="JmX-rv-y0t"/>
+    </inferredMetricsTieBreakers>
 </document>

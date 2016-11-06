@@ -144,16 +144,7 @@ final class TweetsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if "userSegue" == segue.identifier {
-            // TODO fix this 
-            //let location = sender.location(in: tableView)
-            //if let indexPath = tableView.indexPathForRow(at: location) {
-                //let tweet = tweets[indexPath.row]
-                let user = User.currentUser
-            
-            let viewController = segue.destination as! UserViewController
-            viewController.user = user
-            
-            //self.delegate = viewController
+            onUserSegue(segue: segue, sender: sender)
         }
         /*if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
@@ -167,6 +158,13 @@ final class TweetsViewController: UIViewController {
     }
     
     // MARK: - Segues
+    
+    fileprivate func onUserSegue(segue: UIStoryboardSegue, sender: Any?) {
+        let button = sender as! UIButton
+        let tweet = tweets[button.tag]
+        let viewController = segue.destination as! UserViewController
+        viewController.user = tweet.user
+    }
     
     /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
@@ -203,6 +201,7 @@ final class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.hiddenButton.tag = indexPath.row
         cell.replyButton.tag = indexPath.row
         cell.retweetButton.tag = indexPath.row
         cell.favoriteButton.tag = indexPath.row
