@@ -14,7 +14,7 @@ enum TimelineType: Int {
 
 final class Tweet: NSObject {
     
-    var tweets: [Tweet]! = []
+    var tweets: [Tweet]! 
     var timelineType: TimelineType! {
         didSet {
             if timelineType == .home {

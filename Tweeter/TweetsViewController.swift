@@ -39,23 +39,20 @@ final class TweetsViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // For pull to refresh
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(onPullToRefreshWith(refreshControl:)), for: UIControlEvents.valueChanged)
-        tableView.insertSubview(refreshControl, at: 0)
 
-        tweets = dataController.tweets
-        
-        /*TwitterClient.sharedInstance.homeTimeline(
-            success: { (tweets: [Tweet]) -> () in
-                self.tweets = tweets
-                self.tableView.reloadData()
-            
-            }, failure: { (error: Error) -> () in
-                print("error: \(error.localizedDescription)")
-            }
-        )*/
+        if nil != dataController.tweets {
+            tweets = dataController.tweets
+        } else {
+            TwitterClient.sharedInstance.homeTimeline(
+                success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                    self.tableView.reloadData()
+                
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            ) // TODO fix this hack
+        }
     }
     
     // MARK: - IBAction
@@ -122,23 +119,6 @@ final class TweetsViewController: UIViewController {
         }
 
         self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
-    }
-    
-    // MARK: - Private Methods
-    
-    @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
-        
-        // TODO remove
-        TwitterClient.sharedInstance.homeTimeline(
-            success: { (tweets: [Tweet]) -> () in
-                self.tweets = tweets
-                self.tableView.reloadData()
-                refreshControl.endRefreshing()
-            
-            }, failure: { (error: Error) -> () in
-                print("error: \(error.localizedDescription)")
-            }
-        )
     }
     
     // MARK: - Navigation
