@@ -328,7 +328,7 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 
 extension UserViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        /*if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
             // Left (Page 1)
             let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
             let duration: TimeInterval = Double(width / velocity)
@@ -342,9 +342,9 @@ extension UserViewController: UIScrollViewDelegate {
             let duration: TimeInterval = Double(width / velocity)
             
             UIView.animate(withDuration: duration, animations: { 
-                self.bannerImageView.alpha = 0
+                self.bannerImageView.alpha = 0.4
             })
-        }*/
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
