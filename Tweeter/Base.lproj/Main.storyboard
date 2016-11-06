@@ -23,11 +23,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pMW-eU-ajC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="xKo-GX-qjX" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="130"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="xKo-GX-qjX" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xKo-GX-qjX" id="DkT-1s-XME">
-                                            <frame key="frameInset" width="375" height="129"/>
+                                            <frame key="frameInset" width="818" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yay-Mn-GIf">
@@ -59,6 +59,9 @@
                                                         <constraint firstAttribute="width" constant="16" id="o8P-xg-fYy"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
+                                                    <connections>
+                                                        <segue destination="P1K-Eh-krp" kind="modal" identifier="replySegue" id="D1o-g6-e9I"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2Z-fv-qfg">
                                                     <constraints>
@@ -128,6 +131,7 @@
                                             <outlet property="retweetButton" destination="z2Z-fv-qfg" id="9wx-X6-871"/>
                                             <outlet property="timestampLabel" destination="H49-zk-c4V" id="9ux-zb-Q00"/>
                                             <outlet property="tweetTextLabel" destination="VkQ-8s-9Wg" id="sLa-Fi-R2C"/>
+                                            <segue destination="8ac-yD-Gcy" kind="push" identifier="detailsSegue" id="b5a-GO-Sng"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -142,7 +146,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="cn5-eA-uch">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="VYP-K3-5oP"/>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="8hL-vz-gCz"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="8hL-vz-gCz">
+                            <connections>
+                                <segue destination="P1K-Eh-krp" kind="modal" identifier="newTweetSegue" id="kb5-SN-ABU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pMW-eU-ajC" id="SFh-FL-oi8"/>
@@ -150,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880.5" y="-737.5"/>
+            <point key="canvasLocation" x="881" y="-695"/>
         </scene>
         <!--Tweet-->
         <scene sceneID="95R-yG-CFk">
@@ -168,10 +176,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailsCell" rowHeight="136" id="UJ7-aE-Ggt" customClass="DetailsCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="136"/>
+                                        <rect key="frame" x="0.0" y="92" width="375" height="136"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJ7-aE-Ggt" id="faX-an-8kC">
-                                            <frame key="frameInset" width="375" height="135"/>
+                                            <frame key="frameInset" width="375" height="135.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rob-pR-BFB">
@@ -229,10 +237,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsCell" rowHeight="68" id="iSv-OB-YHT" customClass="ActionsCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="68"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iSv-OB-YHT" id="3j5-4s-V9b">
-                                            <frame key="frameInset" width="375" height="67"/>
+                                            <frame key="frameInset" width="375" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzK-be-v2K">
@@ -241,6 +249,9 @@
                                                         <constraint firstAttribute="height" constant="16" id="zJt-hA-CYs"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
+                                                    <connections>
+                                                        <segue destination="P1K-Eh-krp" kind="modal" identifier="replySegue" id="4Uw-jR-pBj"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuS-6s-0xD">
                                                     <constraints>
@@ -327,7 +338,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tweet" id="T7K-5j-701">
-                        <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="6vr-eC-foy">
+                            <connections>
+                                <segue destination="P1K-Eh-krp" kind="modal" identifier="replySegue" id="mCy-ZG-cRi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="2H8-Yq-c5r" id="qye-Zm-SmD"/>
@@ -415,25 +430,22 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileMenuCell" rowHeight="86" id="vPS-Fi-xuR" customClass="ProfileMenuCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="315" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="vPS-Fi-xuR" id="5A1-Q8-RGl">
-                                            <frame key="frameInset" width="315" height="85"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vPS-Fi-xuR" id="5A1-Q8-RGl">
+                                            <frame key="frameInset" width="315" height="85.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rue-HF-bMZ">
-                                                    <frame key="frameInset" width="1000" height="1000"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rue-HF-bMZ">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="AdL-H8-7IV"/>
                                                         <constraint firstAttribute="height" constant="70" id="u7b-RZ-5ue"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" misplaced="YES" text="Bianca Curutan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chc-yE-vnf">
-                                                    <frame key="frameInset" width="1000" height="1000"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Bianca Curutan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chc-yE-vnf">
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Something something something fun something" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-KN-SWr">
-                                                    <frame key="frameInset" width="1000" height="1000"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something something something fun something" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-KN-SWr">
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -461,8 +473,8 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconMenuCell" rowHeight="48" id="gDV-mP-UnQ" customClass="IconMenuCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="315" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="gDV-mP-UnQ" id="VXn-FV-NZK">
-                                            <frame key="frameInset" width="315" height="47"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gDV-mP-UnQ" id="VXn-FV-NZK">
+                                            <frame key="frameInset" width="315" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kz5-4x-WfN">
@@ -470,8 +482,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="at" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Io-Vea">
-                                                    <frame key="frameInset" width="1000" height="1000"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="at" translatesAutoresizingMaskIntoConstraints="NO" id="AnW-Io-Vea">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="aHv-g5-e1p"/>
                                                         <constraint firstAttribute="height" constant="32" id="bjq-H0-I6F"/>
@@ -647,7 +658,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRQ-1j-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.5" y="174.5"/>
+            <point key="canvasLocation" x="2281.5" y="293.5"/>
         </scene>
         <!--Me-->
         <scene sceneID="3YA-uE-keE">
@@ -665,10 +676,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="200" id="Ty6-JX-ulb" customClass="UserCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="92" width="1000" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ty6-JX-ulb" id="S6g-kd-lJ0">
-                                            <frame key="frameInset" width="375" height="199" maxY="1"/>
+                                            <frame key="frameInset" width="1000" height="199.5" maxY="0.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="44f-u5-cVc">
@@ -774,10 +785,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="182" id="duE-ml-sbK" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="292" width="375" height="182"/>
+                                        <rect key="frame" x="0.0" y="292" width="1000" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="duE-ml-sbK" id="iOi-Qb-hqs">
-                                            <frame key="frameInset" width="375" height="181"/>
+                                            <frame key="frameInset" width="1000" height="181.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxp-8w-GZc">
@@ -803,6 +814,9 @@
                                                         <constraint firstAttribute="height" constant="16" id="pBc-9L-OYN"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
+                                                    <connections>
+                                                        <segue destination="P1K-Eh-krp" kind="modal" identifier="replySegue" id="bzR-Gu-hSD"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4O5-I1-4sO">
                                                     <constraints>
@@ -899,11 +913,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mLv-sh-REE">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="NhG-xo-Yny" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="130" id="NhG-xo-Yny" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NhG-xo-Yny" id="DAR-IN-ICM">
-                                            <frame key="frameInset" width="375" height="129"/>
+                                            <frame key="frameInset" width="342" height="129.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRe-DU-xKJ">
@@ -934,6 +948,9 @@
                                                         <constraint firstAttribute="height" constant="16" id="LcG-S5-dEr"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="reply"/>
+                                                    <connections>
+                                                        <segue destination="P1K-Eh-krp" kind="modal" identifier="replySegue" id="3Zj-kX-dAE"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-4O-uNn">
                                                     <constraints>
@@ -959,6 +976,17 @@
                                                         <action selector="onFavoriteButton:" destination="YEl-ze-Rey" eventType="touchUpInside" id="g1j-aa-pA0"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yD-GC-bgD" userLabel="Hidden Button">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="2zn-mI-A73"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="9KD-s9-4dg"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="SHm-jb-d9h"/>
+                                                        <constraint firstAttribute="width" constant="50" id="WSy-bZ-dhi"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <segue destination="XBR-LL-MnM" kind="push" identifier="userSegue" id="ZZQ-Rx-1mb"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="cuC-ng-3QJ" firstAttribute="leading" secondItem="yg8-Ei-ACA" secondAttribute="leading" id="2py-hM-n41"/>
@@ -966,12 +994,14 @@
                                                 <constraint firstItem="v2u-4O-uNn" firstAttribute="leading" secondItem="cuC-ng-3QJ" secondAttribute="trailing" constant="32" id="8zt-CG-Dhf"/>
                                                 <constraint firstAttribute="trailing" secondItem="yg8-Ei-ACA" secondAttribute="trailing" constant="8" id="Ddx-ay-xy8"/>
                                                 <constraint firstAttribute="bottom" secondItem="v2u-4O-uNn" secondAttribute="bottom" constant="8" id="FzT-Ro-sOp"/>
+                                                <constraint firstItem="4yD-GC-bgD" firstAttribute="top" secondItem="DAR-IN-ICM" secondAttribute="top" constant="8" id="HsA-OY-Ldc"/>
                                                 <constraint firstItem="fRe-DU-xKJ" firstAttribute="top" secondItem="DAR-IN-ICM" secondAttribute="top" constant="8" id="LnN-mm-gDc"/>
                                                 <constraint firstItem="yoS-6N-J2s" firstAttribute="top" secondItem="DAR-IN-ICM" secondAttribute="top" constant="5" id="MWE-OT-OPD"/>
                                                 <constraint firstItem="uLg-Wy-Z7I" firstAttribute="leading" secondItem="v2u-4O-uNn" secondAttribute="trailing" constant="32" id="XZM-S0-QNc"/>
                                                 <constraint firstItem="yg8-Ei-ACA" firstAttribute="leading" secondItem="fRe-DU-xKJ" secondAttribute="trailing" constant="8" id="ZBr-gD-L3V"/>
                                                 <constraint firstItem="gGp-Su-vnd" firstAttribute="top" secondItem="yoS-6N-J2s" secondAttribute="top" id="bKL-fL-kdW"/>
                                                 <constraint firstItem="yg8-Ei-ACA" firstAttribute="top" secondItem="yoS-6N-J2s" secondAttribute="bottom" constant="2" id="cFP-4s-BIr"/>
+                                                <constraint firstItem="4yD-GC-bgD" firstAttribute="leading" secondItem="DAR-IN-ICM" secondAttribute="leading" constant="8" id="ep3-wl-VqV"/>
                                                 <constraint firstItem="yoS-6N-J2s" firstAttribute="leading" secondItem="fRe-DU-xKJ" secondAttribute="trailing" constant="8" id="fHa-af-Fdm"/>
                                                 <constraint firstAttribute="trailing" secondItem="gGp-Su-vnd" secondAttribute="trailing" constant="8" id="fu0-BU-zjp"/>
                                                 <constraint firstItem="uLg-Wy-Z7I" firstAttribute="top" secondItem="yg8-Ei-ACA" secondAttribute="bottom" constant="5" id="gHc-Lg-0aM"/>
@@ -990,6 +1020,7 @@
                                             <outlet property="retweetButton" destination="v2u-4O-uNn" id="v4w-el-J06"/>
                                             <outlet property="timestampLabel" destination="gGp-Su-vnd" id="f5N-qd-4Oq"/>
                                             <outlet property="tweetTextLabel" destination="yg8-Ei-ACA" id="EeH-8s-qdA"/>
+                                            <segue destination="P1K-Eh-krp" kind="push" identifier="detailsSegue" id="kXw-4a-KuQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1004,7 +1035,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Mentions" id="Kpd-yU-xsb">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="6dC-NN-LSK"/>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="Cbi-BV-i8G"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="Cbi-BV-i8G">
+                            <connections>
+                                <segue destination="P1K-Eh-krp" kind="modal" identifier="newTweetSegue" id="djU-2o-dzg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="mLv-sh-REE" id="8Ex-vi-QyE"/>
@@ -1012,7 +1047,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJS-Y8-mrD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.5" y="44.5"/>
+            <point key="canvasLocation" x="704" y="173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RFl-Re-nD7">
@@ -1068,6 +1103,25 @@
             </objects>
             <point key="canvasLocation" x="-181.5" y="44.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ylu-2j-3Li">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P1K-Eh-krp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Bs1-PF-FTS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SAC-H9-Zk8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="amC-ZC-IBP" kind="relationship" relationship="rootViewController" id="gWc-Cs-62R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4mh-Ys-S6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694.5" y="293.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="accounts" width="64" height="64"/>
@@ -1086,6 +1140,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JmX-rv-y0t"/>
+        <segue reference="kXw-4a-KuQ"/>
+        <segue reference="ZZQ-Rx-1mb"/>
     </inferredMetricsTieBreakers>
 </document>

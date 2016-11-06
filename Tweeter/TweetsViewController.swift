@@ -145,8 +145,8 @@ final class TweetsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if "userSegue" == segue.identifier {
             onUserSegue(segue: segue, sender: sender)
-        }
-        /*if "detailsSegue" == segue.identifier {
+        
+        } else if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
             
         } else if "newTweetSegue" == segue.identifier {
@@ -154,7 +154,7 @@ final class TweetsViewController: UIViewController {
         
         } else if "replySegue" == segue.identifier {
             onReplySegue(segue: segue, sender: sender)
-        }*/
+        }
     }
     
     // MARK: - Segues
@@ -163,24 +163,26 @@ final class TweetsViewController: UIViewController {
         let button = sender as! UIButton
         let tweet = tweets[button.tag]
         let viewController = segue.destination as! UserViewController
+        
         viewController.user = tweet.user
     }
     
-    /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
+    fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
         let indexPath = tableView.indexPath(for: cell)
         let tweet = tweets[indexPath!.row]
-        
         let viewController = segue.destination as! TweetDetailsViewController
+        
         viewController.delegate = self
         viewController.tweet = tweet
-        
+
         self.delegate = viewController
     }
     
     fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
+        
         viewController.delegate = self
         viewController.user = User.currentUser
     }
@@ -190,10 +192,11 @@ final class TweetsViewController: UIViewController {
         let tweet = tweets[replyButton.tag]
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
+        
         viewController.delegate = self
         viewController.replyTweet = tweet
         viewController.user = User.currentUser
-    }*/
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -206,11 +209,6 @@ extension TweetsViewController: UITableViewDataSource {
         cell.retweetButton.tag = indexPath.row
         cell.favoriteButton.tag = indexPath.row
         cell.tweet = tweets[indexPath.row]
-        
-        // Tap gesture recognizer
-        /*let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onUserTap(_:)))
-        cell.profilePictureImageView.isUserInteractionEnabled = true
-        cell.profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)*/
         
         return cell
     }
