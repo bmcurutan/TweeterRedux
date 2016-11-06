@@ -13,15 +13,9 @@ enum CellType: Int {
     static var count: Int { return CellType.actions.hashValue + 1}
 }
 
-protocol TweetDetailsViewControllerDelegate: class {
-    func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet)
-}
-
 final class TweetDetailsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    weak var delegate: TweetDetailsViewControllerDelegate?
     
     var tweet: Tweet!
     
@@ -59,8 +53,6 @@ final class TweetDetailsViewController: UIViewController {
                 }
             )
         }
-        
-        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: self, didUpdateTweet: tweet)
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
@@ -88,8 +80,6 @@ final class TweetDetailsViewController: UIViewController {
                 }
             )
         }
-        
-        self.delegate?.tweetDetailsViewController(tweetDetailsViewController: self, didUpdateTweet: tweet)
     }
     
     // MARK: - Navigation
@@ -134,14 +124,5 @@ extension TweetDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - TweetsViewControllerDelegate
-
-extension TweetDetailsViewController: TweetsViewControllerDelegate {
-    
-    func tweetsViewController(tweetsViewController: TweetsViewController, didUpdateTweet tweet: Tweet) {
-        self.tweet = tweet
     }
 }

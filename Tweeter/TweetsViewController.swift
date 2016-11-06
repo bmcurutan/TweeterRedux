@@ -8,15 +8,9 @@
 
 import UIKit
 
-protocol TweetsViewControllerDelegate: class {
-    func tweetsViewController(tweetsViewController: TweetsViewController, didUpdateTweet tweet: Tweet)
-}
-
 final class TweetsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    weak var delegate: TweetsViewControllerDelegate?
     
     var tweets: [Tweet] = []
     
@@ -74,8 +68,6 @@ final class TweetsViewController: UIViewController {
                 }
             )
         }
-        
-        self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
@@ -106,23 +98,6 @@ final class TweetsViewController: UIViewController {
                 }
             )
         }
-
-        self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
-    }
-    
-    @IBAction func onUserTap(_ sender: UITapGestureRecognizer) {
-        /*print("tap tap") // TODO remove
-        let location = sender.location(in: tableView)
-        if let indexPath = tableView.indexPathForRow(at: location) {
-            let tweet = tweets[indexPath.row]
-            let user = tweet.user
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "UserViewController") as! UserViewController
-            viewController.user = user
-            
-            let vc = storyboard.instantiateViewController(withIdentifier: "HamburgerNavigationController") as! UINavigationController
-            vc.pushViewController(viewController, animated: true)
-        }*/
     }
     
     // MARK: - Private Methods
@@ -166,22 +141,17 @@ final class TweetsViewController: UIViewController {
         viewController.user = tweet.user
     }
     
-    /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
+    fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
         let indexPath = tableView.indexPath(for: cell)
         let tweet = tweets[indexPath!.row]
-        
         let viewController = segue.destination as! TweetDetailsViewController
-        viewController.delegate = self
         viewController.tweet = tweet
-        
-        self.delegate = viewController
     }
     
     fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
-        viewController.delegate = self
         viewController.user = User.currentUser
     }
     
@@ -190,10 +160,9 @@ final class TweetsViewController: UIViewController {
         let tweet = tweets[replyButton.tag]
         let navigationController = segue.destination as! UINavigationController
         let viewController = navigationController.topViewController as! NewTweetViewController
-        viewController.delegate = self
         viewController.replyTweet = tweet
         viewController.user = User.currentUser
-    }*/
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -226,34 +195,6 @@ extension TweetsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - NewTweetViewControllerDelegate
-
-extension TweetsViewController: NewTweetViewControllerDelegate {
-    
-    func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet) {
-        tweets.insert(tweet, at: 0)
-        tableView.reloadData()
-    }
-}
-
-// MARK: - TweetDetailsViewControllerDelegate
-
-extension TweetsViewController: TweetDetailsViewControllerDelegate {
-    
-    func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
-        
-        TwitterClient.sharedInstance.homeTimeline(
-            success: { (tweets: [Tweet]) -> () in
-                self.tweets = tweets
-                self.tableView.reloadData()
-                
-            }, failure: { (error: Error) -> () in
-                print("error: \(error.localizedDescription)")
-            }
-        )
     }
 }
 

@@ -8,17 +8,11 @@
 
 import UIKit
 
-protocol NewTweetViewControllerDelegate: class {
-    func newTweetViewController(newTweetViewController: NewTweetViewController, didAddTweet tweet: Tweet)
-}
-
 final class NewTweetViewController: UIViewController {
 
     @IBOutlet weak var countdownTextField: UITextField!
     @IBOutlet var newTweetView: NewTweetView!
     @IBOutlet weak var tweetTextView: UITextView!
-    
-    weak var delegate: NewTweetViewControllerDelegate?
     
     let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
     
@@ -94,9 +88,7 @@ final class NewTweetViewController: UIViewController {
                         "created_at": nowString as AnyObject,
                         "user": self.user.dictionary as AnyObject
                     ]
-                    let tweet = Tweet.init(dictionary: tweetDictionary as NSDictionary)
                 
-                    self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
                     self.dismiss(animated: true, completion: nil)
                     
                 }, failure: { (error: Error) -> () in

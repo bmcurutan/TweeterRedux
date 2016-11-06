@@ -132,34 +132,36 @@ final class MentionsViewController: UIViewController {
     
     // MARK: - Segues
     
-    /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
-     let cell = sender as! TweetCell
-     let indexPath = tableView.indexPath(for: cell)
-     let tweet = tweets[indexPath!.row]
-     
-     let viewController = segue.destination as! TweetDetailsViewController
-     viewController.delegate = self
-     viewController.tweet = tweet
-     
-     self.delegate = viewController
+    fileprivate func onUserSegue(segue: UIStoryboardSegue, sender: Any?) {
+        let button = sender as! UIButton
+        let tweet = tweets[button.tag]
+        let viewController = segue.destination as! UserViewController
+        
+        viewController.user = tweet.user
+    }
+    
+     fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
+         let cell = sender as! TweetCell
+         let indexPath = tableView.indexPath(for: cell)
+         let tweet = tweets[indexPath!.row]
+         let viewController = segue.destination as! TweetDetailsViewController
+         viewController.tweet = tweet
      }
      
      fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
-     let navigationController = segue.destination as! UINavigationController
-     let viewController = navigationController.topViewController as! NewTweetViewController
-     viewController.delegate = self
-     viewController.user = User.currentUser
+         let navigationController = segue.destination as! UINavigationController
+         let viewController = navigationController.topViewController as! NewTweetViewController
+         viewController.user = User.currentUser
      }
      
      fileprivate func onReplySegue(segue: UIStoryboardSegue, sender: Any?) {
-     let replyButton = sender as! UIButton
-     let tweet = tweets[replyButton.tag]
-     let navigationController = segue.destination as! UINavigationController
-     let viewController = navigationController.topViewController as! NewTweetViewController
-     viewController.delegate = self
-     viewController.replyTweet = tweet
-     viewController.user = User.currentUser
-     }*/
+         let replyButton = sender as! UIButton
+         let tweet = tweets[replyButton.tag]
+         let navigationController = segue.destination as! UINavigationController
+         let viewController = navigationController.topViewController as! NewTweetViewController
+         viewController.replyTweet = tweet
+         viewController.user = User.currentUser
+     }
 }
 
 // MARK: - UITableViewDataSource
@@ -187,4 +189,3 @@ extension MentionsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
