@@ -133,7 +133,8 @@ final class UserViewController: UIViewController {
         // Actual scroll view
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: width * 2, height: height)
-        scrollView.backgroundColor = UIColor.green
+        scrollView.backgroundColor = UIColor.lightGray
+        scrollView.bounces = false
         view.addSubview(scrollView)
         
         // Page control
@@ -142,8 +143,18 @@ final class UserViewController: UIViewController {
         view.addSubview(pageControl)
         
         // Page 1
+        let bannerImageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        if let profileBannerURL = user?.profileBannerURL {
+            bannerImageView1.setImageWith(profileBannerURL)
+        }
+        scrollView.addSubview(bannerImageView1)
         
-        
+        // Page 2
+        let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
+        if let profileBannerURL = user?.profileBannerURL {
+            bannerImageView2.setImageWith(profileBannerURL)
+        }
+        scrollView.addSubview(bannerImageView2)
     }
     
     // MARK: - Segues
