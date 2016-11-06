@@ -41,17 +41,6 @@ class MenuViewController: UIViewController {
         let mentionsViewController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
         mentionsViewController.timelineType = .mentions
         viewControllers.append(mentionsViewController)
-        /*let tweetsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController") as! UINavigationController
-        let tweetsViewController = tweetsNavController.topViewController as! TweetsViewController
-        tweetsViewController.timelineType = .home*/
-        
-        //let mentionsNavController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-        //let mentionsViewController = tweetsNavController.topViewController as! TweetsViewController
-        //mentionsViewController.timelineType = .mentions
-        
-        
-        
-        //viewControllers.append(tweetsNavController)
         
         hamburgerViewController.contentViewController = userNavController
     }
@@ -95,12 +84,14 @@ extension MenuViewController: UITableViewDelegate {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if SelectionType(rawValue: indexPath.row) == .profile {
+        switch SelectionType(rawValue: indexPath.row)! {
+        case .profile:
             hamburgerViewController.contentViewController = viewControllers[indexPath.row]
-        }
-        else if SelectionType(rawValue: indexPath.row) == .signout {
+            
+        case .signout:
             TwitterClient.sharedInstance.logout()
-        } else {
+            
+        default:
             // Embed in navigation controller
             let viewController = viewControllers[indexPath.row]
             let navController = UINavigationController(rootViewController: viewController)
