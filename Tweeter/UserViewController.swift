@@ -157,7 +157,7 @@ final class UserViewController: UIViewController {
         }
         
         if let tagline = user?.tagline {
-            let taglineLabel = UILabel(frame: CGRect(x: width + 8, y: 8, width: width - 16, height: 16))
+            let taglineLabel = UILabel(frame: CGRect(x: width, y: 16, width: width - 16, height: 16))
             let taglineAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
@@ -166,16 +166,13 @@ final class UserViewController: UIViewController {
             taglineLabel.attributedText = attributedText
             taglineLabel.numberOfLines = 0
             taglineLabel.lineBreakMode = .byWordWrapping
-            taglineLabel.setNeedsLayout()
+            taglineLabel.sizeToFit()
+            taglineLabel.center.x = view.center.x + width
             scrollView.addSubview(taglineLabel)
         }
         
         if let location = user?.location {
-            let pinImageView = UIImageView(frame: CGRect(x: width + 8, y: 32, width: 16, height: 16))
-            pinImageView.image = UIImage(named: "pin")
-            scrollView.addSubview(pinImageView)
-            
-            let locationLabel = UILabel(frame: CGRect(x: width + 32, y: 32, width: width - 40, height: 16))
+            let locationLabel = UILabel(frame: CGRect(x: width + 8, y: 40, width: width - 16, height: 16))
             let locationAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
                 NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
@@ -184,7 +181,8 @@ final class UserViewController: UIViewController {
             locationLabel.attributedText = attributedText
             locationLabel.numberOfLines = 0
             locationLabel.lineBreakMode = .byWordWrapping
-            locationLabel.setNeedsLayout()
+            locationLabel.sizeToFit()
+            locationLabel.center.x = view.center.x + width
             scrollView.addSubview(locationLabel)
         }
     }
