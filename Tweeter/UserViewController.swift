@@ -329,20 +329,19 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 // TODO Shouldn't be phasing in and out with table view scroll 
 extension UserViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
-            // Left (Page 1)
-            let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
-            let duration: TimeInterval = Double(width / velocity)
-            
+        
+        let velocity = self.scrollView.panGestureRecognizer.velocity(in: self.scrollView.superview).x
+        let duration: TimeInterval = Double(width / velocity)
+        
+        if self.scrollView.panGestureRecognizer.translation(in: self.scrollView.superview).x > 0 {
+            // Left (Page 1)            
             UIView.animate(withDuration: duration, animations: {
                 self.bannerImageView.alpha = 1
             })
+            
         } else {
             // Right (Page 2)
-            let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView.superview).x
-            let duration: TimeInterval = Double(width / velocity)
-            
-            UIView.animate(withDuration: duration, animations: { 
+            UIView.animate(withDuration: duration, animations: {
                 self.bannerImageView.alpha = 0.4
             })
         }
