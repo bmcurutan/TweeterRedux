@@ -17,6 +17,7 @@ final class TweetCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var hiddenButton: UIButton!
     
     var tweet: Tweet! {
         didSet {

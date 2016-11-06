@@ -38,7 +38,7 @@ class MenuViewController: UIViewController {
         viewControllers.append(mentionsNavController)
         
         // Default to home timeline
-        hamburgerViewController.contentViewController = tweetsNavController
+        hamburgerViewController.contentViewController = userNavController
     }
 }
 

@@ -110,6 +110,21 @@ final class TweetsViewController: UIViewController {
         self.delegate?.tweetsViewController(tweetsViewController: self, didUpdateTweet: tweet)
     }
     
+    @IBAction func onUserTap(_ sender: UITapGestureRecognizer) {
+        /*print("tap tap") // TODO remove
+        let location = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            let tweet = tweets[indexPath.row]
+            let user = tweet.user
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "UserViewController") as! UserViewController
+            viewController.user = user
+            
+            let vc = storyboard.instantiateViewController(withIdentifier: "HamburgerNavigationController") as! UINavigationController
+            vc.pushViewController(viewController, animated: true)
+        }*/
+    }
+    
     // MARK: - Private Methods
     
     @objc fileprivate func onPullToRefreshWith(refreshControl: UIRefreshControl) {
@@ -128,6 +143,9 @@ final class TweetsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if "userSegue" == segue.identifier {
+            onUserSegue(segue: segue, sender: sender)
+        }
         /*if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
             
@@ -140,6 +158,13 @@ final class TweetsViewController: UIViewController {
     }
     
     // MARK: - Segues
+    
+    fileprivate func onUserSegue(segue: UIStoryboardSegue, sender: Any?) {
+        let button = sender as! UIButton
+        let tweet = tweets[button.tag]
+        let viewController = segue.destination as! UserViewController
+        viewController.user = tweet.user
+    }
     
     /*fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
@@ -176,10 +201,17 @@ final class TweetsViewController: UIViewController {
 extension TweetsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.hiddenButton.tag = indexPath.row
         cell.replyButton.tag = indexPath.row
         cell.retweetButton.tag = indexPath.row
         cell.favoriteButton.tag = indexPath.row
         cell.tweet = tweets[indexPath.row]
+        
+        // Tap gesture recognizer
+        /*let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onUserTap(_:)))
+        cell.profilePictureImageView.isUserInteractionEnabled = true
+        cell.profilePictureImageView.addGestureRecognizer(tapGestureRecognizer)*/
+        
         return cell
     }
     
