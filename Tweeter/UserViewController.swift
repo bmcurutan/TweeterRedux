@@ -19,7 +19,7 @@ final class UserViewController: UIViewController {
     
     var width: CGFloat = UIScreen.main.bounds.width
     var height: CGFloat = 144
-    var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 100, width: 38, height: 36))
+    var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 112, width: 38, height: 36))
     var scrollView: UIScrollView! = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 144))
     
     var tweets: [Tweet] = []
@@ -150,11 +150,43 @@ final class UserViewController: UIViewController {
         scrollView.addSubview(bannerImageView1)
         
         // Page 2
-        let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
         if let profileBannerURL = user?.profileBannerURL {
+            let bannerImageView2 = UIImageView(frame: CGRect(x: width, y: 0, width: width, height: height))
             bannerImageView2.setImageWith(profileBannerURL)
+            scrollView.addSubview(bannerImageView2)
         }
-        scrollView.addSubview(bannerImageView2)
+        
+        if let tagline = user?.tagline {
+            let taglineLabel = UILabel(frame: CGRect(x: width + 8, y: 8, width: width - 16, height: 16))
+            let taglineAttributes = [
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
+            ]
+            let attributedText = NSAttributedString(string: "\(tagline)", attributes: taglineAttributes)
+            taglineLabel.attributedText = attributedText
+            taglineLabel.numberOfLines = 0
+            taglineLabel.lineBreakMode = .byWordWrapping
+            taglineLabel.setNeedsLayout()
+            scrollView.addSubview(taglineLabel)
+        }
+        
+        if let location = user?.location {
+            let pinImageView = UIImageView(frame: CGRect(x: width + 8, y: 32, width: 16, height: 16))
+            pinImageView.image = UIImage(named: "pin")
+            scrollView.addSubview(pinImageView)
+            
+            let locationLabel = UILabel(frame: CGRect(x: width + 32, y: 32, width: width - 40, height: 16))
+            let locationAttributes = [
+                NSForegroundColorAttributeName: UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
+            ]
+            let attributedText = NSAttributedString(string: "\(location)", attributes: locationAttributes)
+            locationLabel.attributedText = attributedText
+            locationLabel.numberOfLines = 0
+            locationLabel.lineBreakMode = .byWordWrapping
+            locationLabel.setNeedsLayout()
+            scrollView.addSubview(locationLabel)
+        }
     }
     
     // MARK: - Segues
