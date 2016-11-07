@@ -65,6 +65,10 @@ class AccountsViewController: UIViewController {
         cell.textLabel?.textColor = UIColor(red: 0, green: 172/255, blue: 237/255, alpha: 1.0)
         return cell
     }
+    
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AccountsViewController: UITableViewDataSource {
@@ -90,7 +94,7 @@ extension AccountsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return (indexPath.row == 1 ? true : false)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

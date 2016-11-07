@@ -528,8 +528,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WT8-Fm-xvO">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="2HA-hn-WKP" appends="YES" id="Nxi-WG-nM4"/>
+                                </connections>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNn-ZF-zOK">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="g3a-sT-A2h"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" id="OjI-0y-fqj">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -542,12 +552,14 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WT8-Fm-xvO" firstAttribute="leading" secondItem="vbA-5L-5Ad" secondAttribute="leading" id="8vI-Ac-xew"/>
                             <constraint firstAttribute="trailing" secondItem="ZNn-ZF-zOK" secondAttribute="trailing" id="D0N-fH-4Bu"/>
                             <constraint firstItem="D6f-oB-gKu" firstAttribute="top" secondItem="ZNn-ZF-zOK" secondAttribute="bottom" id="FOE-16-Zr5"/>
+                            <constraint firstAttribute="trailing" secondItem="WT8-Fm-xvO" secondAttribute="trailing" id="GAl-3f-gQS"/>
+                            <constraint firstItem="ZNn-ZF-zOK" firstAttribute="top" secondItem="WT8-Fm-xvO" secondAttribute="bottom" id="MnT-b8-55c"/>
                             <constraint firstItem="ZNn-ZF-zOK" firstAttribute="leading" secondItem="vbA-5L-5Ad" secondAttribute="leading" id="Shd-PV-dng"/>
-                            <constraint firstItem="ZNn-ZF-zOK" firstAttribute="top" secondItem="UVh-HM-aVx" secondAttribute="bottom" id="wyn-rU-gwr"/>
+                            <constraint firstItem="WT8-Fm-xvO" firstAttribute="top" secondItem="UVh-HM-aVx" secondAttribute="bottom" id="jp7-st-lnx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Accounts" id="meE-Gr-eEn">
@@ -567,8 +579,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vu4-PQ-Zwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="2HA-hn-WKP">
+                    <connections>
+                        <action selector="onTap:" destination="Kot-X1-Fbe" id="rSV-Gh-lZM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2815" y="-1392"/>
+            <point key="canvasLocation" x="2814.5" y="-1392.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="kql-7h-G7s">
