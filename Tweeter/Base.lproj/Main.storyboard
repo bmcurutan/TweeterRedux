@@ -530,6 +530,43 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNn-ZF-zOK">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconMenuCell" rowHeight="48" id="fE7-T1-6GY" customClass="IconMenuCell" customModule="Tweeter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fE7-T1-6GY" id="UuR-jx-v56">
+                                            <frame key="frameInset" width="375" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQB-ND-oPH">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="5Ro-Qn-e29">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="489-T5-zhS"/>
+                                                        <constraint firstAttribute="width" constant="32" id="S2g-Gh-jQX"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5Ro-Qn-e29" firstAttribute="top" secondItem="UuR-jx-v56" secondAttribute="top" constant="8" id="7pO-xu-oA6"/>
+                                                <constraint firstAttribute="trailing" secondItem="mQB-ND-oPH" secondAttribute="trailing" constant="8" id="FT6-lv-JNg"/>
+                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="leading" secondItem="5Ro-Qn-e29" secondAttribute="trailing" constant="8" id="KND-8i-4H6"/>
+                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="leading" secondItem="5Ro-Qn-e29" secondAttribute="trailing" constant="8" id="amy-99-OGU"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5Ro-Qn-e29" secondAttribute="bottom" constant="8" id="hou-Ij-zD2"/>
+                                                <constraint firstItem="5Ro-Qn-e29" firstAttribute="leading" secondItem="UuR-jx-v56" secondAttribute="leading" constant="8" id="pf4-7K-3WC"/>
+                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="centerY" secondItem="UuR-jx-v56" secondAttribute="centerY" id="tI3-OJ-Cch"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.97125400640000004" green="0.97125400640000004" blue="0.97125400640000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="5Ro-Qn-e29" id="U4h-X4-Tuw"/>
+                                            <outlet property="titleLabel" destination="mQB-ND-oPH" id="KLe-bL-QuB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -552,6 +589,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ZNn-ZF-zOK" id="DdP-A3-ZOf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vu4-PQ-Zwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -771,11 +811,11 @@
                                             <outlet property="tweetsCountLabel" destination="tQW-TM-sY9" id="uSX-Eo-8dm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="182" id="duE-ml-sbK" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="182" id="duE-ml-sbK" customClass="TweetCell" customModule="Tweeter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="76" width="375" height="182"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="duE-ml-sbK" id="iOi-Qb-hqs">
-                                            <frame key="frameInset" width="375" height="181"/>
+                                            <frame key="frameInset" width="342" height="181"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gxp-8w-GZc">
@@ -962,6 +1002,7 @@
         <image name="at" width="37" height="40"/>
         <image name="favorite" width="54" height="72"/>
         <image name="favorite-on" width="54" height="72"/>
+        <image name="me" width="32" height="32"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
         <image name="retweet-on" width="75" height="72"/>
