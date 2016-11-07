@@ -359,6 +359,6 @@ extension UserViewController: UIScrollViewDelegate {
         let page : Int = Int(round(scrollView.contentOffset.x / width))
         pageControl.currentPage = page
         
-        self.bannerImageView.frame.size.height = height
+        self.bannerImageView.frame.size = CGSize(width: width, height: height)
     }
 }
