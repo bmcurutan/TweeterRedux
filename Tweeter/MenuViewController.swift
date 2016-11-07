@@ -42,7 +42,8 @@ class MenuViewController: UIViewController {
         viewControllers.append(mentionsViewController)
         
         let navController = UINavigationController(rootViewController: tweetsViewController)
-        hamburgerViewController.contentViewController = navController
+        //hamburgerViewController.contentViewController = navController TODO uncomment
+        hamburgerViewController.contentViewController = userViewController
     }
 }
 

@@ -43,6 +43,10 @@ final class UserViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    @objc fileprivate func onPullDown(_ sender: AnyObject?) {
+        let a = 0
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -344,10 +348,17 @@ extension UserViewController: UIScrollViewDelegate {
                 self.bannerImageView.alpha = 0.4
             })
         }
+        
+        // TODO make smoother
+        if tableView.contentOffset.y < 0 {
+            self.bannerImageView.frame.size.height -= self.tableView.contentOffset.y
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page : Int = Int(round(scrollView.contentOffset.x / width))
         pageControl.currentPage = page
+        
+        self.bannerImageView.frame.size.height = height
     }
 }
