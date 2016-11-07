@@ -45,6 +45,12 @@ class MenuViewController: UIViewController {
         //hamburgerViewController.contentViewController = navController TODO uncomment
         hamburgerViewController.contentViewController = userViewController
     }
+    
+    // MARK: - Private Methods
+    
+    @objc fileprivate func onUserLongPress(_ sender: UILongPressGestureRecognizer) {
+        print("TESTTEST")
+    }
 }
 
 extension MenuViewController: UITableViewDataSource {
@@ -60,6 +66,9 @@ extension MenuViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as! ProfileMenuCell
             cell.user = User.currentUser
             
+            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(onUserLongPress(_:)))
+            cell.addGestureRecognizer(longPressGesture)
+
             return cell
             
         case .home:
