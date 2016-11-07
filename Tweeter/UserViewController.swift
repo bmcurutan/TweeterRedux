@@ -9,7 +9,7 @@
 import UIKit
 
 enum UserSection: Int {
-    case details = 0, tweets
+    case counts = 0, tweets
     static var count: Int { return UserSection.tweets.hashValue + 1}
 }
 
@@ -43,10 +43,7 @@ final class UserViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    @objc fileprivate func onPullDown(_ sender: AnyObject?) {
-        let a = 0
-    }
-    
+    // TODO move this
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -138,7 +135,6 @@ final class UserViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    // put this in a view
     fileprivate func setupScrollView() {
         // Actual scroll view
         scrollView.delegate = self
@@ -261,7 +257,7 @@ extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (UserSection(rawValue: indexPath.section)!) {
-        case .details:
+        case .counts:
             let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
             cell.user = user
             return cell
@@ -277,23 +273,15 @@ extension UserViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (UserSection(rawValue: section)! == .tweets ? tweets.count : 1)
+        return (UserSection(rawValue: section)! == .counts ? 1 : tweets.count)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return UserSection.count
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (UserSection(rawValue: section)! == .tweets ? " " : nil)
-    }
 }
 
 extension UserViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (nil != self.tableView(tableView, titleForHeaderInSection: section) ? 8 : 0)
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
@@ -361,4 +349,8 @@ extension UserViewController: UIScrollViewDelegate {
         
         self.bannerImageView.frame.size = CGSize(width: width, height: height)
     }
+}
+
+extension UserViewController: UIGestureRecognizerDelegate {
+    // Do nothing
 }

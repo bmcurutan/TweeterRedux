@@ -15,7 +15,6 @@ final class UserCell: UITableViewCell {
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     
-    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var accountsButton: UIButton!
     
     var user: User! {
