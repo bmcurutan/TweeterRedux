@@ -339,7 +339,7 @@ extension UserViewController: UIScrollViewDelegate {
         
         // TODO make smoother
         if tableView.contentOffset.y < 0 {
-            self.bannerImageView.frame.size.height -= self.tableView.contentOffset.y
+            self.bannerImageView.frame.size.height = height - self.tableView.contentOffset.y
         }
     }
     

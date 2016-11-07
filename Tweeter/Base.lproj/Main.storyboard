@@ -664,23 +664,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLT-d2-GIl">
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="cBR-Dp-Jpq">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="136" id="FhJ-OT-Jta"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="cBR-Dp-Jpq" firstAttribute="top" secondItem="iLT-d2-GIl" secondAttribute="top" id="4un-ev-1cB"/>
-                                    <constraint firstItem="cBR-Dp-Jpq" firstAttribute="leading" secondItem="iLT-d2-GIl" secondAttribute="leading" id="BLm-7o-z6V"/>
-                                    <constraint firstAttribute="height" constant="136" id="Hzx-sC-WRU"/>
-                                    <constraint firstAttribute="trailing" secondItem="cBR-Dp-Jpq" secondAttribute="trailing" id="Oqs-rZ-8EW"/>
-                                    <constraint firstAttribute="bottom" secondItem="cBR-Dp-Jpq" secondAttribute="bottom" id="dGo-5K-oWV"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W7j-Kb-0x8">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -844,6 +827,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLT-d2-GIl">
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterbird" translatesAutoresizingMaskIntoConstraints="NO" id="cBR-Dp-Jpq">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="136" id="FhJ-OT-Jta"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="cBR-Dp-Jpq" firstAttribute="top" secondItem="iLT-d2-GIl" secondAttribute="top" id="4un-ev-1cB"/>
+                                    <constraint firstItem="cBR-Dp-Jpq" firstAttribute="leading" secondItem="iLT-d2-GIl" secondAttribute="leading" id="BLm-7o-z6V"/>
+                                    <constraint firstAttribute="height" constant="136" id="Hzx-sC-WRU"/>
+                                    <constraint firstAttribute="trailing" secondItem="cBR-Dp-Jpq" secondAttribute="trailing" id="Oqs-rZ-8EW"/>
+                                    <constraint firstAttribute="bottom" secondItem="cBR-Dp-Jpq" secondAttribute="bottom" id="dGo-5K-oWV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
