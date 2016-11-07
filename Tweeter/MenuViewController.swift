@@ -59,17 +59,21 @@ extension MenuViewController: UITableViewDataSource {
         case .profile:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as! ProfileMenuCell
             cell.user = User.currentUser
+            
             return cell
+            
         case .home:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
             cell.iconImageView.image = UIImage(named: "home")
             cell.titleLabel.text = "Home"
             return cell
+            
         case .mentions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
             cell.iconImageView.image = UIImage(named: "at")
             cell.titleLabel.text = "Mentions"
             return cell
+            
         case .signout:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IconMenuCell", for: indexPath) as! IconMenuCell
             cell.iconImageView.image = UIImage(named: "stop")
@@ -97,4 +101,8 @@ extension MenuViewController: UITableViewDelegate {
             hamburgerViewController.contentViewController = navController
         }
     }
+}
+
+extension MenuViewController: UIGestureRecognizerDelegate {
+    // Do nothing
 }

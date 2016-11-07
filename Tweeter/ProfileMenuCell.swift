@@ -16,7 +16,9 @@ class ProfileMenuCell: UITableViewCell {
     
     var user: User! {
         didSet {
-            profileImageView.setImageWith(user.profilePictureURL!)
+            if let profilePictureURL = user?.profilePictureURL {
+                profileImageView.setImageWith(profilePictureURL)
+            }
             nameLabel.text = user.name
             taglineLabel.text = user.tagline
         }
