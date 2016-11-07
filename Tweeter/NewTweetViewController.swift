@@ -58,6 +58,11 @@ final class NewTweetViewController: UIViewController {
         // Update countdown 
         countdown = 140 - tweetText.characters.count
         countdownTextField.text = "\(countdown)"
+        countdownTextField.backgroundColor = UIColor.clear
+        countdownTextField.borderStyle = .none
+        countdownTextField.textColor = UIColor.white
+        countdownTextField.textAlignment = .right
+        countdownTextField.isUserInteractionEnabled = false
     }
 
     // MARK: - IBAction

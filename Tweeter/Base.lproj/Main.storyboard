@@ -91,7 +91,6 @@
                                             <constraints>
                                                 <constraint firstItem="TxQ-8Y-UXp" firstAttribute="top" secondItem="VkQ-8s-9Wg" secondAttribute="bottom" constant="5" id="5Kb-SD-uek"/>
                                                 <constraint firstItem="TCN-3O-pes" firstAttribute="top" secondItem="VkQ-8s-9Wg" secondAttribute="bottom" constant="5" id="8N1-aI-NyL"/>
-                                                <constraint firstItem="H49-zk-c4V" firstAttribute="top" secondItem="bAX-bx-hLB" secondAttribute="top" id="9ia-mC-nix"/>
                                                 <constraint firstItem="yay-Mn-GIf" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="8" id="GDP-a0-YWh"/>
                                                 <constraint firstItem="bAX-bx-hLB" firstAttribute="leading" secondItem="yay-Mn-GIf" secondAttribute="trailing" constant="8" id="O7T-3Y-y86"/>
                                                 <constraint firstAttribute="bottom" secondItem="z2Z-fv-qfg" secondAttribute="bottom" constant="8" id="PcB-HJ-0mm"/>
@@ -105,6 +104,7 @@
                                                 <constraint firstItem="TxQ-8Y-UXp" firstAttribute="leading" secondItem="VkQ-8s-9Wg" secondAttribute="leading" id="gyY-xA-Z1E"/>
                                                 <constraint firstItem="VkQ-8s-9Wg" firstAttribute="leading" secondItem="yay-Mn-GIf" secondAttribute="trailing" constant="8" id="hZ2-52-Kgm"/>
                                                 <constraint firstItem="TCN-3O-pes" firstAttribute="leading" secondItem="z2Z-fv-qfg" secondAttribute="trailing" constant="32" id="l9u-0e-kkX"/>
+                                                <constraint firstItem="H49-zk-c4V" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="8" id="mFa-oJ-CKO"/>
                                                 <constraint firstItem="bAX-bx-hLB" firstAttribute="top" secondItem="DkT-1s-XME" secondAttribute="top" constant="5" id="nir-1v-d0Y"/>
                                                 <constraint firstAttribute="bottom" secondItem="TCN-3O-pes" secondAttribute="bottom" constant="8" id="uWE-sx-asg"/>
                                                 <constraint firstAttribute="trailing" secondItem="VkQ-8s-9Wg" secondAttribute="trailing" constant="8" id="uwr-MJ-Fz6"/>
@@ -703,7 +703,7 @@
                                     <action selector="onTweetButton:" destination="amC-ZC-IBP" id="wz6-Sw-Wes"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem id="47x-CE-fLZ">
+                            <barButtonItem style="plain" id="47x-CE-fLZ">
                                 <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="140" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="VX7-Yf-Tgu">
                                     <rect key="frame" x="221" y="7" width="83" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -985,6 +985,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bzR-Gu-hSD"/>
+        <segue reference="kb5-SN-ABU"/>
     </inferredMetricsTieBreakers>
 </document>

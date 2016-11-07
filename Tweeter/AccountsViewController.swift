@@ -73,7 +73,6 @@ class AccountsViewController: UIViewController {
 
 extension AccountsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
         
         if indexPath.row == 0 {
@@ -85,8 +84,6 @@ extension AccountsViewController: UITableViewDataSource {
         } else {
             return dismissCell(cell: cell)
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

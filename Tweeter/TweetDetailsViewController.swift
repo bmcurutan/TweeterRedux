@@ -114,11 +114,13 @@ extension TweetDetailsViewController: UITableViewDataSource {
         switch CellType(rawValue: indexPath.row)! {
         case .details:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
+            cell.isUserInteractionEnabled = false
             cell.tweet = tweet
             return cell
             
         case .actions:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsCell", for: indexPath) as! ActionsCell
+            cell.isUserInteractionEnabled = false
             cell.tweet = tweet
             return cell
         }
