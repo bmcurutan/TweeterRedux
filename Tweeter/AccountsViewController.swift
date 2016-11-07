@@ -29,6 +29,8 @@ class AccountsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func onAdd(_ sender: AnyObject) {
+    }
 }
 
 extension AccountsViewController: UITableViewDataSource {
@@ -41,8 +43,22 @@ extension AccountsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accounts.count
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            accounts.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension AccountsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect row appearance after it has been selected
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
