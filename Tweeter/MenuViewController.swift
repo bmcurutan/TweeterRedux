@@ -42,15 +42,15 @@ class MenuViewController: UIViewController {
         viewControllers.append(mentionsViewController)
         
         let navController = UINavigationController(rootViewController: tweetsViewController)
-        //hamburgerViewController.contentViewController = navController TODO uncomment
-        hamburgerViewController.contentViewController = userViewController
+        hamburgerViewController.contentViewController = navController
     }
     
     // MARK: - Private Methods
     
     @objc fileprivate func onUserLongPress(_ sender: UILongPressGestureRecognizer) {
-        //let listView = UIView(frame: CGRect(origin: <#T##CGPoint#>, size: <#T##CGSize#>))
-        print("TESTTEST")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AccountsNavigationController")
+        present(viewController, animated: true, completion: nil)
     }
 }
 

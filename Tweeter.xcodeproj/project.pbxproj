@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67221EEF1DC9BA6400CFBCD3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67221EEE1DC9BA6400CFBCD3 /* MenuViewController.swift */; };
+		672C5E5A1DD03BAF0015E7C8 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672C5E591DD03BAF0015E7C8 /* AccountsViewController.swift */; };
 		672E5D141DC31DF1009C724C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E5D131DC31DF1009C724C /* User.swift */; };
 		672E5D161DC31DFB009C724C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672E5D151DC31DFB009C724C /* Tweet.swift */; };
 		674E8CBE1DBEBE8600D465E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E8CBD1DBEBE8600D465E0 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		13CB5C86C283A69F56966033 /* Pods-Tweeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tweeter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tweeter/Pods-Tweeter.release.xcconfig"; sourceTree = "<group>"; };
 		67221EEE1DC9BA6400CFBCD3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		672C5E591DD03BAF0015E7C8 /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		672E5D131DC31DF1009C724C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		672E5D151DC31DFB009C724C /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		674E8CBA1DBEBE8600D465E0 /* Tweeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tweeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				67718CAA1DC1C4EA0066F0FC /* LoginViewController.swift */,
 				67221EEE1DC9BA6400CFBCD3 /* MenuViewController.swift */,
 				676A6BBE1DBECA6D008BD753 /* NewTweetViewController.swift */,
+				672C5E591DD03BAF0015E7C8 /* AccountsViewController.swift */,
 				674E8CBF1DBEBE8600D465E0 /* TweetsViewController.swift */,
 				676A6BBA1DBEC8DD008BD753 /* TweetDetailsViewController.swift */,
 				67F4F37C1DC6D8DA0037DF87 /* UserViewController.swift */,
@@ -307,6 +310,7 @@
 			files = (
 				67EA37D51DC8687A00688CA9 /* HamburgerViewController.swift in Sources */,
 				67F4F37D1DC6D8DA0037DF87 /* UserViewController.swift in Sources */,
+				672C5E5A1DD03BAF0015E7C8 /* AccountsViewController.swift in Sources */,
 				67718CAB1DC1C4EA0066F0FC /* LoginViewController.swift in Sources */,
 				674E8CC01DBEBE8600D465E0 /* TweetsViewController.swift in Sources */,
 				67C082871DC7108B00A9ED86 /* Date+OffsetFrom.swift in Sources */,
