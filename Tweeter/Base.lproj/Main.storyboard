@@ -518,7 +518,7 @@
         <!--Accounts-->
         <scene sceneID="3a5-dK-Tk3">
             <objects>
-                <viewController storyboardIdentifier="AccountsViewController" id="Kot-X1-Fbe" customClass="AccountsViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountsViewController" modalPresentationStyle="overCurrentContext" id="Kot-X1-Fbe" customClass="AccountsViewController" customModule="Tweeter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UVh-HM-aVx"/>
                         <viewControllerLayoutGuide type="bottom" id="D6f-oB-gKu"/>
