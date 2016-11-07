@@ -96,7 +96,7 @@ extension AccountsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            User.accounts.remove(at: indexPath.row)
+            User.accounts.remove(at: indexPath.row-1)
             
             guard User.accounts.count > 0 else {
                 TwitterClient.sharedInstance.logout()
