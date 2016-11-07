@@ -15,8 +15,6 @@ final class UserCountsCell: UITableViewCell {
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     
-    @IBOutlet weak var accountsButton: UIButton!
-    
     var user: User! {
         didSet {
             let countAttributes = [
