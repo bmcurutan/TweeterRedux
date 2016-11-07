@@ -66,6 +66,19 @@ final class TweetCell: UITableViewCell {
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         retweetButton.isSelected = !tweet.retweeted
+        rotate360Degrees(button: retweetButton)
+    }
+    
+    func rotate360Degrees(button: UIButton, duration: CFTimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = duration
+        
+        if let delegate: AnyObject = completionDelegate {
+            rotateAnimation.delegate = delegate as? CAAnimationDelegate
+        }
+        button.layer.add(rotateAnimation, forKey: nil)
     }
 }
 

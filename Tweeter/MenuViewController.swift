@@ -97,15 +97,12 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Deselect row appearance after it has been selected
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         switch SelectionType(rawValue: indexPath.row)! {
         case .signout:
             TwitterClient.sharedInstance.logout()
             break
             
-        default:
+        default: // .home, .mentions
             // Embed in navigation controller
             let viewController = viewControllers[indexPath.row]
             let navController = UINavigationController(rootViewController: viewController)

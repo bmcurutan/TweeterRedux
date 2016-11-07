@@ -356,9 +356,8 @@ extension UserViewController: UIScrollViewDelegate {
         pageControl.currentPage = page
         
         bannerImageView.frame.size = CGSize(width: width, height: height)
-        UIView.animate(withDuration: 0.1, animations: {
-            self.blurEffectView.alpha = 0
-        })
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blurEffectView.alpha = 0 })
     }
 }
 
