@@ -13,7 +13,7 @@ enum SelectionType: Int {
     static var count: Int { return SelectionType.signout.hashValue + 1}
 }
 
-class MenuViewController: UIViewController {
+final class MenuViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     

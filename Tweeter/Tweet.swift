@@ -25,6 +25,7 @@ final class Tweet: NSObject {
                         print("error: \(error.localizedDescription)")
                     }
                 )
+				
             } else if timelineType == .mentions {
                 TwitterClient.sharedInstance.mentionsTimeline(
                     success: { (tweets: [Tweet]) -> () in

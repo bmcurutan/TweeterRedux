@@ -87,11 +87,11 @@ final class UserViewController: UIViewController {
         
         if tweet.favorited { // Currently favorited, so unfavorite action
             TwitterClient.sharedInstance.removeFavoriteWith(id: tweet.id,
-                                                            success: { () -> () in
-                                                                print("Tweet successfully unfavorited")
-                                                                tweet.favorited = false
-                                                                tweet.favoritesCount -= 1
-                                                                
+                success: { () -> () in
+					print("Tweet successfully unfavorited")
+					tweet.favorited = false
+					tweet.favoritesCount -= 1
+					
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
@@ -99,11 +99,11 @@ final class UserViewController: UIViewController {
             
         } else { // Favorite action
             TwitterClient.sharedInstance.addFavoriteWith(id: tweet.id,
-                                                         success: { () -> () in
-                                                            print("Tweet successfully favorited")
-                                                            tweet.favorited = true
-                                                            tweet.favoritesCount += 1
-                                                            
+                success: { () -> () in
+					print("Tweet successfully favorited")
+					tweet.favorited = true
+					tweet.favoritesCount += 1
+					
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
@@ -117,11 +117,11 @@ final class UserViewController: UIViewController {
         
         if tweet.retweeted { // Currently retweeted, so unretweet action
             TwitterClient.sharedInstance.unretweetWith(id: tweet.id,
-                                                       success: { () -> () in
-                                                        print("Tweet successfully unretweeted")
-                                                        tweet.retweeted = false
-                                                        tweet.retweetCount -= 1
-                                                        
+                success: { () -> () in
+					print("Tweet successfully unretweeted")
+					tweet.retweeted = false
+					tweet.retweetCount -= 1
+					
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
@@ -129,11 +129,11 @@ final class UserViewController: UIViewController {
             
         } else { // Retweet action
             TwitterClient.sharedInstance.retweetWith(id: tweet.id,
-                                                     success: { () -> () in
-                                                        print("Tweet successfully retweeted")
-                                                        tweet.retweeted = true
-                                                        tweet.retweetCount += 1
-                                                        
+		        success: { () -> () in
+					print("Tweet successfully retweeted")
+					tweet.retweeted = true
+					tweet.retweetCount += 1
+					
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
@@ -238,7 +238,6 @@ final class UserViewController: UIViewController {
         
         viewController.delegate = self
         viewController.tweet = tweet
-        //self.delegate = viewController
     }
     
     fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IconMenuCell: UITableViewCell {
+final class IconMenuCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

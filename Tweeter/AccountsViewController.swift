@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountsViewController: UIViewController {
+final class AccountsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     

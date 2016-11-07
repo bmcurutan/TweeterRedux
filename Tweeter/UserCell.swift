@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO pull this out into a view instead of a cell
 final class UserCountsCell: UITableViewCell {
 
     @IBOutlet weak var tweetsCountLabel: UILabel!

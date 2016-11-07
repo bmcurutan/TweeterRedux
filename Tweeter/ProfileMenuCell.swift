@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileMenuCell: UITableViewCell {
+final class ProfileMenuCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

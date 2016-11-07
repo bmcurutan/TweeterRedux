@@ -126,10 +126,7 @@ final class TweetsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*if "userSegue" == segue.identifier {
-            onUserSegue(segue: segue, sender: sender)
-        
-        } else*/ if "detailsSegue" == segue.identifier {
+        if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
             
         } else if "newTweetSegue" == segue.identifier {
@@ -141,15 +138,7 @@ final class TweetsViewController: UIViewController {
     }
     
     // MARK: - Segues
-    
-    /*fileprivate func onUserSegue(segue: UIStoryboardSegue, sender: Any?) {
-        let button = sender as! UIButton
-        let tweet = tweets[button.tag]
-        let viewController = segue.destination as! UserViewController
-        
-        viewController.user = tweet.user
-    }*/
-    
+	
     fileprivate func onDetailsSegue(segue: UIStoryboardSegue, sender: Any?) {
         let cell = sender as! TweetCell
         let indexPath = tableView.indexPath(for: cell)
@@ -243,7 +232,6 @@ extension TweetsViewController: TweetDetailsViewControllerDelegate {
     
     func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
         
-        // TODO remove
         TwitterClient.sharedInstance.homeTimeline(
             success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets

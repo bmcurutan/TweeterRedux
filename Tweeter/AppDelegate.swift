@@ -44,8 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if nil != User.currentUser {
             print("There is a current user") 
             window?.rootViewController = hamburgerViewController
-            //let navigationController = UINavigationController.init(rootViewController: hamburgerViewController)
-            //window?.rootViewController = navigationController
         }
         
         NotificationCenter.default.addObserver(forName: User.userDidLogoutNotification, object: nil, queue: OperationQueue.main) { (notification: Notification) -> Void in

@@ -54,6 +54,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 - Faced some challenges implementing the controller layer between model and view so as to use the same view with multiple models
 - Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented
 - Some difficulties implementing gesture recognizers on certain types of views (e.g., UIButton)
+- There's more duplicate logic and code here than I'd like due to time pressures to complete the assignment tasks
 
 ## Icons
 
