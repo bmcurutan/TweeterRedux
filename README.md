@@ -34,6 +34,7 @@ The following **additional** features are implemented:
 - [x] Tap gesture recognizer "outside" of presented modal to dismiss it
 - [x] Customized navigation bar colors and hamburger menu
 - [x] Added more animations 
+- [x] Tap to open and dismiss hamburger menu (not just swipe gestures)
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
