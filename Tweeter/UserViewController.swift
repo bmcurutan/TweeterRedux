@@ -24,6 +24,8 @@ final class UserViewController: UIViewController {
     var pageControl: UIPageControl! = UIPageControl(frame: CGRect(x: 0, y: 104, width: 38, height: 36))
     var scrollView: UIScrollView! = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 136))
     
+    let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+    
     var tweets: [Tweet] = []
     var user: User? = User.currentUser
     
@@ -41,6 +43,10 @@ final class UserViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        blurEffectView.alpha = 0
+        blurEffectView.frame = bannerImageView.bounds
+        bannerImageView.addSubview(blurEffectView)
     }
     
     // TODO move this
@@ -339,6 +345,9 @@ extension UserViewController: UIScrollViewDelegate {
         
         if tableView.contentOffset.y < 0 {
             bannerImageView.frame.size.height = height - self.tableView.contentOffset.y
+            UIView.animate(withDuration: 0.5, animations: { 
+                self.blurEffectView.alpha = 1
+            })
         }
     }
     
@@ -347,6 +356,9 @@ extension UserViewController: UIScrollViewDelegate {
         pageControl.currentPage = page
         
         bannerImageView.frame.size = CGSize(width: width, height: height)
+        UIView.animate(withDuration: 0.1, animations: {
+            self.blurEffectView.alpha = 0
+        })
     }
 }
 
