@@ -337,9 +337,8 @@ extension UserViewController: UIScrollViewDelegate {
             })
         }
         
-        // TODO make smoother
         if tableView.contentOffset.y < 0 {
-            self.bannerImageView.frame.size.height = height - self.tableView.contentOffset.y
+            bannerImageView.frame.size.height = height - self.tableView.contentOffset.y
         }
     }
     
@@ -347,7 +346,7 @@ extension UserViewController: UIScrollViewDelegate {
         let page : Int = Int(round(scrollView.contentOffset.x / width))
         pageControl.currentPage = page
         
-        self.bannerImageView.frame.size = CGSize(width: width, height: height)
+        bannerImageView.frame.size = CGSize(width: width, height: height)
     }
 }
 
