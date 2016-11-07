@@ -33,7 +33,7 @@ final class UserViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = (user == User.currentUser ? "Me" : user?.name)
-        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: nil)
+        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: #selector(onToggleMenu(_:)))
         navigationItem.leftBarButtonItem = button
 
         if let profileBannerURL = user?.profileBannerURL {
@@ -142,6 +142,10 @@ final class UserViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
+    @objc fileprivate func onToggleMenu(_ sender: AnyObject) {
+        HamburgerViewController.sharedInstance.toggleMenu()
+    }
     
     fileprivate func setupScrollView() {
         // Actual scroll view

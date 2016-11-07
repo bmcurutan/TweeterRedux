@@ -10,6 +10,8 @@ import UIKit
 
 final class HamburgerViewController: UIViewController {
 
+    static let sharedInstance = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var menuView: UIView!
     
@@ -54,6 +56,21 @@ final class HamburgerViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Private Methods
+    
+    func toggleMenu() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [],
+                animations: {
+                    if self.leftMarginConstraint.constant == 0 { // Open menu
+                        self.leftMarginConstraint.constant = self.view.frame.size.width - 60
+                    } else { // Close menu
+                        self.leftMarginConstraint.constant = 0
+                    }
+                    self.view.layoutIfNeeded()
+            }
+        )
+    }
+    
     // MARK: - IBAction
     
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
@@ -69,9 +86,9 @@ final class HamburgerViewController: UIViewController {
         } else if sender.state == UIGestureRecognizerState.ended {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [],
                 animations: {
-                    if velocity.x > 0 {
+                    if velocity.x > 0 { // Open menu
                         self.leftMarginConstraint.constant = self.view.frame.size.width - 60
-                    } else {
+                    } else { // Close menu
                         self.leftMarginConstraint.constant = 0
                     }
                     self.view.layoutIfNeeded()

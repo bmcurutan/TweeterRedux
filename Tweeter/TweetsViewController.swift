@@ -34,7 +34,7 @@ final class TweetsViewController: UIViewController {
         super.viewDidLoad()
         
         title = timelineType == .home ? "Home" : "Mentions"
-        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: nil)
+        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: #selector(onToggleMenu(_:)))
         navigationItem.leftBarButtonItem = button
         
         tableView.dataSource = self
@@ -55,6 +55,12 @@ final class TweetsViewController: UIViewController {
                 }
             ) // TODO fix this hack
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    @objc fileprivate func onToggleMenu(_ sender: AnyObject) {
+        HamburgerViewController.sharedInstance.toggleMenu()
     }
     
     // MARK: - IBAction
