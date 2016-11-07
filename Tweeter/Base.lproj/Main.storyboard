@@ -484,7 +484,7 @@
                                             <constraints>
                                                 <constraint firstItem="Kz5-4x-WfN" firstAttribute="leading" secondItem="AnW-Io-Vea" secondAttribute="trailing" constant="8" id="83p-SU-5t6"/>
                                                 <constraint firstItem="Kz5-4x-WfN" firstAttribute="leading" secondItem="AnW-Io-Vea" secondAttribute="trailing" constant="8" id="FYB-5F-F9D"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AnW-Io-Vea" secondAttribute="bottom" constant="8" id="LqU-2O-g2W"/>
+                                                <constraint firstAttribute="bottom" secondItem="AnW-Io-Vea" secondAttribute="bottom" constant="8" id="LqU-2O-g2W"/>
                                                 <constraint firstItem="AnW-Io-Vea" firstAttribute="leading" secondItem="VXn-FV-NZK" secondAttribute="leading" constant="8" id="PYS-hZ-PD9"/>
                                                 <constraint firstItem="AnW-Io-Vea" firstAttribute="top" secondItem="VXn-FV-NZK" secondAttribute="top" constant="8" id="aGi-BZ-ngN"/>
                                                 <constraint firstItem="Kz5-4x-WfN" firstAttribute="centerY" secondItem="VXn-FV-NZK" secondAttribute="centerY" id="kIe-v3-fbP"/>
@@ -531,41 +531,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZNn-ZF-zOK">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconMenuCell" rowHeight="48" id="fE7-T1-6GY" customClass="IconMenuCell" customModule="Tweeter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="48"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" id="OjI-0y-fqj">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="fE7-T1-6GY" id="UuR-jx-v56">
-                                            <frame key="frameInset" width="375" height="47"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjI-0y-fqj" id="D4e-yY-6zM">
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Timeline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQB-ND-oPH">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="5Ro-Qn-e29">
-                                                    <frame key="frameInset" minX="8" minY="8" width="32" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="489-T5-zhS"/>
-                                                        <constraint firstAttribute="width" constant="32" id="S2g-Gh-jQX"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="5Ro-Qn-e29" firstAttribute="top" secondItem="UuR-jx-v56" secondAttribute="top" constant="8" id="7pO-xu-oA6"/>
-                                                <constraint firstAttribute="trailing" secondItem="mQB-ND-oPH" secondAttribute="trailing" constant="8" id="FT6-lv-JNg"/>
-                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="leading" secondItem="5Ro-Qn-e29" secondAttribute="trailing" constant="8" id="KND-8i-4H6"/>
-                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="leading" secondItem="5Ro-Qn-e29" secondAttribute="trailing" constant="8" id="amy-99-OGU"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5Ro-Qn-e29" secondAttribute="bottom" constant="8" id="hou-Ij-zD2"/>
-                                                <constraint firstItem="5Ro-Qn-e29" firstAttribute="leading" secondItem="UuR-jx-v56" secondAttribute="leading" constant="8" id="pf4-7K-3WC"/>
-                                                <constraint firstItem="mQB-ND-oPH" firstAttribute="centerY" secondItem="UuR-jx-v56" secondAttribute="centerY" id="tI3-OJ-Cch"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.97125400640000004" green="0.97125400640000004" blue="0.97125400640000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="iconImageView" destination="5Ro-Qn-e29" id="U4h-X4-Tuw"/>
-                                            <outlet property="titleLabel" destination="mQB-ND-oPH" id="KLe-bL-QuB"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -980,30 +952,11 @@
             </objects>
             <point key="canvasLocation" x="1694.5" y="293.5"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="wsh-TG-Ocj">
-            <objects>
-                <navigationController storyboardIdentifier="AccountsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="KB2-tR-Uvi" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gbz-1R-3sU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Kot-X1-Fbe" kind="relationship" relationship="rootViewController" id="ulF-3f-R2v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c7W-Sg-T0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2214" y="-1391"/>
-        </scene>
     </scenes>
     <resources>
         <image name="at" width="37" height="40"/>
         <image name="favorite" width="54" height="72"/>
         <image name="favorite-on" width="54" height="72"/>
-        <image name="me" width="32" height="32"/>
         <image name="reply" width="65" height="72"/>
         <image name="retweet" width="75" height="72"/>
         <image name="retweet-on" width="75" height="72"/>

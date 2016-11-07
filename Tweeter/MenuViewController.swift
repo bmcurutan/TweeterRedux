@@ -49,7 +49,7 @@ class MenuViewController: UIViewController {
     
     @objc fileprivate func onUserLongPress(_ sender: UILongPressGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "AccountsNavigationController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AccountsViewController")
         present(viewController, animated: true, completion: nil)
     }
 }
@@ -102,7 +102,7 @@ extension MenuViewController: UITableViewDelegate {
         
         switch SelectionType(rawValue: indexPath.row)! {
         case .signout:
-            //TODO uncomment TwitterClient.sharedInstance.logout()
+            TwitterClient.sharedInstance.logout()
             break
             
         default:
