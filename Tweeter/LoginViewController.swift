@@ -29,8 +29,6 @@ final class LoginViewController: UIViewController {
             success: { () -> () in
                 print("I've logged in!")
                 
-                //self.performSegue(withIdentifier: "loginSegue", sender: nil) TODO remove
-                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
                 let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController

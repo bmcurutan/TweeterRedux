@@ -22,10 +22,10 @@ final class User: NSObject {
     var countFollowing: Int?
     var countFollowers: Int?
     
+    static var accounts: [User]! = [User.currentUser!] // Can be expanded later for multiple accounts
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
-        
-        print(dictionary) // TODO remove
         
         location = dictionary["location"] as? String
         name = dictionary["name"] as? String
