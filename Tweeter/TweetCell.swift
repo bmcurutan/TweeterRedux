@@ -43,7 +43,7 @@ final class TweetCell: UITableViewCell {
                     ]
 
                     let mutableAttributedText = NSMutableAttributedString(string: "\(name)", attributes: nameAttributes)
-                    mutableAttributedText.append(NSAttributedString(string: " @\(screenname)", attributes: screennameAttributes))
+                    mutableAttributedText.append(NSAttributedString(string: "\n@\(screenname)", attributes: screennameAttributes))
                     
                     nameLabel.attributedText = mutableAttributedText
                 }

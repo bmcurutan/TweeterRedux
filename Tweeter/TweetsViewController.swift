@@ -33,7 +33,9 @@ final class TweetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = timelineType == .home ? "Home" : "Mentions"
+        title = timelineType == .home ? "Home" : "Mentions"
+        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = button
         
         tableView.dataSource = self
         tableView.delegate = self

@@ -33,6 +33,8 @@ final class UserViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = (user == User.currentUser ? "Me" : user?.name)
+        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = button
 
         if let profileBannerURL = user?.profileBannerURL {
             bannerImageView.setImageWith(profileBannerURL)
