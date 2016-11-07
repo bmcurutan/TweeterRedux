@@ -24,7 +24,10 @@ extension Date {
             let minutes = "\(difference.minute!)m"
             let hours = "\(difference.hour!)h"
             
-            if difference.hour! > 0 {
+            if difference.hour! > 24 {
+                formatter.dateStyle = .medium
+                formattedString = formatter.string(from: date)
+            } else if difference.hour! > 0 {
                 formattedString = hours
             } else if difference.minute! > 0 {
                 formattedString = minutes
@@ -32,9 +35,6 @@ extension Date {
                 formattedString = seconds
             } else if difference.hour! == 0 && difference.minute! == 0 && difference.second! == 0 {
                 formattedString = "Just now"
-            } else {
-                formatter.dateStyle = .short
-                formattedString = formatter.string(from: date)
             }
         }
         

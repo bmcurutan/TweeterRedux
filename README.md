@@ -29,29 +29,30 @@ The following **optional** features are implemented:
    - [ ] Include a plus button to Add an Account
    - [x] Swipe to delete an account
 
-
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Tap gesture recognizer "outside" of presented modal to dismiss it
+- [x] 
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
   1. Better ways to implement controller layer between model and view so as to use the same view with multiple models.
-  2.
+  2. Way to implement multiple account authentication and switching for OAuth
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Tweeter Redux Video Walkthrough' width='' alt='Tweeter Redux Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 - Faced some challenges implementing the controller layer between model and view so as to use the same view with multiple models
-- Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented 
+- Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented
+- Some difficulties implementing gesture recognizers on certain types of views (e.g., UIButton)
 
 ## Icons
 
