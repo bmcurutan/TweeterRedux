@@ -49,6 +49,7 @@ class MenuViewController: UIViewController {
     // MARK: - Private Methods
     
     @objc fileprivate func onUserLongPress(_ sender: UILongPressGestureRecognizer) {
+        //let listView = UIView(frame: CGRect(origin: <#T##CGPoint#>, size: <#T##CGSize#>))
         print("TESTTEST")
     }
 }
@@ -67,6 +68,7 @@ extension MenuViewController: UITableViewDataSource {
             cell.user = User.currentUser
             
             let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(onUserLongPress(_:)))
+            longPressGesture.delegate = self
             cell.addGestureRecognizer(longPressGesture)
 
             return cell

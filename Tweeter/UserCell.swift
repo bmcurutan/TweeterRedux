@@ -1,5 +1,5 @@
 //
-//  UserCell.swift
+//  UserCountsCell.swift
 //  Tweeter
 //
 //  Created by Bianca Curutan on 10/30/16.
@@ -9,7 +9,7 @@
 import UIKit
 
 // TODO pull this out into a view instead of a cell
-final class UserCell: UITableViewCell {
+final class UserCountsCell: UITableViewCell {
 
     @IBOutlet weak var tweetsCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!

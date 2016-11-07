@@ -258,7 +258,7 @@ extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (UserSection(rawValue: indexPath.section)!) {
         case .counts:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "UserCountsCell", for: indexPath) as! UserCountsCell
             cell.user = user
             return cell
             
