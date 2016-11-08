@@ -49,11 +49,6 @@ final class UserViewController: UIViewController {
         blurEffectView.alpha = 0
         blurEffectView.frame = bannerImageView.bounds
         bannerImageView.addSubview(blurEffectView)
-    }
-    
-    // TODO move this
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets

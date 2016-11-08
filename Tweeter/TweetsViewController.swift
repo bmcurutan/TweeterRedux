@@ -53,7 +53,7 @@ final class TweetsViewController: UIViewController {
                 }, failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
-            ) // TODO fix this hack
+            )
         }
     }
     
