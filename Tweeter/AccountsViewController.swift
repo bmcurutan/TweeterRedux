@@ -21,7 +21,7 @@ final class AccountsViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    fileprivate func titleCell(cell: UITableViewCell) -> UITableViewCell {
+    fileprivate func titleCellFor(cell: UITableViewCell) -> UITableViewCell {
         let attributes = [
             NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0)
         ]
@@ -31,7 +31,7 @@ final class AccountsViewController: UIViewController {
         return cell
     }
     
-    fileprivate func accountCell(cell: UITableViewCell, user: User) -> UITableViewCell {
+    fileprivate func accountCellFor(cell: UITableViewCell, user: User) -> UITableViewCell {
         if let name = user.name,
             let screenname = user.screenname {
             let nameAttributes = [
@@ -53,7 +53,7 @@ final class AccountsViewController: UIViewController {
         return cell
     }
     
-    fileprivate func addAccountCell(cell: UITableViewCell) -> UITableViewCell {
+    fileprivate func addAccountCellFor(cell: UITableViewCell) -> UITableViewCell {
         let attributes = [
             NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
         ]
@@ -65,7 +65,7 @@ final class AccountsViewController: UIViewController {
         return cell
     }
     
-    fileprivate func dismissCell(cell: UITableViewCell) -> UITableViewCell {
+    fileprivate func dismissCellFor(cell: UITableViewCell) -> UITableViewCell {
         let attributes = [
             NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
         ]
@@ -88,22 +88,22 @@ extension AccountsViewController: UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            return titleCell(cell: cell)
+            return titleCellFor(cell: cell)
         
         case 1:
-            cell = accountCell(cell: cell, user: User.currentUser!)
+            cell = accountCellFor(cell: cell, user: User.currentUser!)
             cell.accessoryType = .checkmark
             return cell
             
         case 2:
             if let otherUser = User.otherUser {
-                return accountCell(cell: cell, user: otherUser)
+                return accountCellFor(cell: cell, user: otherUser)
             } else {
-                return addAccountCell(cell: cell)
+                return addAccountCellFor(cell: cell)
             }
             
         default:
-            return dismissCell(cell: cell)
+            return dismissCellFor(cell: cell)
         }
     }
     
