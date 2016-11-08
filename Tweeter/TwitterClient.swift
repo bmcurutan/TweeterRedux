@@ -34,7 +34,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
         fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil,
             success: { (requestToken: BDBOAuth1Credential?) -> Void in
                 if let token = requestToken?.token {
-                    let authURL = NSURL(string: "https://api.twitter.com/oauth/authenticate?force_login=true&oauth_token=\(token)")
+                    let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")
                     let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
                     UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
                 }
@@ -42,6 +42,27 @@ final class TwitterClient: BDBOAuth1SessionManager {
             failure: { (error: Error?) -> Void in
                 print("error: \(error?.localizedDescription)")
                 self.loginFailure?(error!)
+            }
+        )
+    }
+    
+    func loginAgain(success: @escaping () -> (), failure: @escaping (Error) -> ()) {
+        loginSuccess = success
+        loginFailure = failure
+        
+        deauthorize()
+        
+        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "tweeter://oauth") as URL!, scope: nil,
+                          success: { (requestToken: BDBOAuth1Credential?) -> Void in
+                            if let token = requestToken?.token {
+                                let authURL = NSURL(string: "https://api.twitter.com/oauth/authenticate?force_login=true&oauth_token=\(token)")
+                                let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
+                                UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
+                            }
+            },
+                          failure: { (error: Error?) -> Void in
+                            print("error: \(error?.localizedDescription)")
+                            self.loginFailure?(error!)
             }
         )
     }

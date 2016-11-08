@@ -144,9 +144,9 @@ extension AccountsViewController: UITableViewDelegate {
         
         if AccountCellType.other.rawValue == indexPath.row {
             if nil == User.otherUser {
-                TwitterClient.sharedInstance.login(
+                TwitterClient.sharedInstance.loginAgain(
                     success: { () -> () in
-                        print("I've logged in!")
+                        print("I've logged in again!")
                         tableView.reloadData()
                         
                     }, failure: { (error: Error) -> () in

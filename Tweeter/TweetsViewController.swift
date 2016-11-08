@@ -28,7 +28,6 @@ final class TweetsViewController: UIViewController {
             }
             dataController.timelineType = timelineType
             dataController.refreshTimeline()
-            self.tweets = dataController.tweets
         }
     }
     
