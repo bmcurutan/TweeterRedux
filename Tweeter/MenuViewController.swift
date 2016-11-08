@@ -47,10 +47,6 @@ final class MenuViewController: UIViewController {
         hamburgerViewController.contentViewController = navController
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let a = 0
-    }
-    
     // MARK: - Private Methods
     
     @objc fileprivate func onUserLongPress(_ sender: UILongPressGestureRecognizer) {

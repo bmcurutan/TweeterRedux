@@ -18,6 +18,8 @@ final class TweetsViewController: UIViewController {
     
     weak var delegate: TweetsViewControllerDelegate?
     
+    var refreshControl: UIRefreshControl = UIRefreshControl()
+    
     var dataController: Tweet!
     var timelineType: TimelineType! {
         didSet {
@@ -42,6 +44,9 @@ final class TweetsViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
 
+        refreshControl.addTarget(self, action: #selector(onRefresh(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
         if nil != dataController.tweets {
             tweets = dataController.tweets
         } else {
@@ -61,6 +66,14 @@ final class TweetsViewController: UIViewController {
     
     @objc fileprivate func onToggleMenu(_ sender: AnyObject) {
         HamburgerViewController.sharedInstance.toggleMenu()
+    }
+    
+    @objc fileprivate func onRefresh(_ refreshControl: UIRefreshControl) {
+        dataController.refreshTimeline()
+        self.tweets = dataController.tweets
+        
+        tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     // MARK: - IBAction

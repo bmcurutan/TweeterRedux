@@ -80,4 +80,26 @@ final class Tweet: NSObject {
         
         return tweets
     }
+    
+    func refreshTimeline() {
+        if timelineType == .home {
+            TwitterClient.sharedInstance.homeTimeline(
+                success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+            
+        } else if timelineType == .mentions {
+            TwitterClient.sharedInstance.mentionsTimeline(
+                success: { (tweets: [Tweet]) -> () in
+                    self.tweets = tweets
+                }, failure: { (error: Error) -> () in
+                    print("error: \(error.localizedDescription)")
+                }
+            )
+        }
+        
+    }
 }
