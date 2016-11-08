@@ -92,7 +92,6 @@ final class NewTweetViewController: UIViewController {
                     let tweetDictionary: [String: AnyObject] = [
                         "favorited": false as AnyObject,
                         "favoritesCount": 0 as AnyObject,
-                        // id not yet available
                         "retweetCount": 0 as AnyObject,
                         "retweeted": false as AnyObject,
                         "text": self.tweetText as AnyObject,
@@ -103,8 +102,8 @@ final class NewTweetViewController: UIViewController {
                 
                     self.delegate?.newTweetViewController(newTweetViewController: self, didAddTweet: tweet)
                     self.dismiss(animated: true, completion: nil)
-                    
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )

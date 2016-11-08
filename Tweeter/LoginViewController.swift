@@ -28,7 +28,6 @@ final class LoginViewController: UIViewController {
         client.login(
             success: { () -> () in
                 print("I've logged in!")
-                
                 self.present(HamburgerViewController.sharedInstance, animated: true, completion: nil)
             
             }, failure: { (error: Error) -> () in

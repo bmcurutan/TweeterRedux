@@ -27,6 +27,8 @@ final class TweetsViewController: UIViewController {
                 dataController = Tweet()
             }
             dataController.timelineType = timelineType
+            dataController.refreshTimeline()
+            self.tweets = dataController.tweets
         }
     }
     
@@ -54,8 +56,8 @@ final class TweetsViewController: UIViewController {
                 success: { (tweets: [Tweet]) -> () in
                     self.tweets = tweets
                     self.tableView.reloadData()
-                
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -88,8 +90,8 @@ final class TweetsViewController: UIViewController {
                     print("Tweet successfully unfavorited")
                     tweet.favorited = false
                     tweet.favoritesCount -= 1
-                
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -100,8 +102,8 @@ final class TweetsViewController: UIViewController {
                     print("Tweet successfully favorited")
                     tweet.favorited = true
                     tweet.favoritesCount += 1
-                
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -120,8 +122,8 @@ final class TweetsViewController: UIViewController {
                     print("Tweet successfully unretweeted")
                     tweet.retweeted = false
                     tweet.retweetCount -= 1
-                
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -132,8 +134,8 @@ final class TweetsViewController: UIViewController {
                     print("Tweet successfully retweeted")
                     tweet.retweeted = true
                     tweet.retweetCount += 1
-                
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -229,6 +231,7 @@ extension TweetsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension TweetsViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
@@ -250,7 +253,6 @@ extension TweetsViewController: NewTweetViewControllerDelegate {
 extension TweetsViewController: TweetDetailsViewControllerDelegate {
     
     func tweetDetailsViewController(tweetDetailsViewController: TweetDetailsViewController, didUpdateTweet tweet: Tweet) {
-        
         TwitterClient.sharedInstance.homeTimeline(
             success: { (tweets: [Tweet]) -> () in
                 self.tweets = tweets

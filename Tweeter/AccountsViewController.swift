@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum AccountCellType: Int {
+    case title = 0, current, other, signout
+    static var count: Int { return AccountCellType.signout.hashValue + 1}
+}
+
 final class AccountsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -86,41 +91,43 @@ extension AccountsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
         
-        switch indexPath.row {
-        case 0:
+        switch AccountCellType(rawValue: indexPath.row)! {
+        case .title:
             return titleCellFor(cell: cell)
         
-        case 1:
+        case .current:
             cell = accountCellFor(cell: cell, user: User.currentUser!)
             cell.accessoryType = .checkmark
             return cell
             
-        case 2:
+        case .other:
             if let otherUser = User.otherUser {
                 return accountCellFor(cell: cell, user: otherUser)
             } else {
                 return addAccountCellFor(cell: cell)
             }
             
-        default:
+        case .signout:
             return dismissCellFor(cell: cell)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return AccountCellType.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return (1 == indexPath.row || 2 == indexPath.row ? true : false)
+        return (AccountCellType.current.rawValue == indexPath.row ||
+            AccountCellType.other.rawValue == indexPath.row ? true : false)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            if 1 == indexPath.row {
+            if AccountCellType.current.rawValue == indexPath.row {
                 // Log out current user
                 TwitterClient.sharedInstance.logout()
-            } else if 2 == indexPath.row {
+                
+            } else if AccountCellType.other.rawValue == indexPath.row {
                 User.otherUser = nil
                 tableView.reloadData()
             }
@@ -135,7 +142,7 @@ extension AccountsViewController: UITableViewDelegate {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if 2 == indexPath.row {
+        if AccountCellType.other.rawValue == indexPath.row {
             if nil == User.otherUser {
                 TwitterClient.sharedInstance.login(
                     success: { () -> () in
@@ -155,7 +162,7 @@ extension AccountsViewController: UITableViewDelegate {
             
             dismiss(animated: true, completion: nil)
             
-        } else if 3 == indexPath.row {
+        } else if AccountCellType.signout.rawValue == indexPath.row {
             dismiss(animated: true, completion: nil)
         }
     }

@@ -52,21 +52,17 @@ final class HamburgerViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - Private Methods
     
     func toggleMenu() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [],
-                animations: {
-                    if self.leftMarginConstraint.constant == 0 { // Open menu
-                        self.leftMarginConstraint.constant = self.view.frame.size.width - 60
-                    } else { // Close menu
-                        self.leftMarginConstraint.constant = 0
-                    }
-                    self.view.layoutIfNeeded()
+            animations: {
+                if self.leftMarginConstraint.constant == 0 { // Open menu
+                    self.leftMarginConstraint.constant = self.view.frame.size.width - 60
+                } else { // Close menu
+                    self.leftMarginConstraint.constant = 0
+                }
+                self.view.layoutIfNeeded()
             }
         )
     }

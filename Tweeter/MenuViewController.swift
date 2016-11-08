@@ -14,8 +14,6 @@ enum SelectionType: Int {
 }
 
 final class MenuViewController: UIViewController {
-
-    //static let sharedInstance = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
     
     @IBOutlet weak var tableView: UITableView!
     

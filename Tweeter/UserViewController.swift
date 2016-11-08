@@ -50,11 +50,12 @@ final class UserViewController: UIViewController {
         blurEffectView.frame = bannerImageView.bounds
         bannerImageView.addSubview(blurEffectView)
         
-        TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname)!, success: { (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            
-            }, failure: { (error: Error) -> () in
+        TwitterClient.sharedInstance.timelineForUserWith(screenname: (user?.screenname)!,
+            success: { (tweets: [Tweet]) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+            },
+            failure: { (error: Error) -> () in
                 print("error: \(error.localizedDescription)")
             }
         )
@@ -86,8 +87,8 @@ final class UserViewController: UIViewController {
 					print("Tweet successfully unfavorited")
 					tweet.favorited = false
 					tweet.favoritesCount -= 1
-					
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -98,8 +99,8 @@ final class UserViewController: UIViewController {
 					print("Tweet successfully favorited")
 					tweet.favorited = true
 					tweet.favoritesCount += 1
-					
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -116,8 +117,8 @@ final class UserViewController: UIViewController {
 					print("Tweet successfully unretweeted")
 					tweet.retweeted = false
 					tweet.retweetCount -= 1
-					
-                }, failure: { (error: Error) -> () in
+                },
+                failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -128,8 +129,8 @@ final class UserViewController: UIViewController {
 					print("Tweet successfully retweeted")
 					tweet.retweeted = true
 					tweet.retweetCount += 1
-					
-                }, failure: { (error: Error) -> () in
+                },
+		        failure: { (error: Error) -> () in
                     print("error: \(error.localizedDescription)")
                 }
             )
@@ -288,6 +289,7 @@ extension UserViewController: UITableViewDataSource {
 }
 
 extension UserViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
@@ -325,8 +327,8 @@ extension UserViewController: TweetDetailsViewControllerDelegate {
 // MARK: - UIScrollViewDelegate 
 
 extension UserViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {    
         let velocity = self.scrollView.panGestureRecognizer.velocity(in: self.scrollView.superview).x
         let duration: TimeInterval = Double(width / velocity)
         
