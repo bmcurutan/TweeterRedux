@@ -33,8 +33,8 @@ final class UserViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = (user == User.currentUser ? "Me" : user?.name)
-        let button = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: #selector(onToggleMenu(_:)))
-        navigationItem.leftBarButtonItem = button
+        let leftButton = UIBarButtonItem(image: UIImage(named: "hamburger"), style: .plain, target: self, action: #selector(onToggleMenu(_:)))
+        navigationItem.leftBarButtonItem = leftButton
 
         if let profileBannerURL = user?.profileBannerURL {
             bannerImageView.setImageWith(profileBannerURL)
@@ -66,9 +66,6 @@ final class UserViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if "detailsSegue" == segue.identifier {
             onDetailsSegue(segue: segue, sender: sender)
-            
-        } else if "newTweetSegue" == segue.identifier { 
-            onNewTweetSegue(segue: segue, sender: sender)
             
         } else if "replySegue" == segue.identifier {
             onReplySegue(segue: segue, sender: sender)
@@ -238,14 +235,6 @@ final class UserViewController: UIViewController {
         
         viewController.delegate = self
         viewController.tweet = tweet
-    }
-    
-    fileprivate func onNewTweetSegue(segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let viewController = navigationController.topViewController as! NewTweetViewController
-        
-        viewController.delegate = self
-        viewController.user = User.currentUser
     }
     
     fileprivate func onReplySegue(segue: UIStoryboardSegue, sender: Any?) {
