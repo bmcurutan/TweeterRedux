@@ -47,15 +47,17 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/FgrG1zI.gif' title='Tweeter Redux Video Walkthrough' width='' alt='Tweeter Redux Video Walkthrough' />
+<img src='http://i.imgur.com/R28IppP.gif' title='Add Account Video Walkthrough' width='' alt='Add Account Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-- Faced some challenges implementing the controller layer between model and view so as to use the same view with multiple models
-- Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented
-- Some difficulties implementing gesture recognizers on certain types of views (e.g., UIButton)
-- There's more duplicate logic and code here than I'd like due to time pressures to complete the assignment tasks
+- Faced some challenges implementing the controller layer between model and view so as to use the same view with multiple models. Initially, just implemented the home timeline and mentions timeline with duplicate files before cleaning them up.
+- Some challenges with what I thought were UI navigation bugs when using the hamburger menu in lieu of the tab bar or nav bar (i.e., built-in iOS functionality); but it ended up being logical errors in how the data was being presented in the code
+- Some difficulties implementing gesture recognizers on certain types of views (e.g., UIButton). I expect the gesture recognizers I attempted to add were a lesser priority than the built-in gesture recognizers for these views.
+- There's more duplicate logic and code here than I'd like due to time pressures to complete the assignment tasks which should be cleaned up.
+- Many issues faced with adding a new account (implemented), then tapping to select an account and expect the app to refresh (not implemented). 
 
 ## Icons
 
