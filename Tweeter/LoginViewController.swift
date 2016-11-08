@@ -29,12 +29,6 @@ final class LoginViewController: UIViewController {
             success: { () -> () in
                 print("I've logged in!")
                 
-                /*let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-                let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
-                
-                menuViewController.hamburgerViewController = hamburgerViewController
-                hamburgerViewController.menuViewController = menuViewController*/
                 self.present(HamburgerViewController.sharedInstance, animated: true, completion: nil)
             
             }, failure: { (error: Error) -> () in

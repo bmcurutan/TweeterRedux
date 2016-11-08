@@ -48,9 +48,20 @@ final class AccountsViewController: UIViewController {
             mutableAttributedText.append(NSAttributedString(string: " @\(screenname)", attributes: screennameAttributes))
             
             cell.textLabel?.attributedText = mutableAttributedText
-            cell.accessoryType = .checkmark
         }
         
+        return cell
+    }
+    
+    fileprivate func addAccountCell(cell: UITableViewCell) -> UITableViewCell {
+        let attributes = [
+            NSFontAttributeName: UIFont.systemFont(ofSize: 13.0)
+        ]
+        let attributedText = NSAttributedString(string: "Add Account", attributes: attributes)
+        cell.textLabel?.attributedText = attributedText
+        
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.textColor = UIColor(red: 0, green: 172/255, blue: 237/255, alpha: 1.0)
         return cell
     }
     
@@ -73,34 +84,45 @@ final class AccountsViewController: UIViewController {
 
 extension AccountsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
         
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             return titleCell(cell: cell)
         
-        } else if indexPath.row < User.accounts.count + 1 {
-            return accountCell(cell: cell, user: User.accounts[indexPath.row-1])
+        case 1:
+            cell = accountCell(cell: cell, user: User.currentUser!)
+            cell.accessoryType = .checkmark
+            return cell
             
-        } else {
+        case 2:
+            if let otherUser = User.otherUser {
+                return accountCell(cell: cell, user: otherUser)
+            } else {
+                return addAccountCell(cell: cell)
+            }
+            
+        default:
             return dismissCell(cell: cell)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.accounts.count + 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return (indexPath.row == 1 ? true : false)
+        return (1 == indexPath.row || 2 == indexPath.row ? true : false)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            User.accounts.remove(at: indexPath.row-1)
-            
-            guard User.accounts.count > 0 else {
+            if 1 == indexPath.row {
+                // Log out current user
                 TwitterClient.sharedInstance.logout()
-                return
+            } else if 2 == indexPath.row {
+                User.otherUser = nil
+                tableView.reloadData()
             }
             
             tableView.reloadData()
@@ -113,7 +135,27 @@ extension AccountsViewController: UITableViewDelegate {
         // Deselect row appearance after it has been selected
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row > User.accounts.count {
+        if 2 == indexPath.row {
+            if nil == User.otherUser {
+                TwitterClient.sharedInstance.login(
+                    success: { () -> () in
+                        print("I've logged in!")
+                        tableView.reloadData()
+                        
+                    }, failure: { (error: Error) -> () in
+                        print("Error: \(error.localizedDescription)")
+                    }
+                )
+                
+            } else {
+                let temp: User = User.currentUser!
+                User.currentUser = User.otherUser
+                User.otherUser = temp
+            }
+            
+            dismiss(animated: true, completion: nil)
+            
+        } else if 3 == indexPath.row {
             dismiss(animated: true, completion: nil)
         }
     }

@@ -35,7 +35,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
             success: { (requestToken: BDBOAuth1Credential?) -> Void in
             
                 if let token = requestToken?.token {
-                    let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(token)")
+                    let authURL = NSURL(string: "https://api.twitter.com/oauth/authenticate?force_login=true&oauth_token=\(token)")
                     let options = [UIApplicationOpenURLOptionUniversalLinksOnly: false]
                     UIApplication.shared.open(authURL as! URL, options: options, completionHandler: nil)
                 }
@@ -61,6 +61,7 @@ final class TwitterClient: BDBOAuth1SessionManager {
             
                 self.currentAccount(
                     success: { (user: User) -> () in
+                        User.otherUser = User.currentUser
                         User.currentUser = user
                         self.loginSuccess?()
                 

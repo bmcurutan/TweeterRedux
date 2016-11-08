@@ -22,8 +22,6 @@ final class User: NSObject {
     var countFollowing: Int?
     var countFollowers: Int?
     
-    static var accounts: [User]! = [User.currentUser!] // Can be expanded later for multiple accounts
-    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         
@@ -51,6 +49,7 @@ final class User: NSObject {
     
     static let userDidLogoutNotification = NSNotification.Name(rawValue: "UserDidLogout")
     static var _currentUser: User?
+    static var _otherUser: User?
     
     class var currentUser: User? {
         get {
@@ -80,6 +79,40 @@ final class User: NSObject {
                 
             } else {
                 defaults.removeObject(forKey: "currentUserData")
+            }
+            
+            defaults.synchronize()
+        }
+    }
+    
+    class var otherUser: User? {
+        get {
+            guard nil == _otherUser else {
+                return _otherUser
+            }
+            
+            let defaults = UserDefaults.standard
+            let userData = defaults.object(forKey: "otherUserData") as? NSData
+            
+            if let userData = userData {
+                let dictionary = try! JSONSerialization.jsonObject(with: userData as Data, options: [])
+                _otherUser = User(dictionary: dictionary as! NSDictionary)
+            }
+            
+            return _otherUser
+        }
+        
+        set(user) {
+            _otherUser = user
+            
+            let defaults = UserDefaults.standard
+            
+            if let user = user {
+                let data = try! JSONSerialization.data(withJSONObject: user.dictionary! as NSDictionary, options: [])
+                defaults.set(data, forKey: "otherUserData")
+                
+            } else {
+                defaults.removeObject(forKey: "otherUserData")
             }
             
             defaults.synchronize()
